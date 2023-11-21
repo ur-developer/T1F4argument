@@ -6,7 +6,6 @@ import java.util.List;
 import org.galapagos.domain.BoardAttachmentVO;
 import org.galapagos.domain.BoardVO;
 import org.galapagos.domain.Criteria;
-import org.galapagos.domain.LikeVO;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface BoardService {

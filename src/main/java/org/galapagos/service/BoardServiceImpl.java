@@ -3,15 +3,14 @@ package org.galapagos.service;
 import java.security.Principal;
 import java.util.List;
 
+import org.galapagos.domain.BoardAttachmentVO;
+import org.galapagos.domain.BoardVO;
+import org.galapagos.domain.Criteria;
+import org.galapagos.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import org.galapagos.domain.BoardAttachmentVO;
-import org.galapagos.domain.BoardVO;
-import org.galapagos.domain.Criteria;
-import org.galapagos.domain.LikeVO;
-import org.galapagos.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;

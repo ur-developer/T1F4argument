@@ -3,9 +3,13 @@ package org.galapagos.domain;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UpdateMemberVO {
 	
 	public String username;
@@ -16,6 +20,9 @@ public class UpdateMemberVO {
 	@Email(message = "이메일 형식으로 입력하세요.")
 	@NotBlank(message = "이메일을 입력하세요.")
 	public String newEmail;
+	
+	@NotBlank(message = "기존 비밀번호를 입력하세요.")
+	public String originallyPassword;
 	
 	@NotBlank(message = "새로운 비밀번호를 입력하세요.")
 	public String newPassword;

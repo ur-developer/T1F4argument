@@ -23,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 		log.warn("Load User By Username:===== " + username);
 
-		MemberVO vo = mapper.read(username);
+		MemberVO vo = mapper.readMember(username);
 		log.warn("user vo: " + vo);
 		if(vo == null) {
 			log.warn(username + "은 없는 id입니다.");

@@ -8,9 +8,7 @@
 
 <div style="width: 500px" class="mx-auto">
 
-	<br>
-	
-	<h1><i class="fa-solid fa-users"></i> 정보 수정</h1>
+	<h4 class="mt-5"><i class="fa-solid fa-users"></i> 정보 수정</h4>
 
 	<hr>
 	<br>
@@ -27,13 +25,19 @@
 		</div>
 		
 		<div class="form-group">
-			<form:label path="newPassword"><i class="fa-solid fa-lock"></i> 비밀번호</form:label>
+			<form:label path="originallyPassword"><i class="fa-solid fa-lock"></i> 현재 비밀번호</form:label>
+			<form:password path="originallyPassword" class="form-control"/>
+			<form:errors path="originallyPassword" cssClass="error"/>
+		</div>
+		
+		<div class="form-group">
+			<form:label path="newPassword"><i class="fa-solid fa-lock"></i> 새 비밀번호</form:label>
 			<form:password path="newPassword" class="form-control"/>
 			<form:errors path="newPassword" cssClass="error"/>
 		</div>
 		
 		<div class="form-group">
-			<form:label path="checkNewPassword"><i class="fa-solid fa-lock"></i> 비밀번호 확인</form:label>
+			<form:label path="checkNewPassword"><i class="fa-solid fa-lock"></i> 새 비밀번호 확인</form:label>
 			<form:password path="checkNewPassword" class="form-control"/>
 			<form:errors path="checkNewPassword" cssClass="error"/>
 		</div>

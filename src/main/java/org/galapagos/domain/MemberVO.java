@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -15,33 +14,42 @@ import lombok.Data;
 
 @Data
 public class MemberVO {
-	@NotBlank(message = "사용자 id는 필수항목입니다.")
-	@Size(min = 4, message="사용자 id는 4글자 이상이어야 합니다.")
+	
+	@NotBlank(message = "아이디를 입력하세요.")
 	private String username;
 	
-	@NotBlank(message = "비밀번호는 필수항목입니다.")
+	@NotBlank(message = "비밀번호를 입력하세요.")
 	private String password;
 	
-	@NotBlank(message = "비밀번호 확인은 필수항목입니다.")
-	private String password2;
-
-	@NotBlank(message = "email는 필수항목입니다.")
-	@Email(message="email 형식에 맞지 않습니다.")
+	@NotBlank(message = "비밀번호를 확인하세요.")
+	private String checkPassword;
+	
+	@NotBlank(message = "닉네임을 입력하세요.")
+	private String nickname;
+	
+	@NotBlank(message = "이메일을 입력하세요.")
+	@Email(message = "이메일 형식에 맞게 입력하세요.")
 	private String email;
 	
-	private String nickname;
 	private Date registerDate;
-	private Date updateDate;
 	
-	private List<AuthVO> authList;
-	
-	
+	// admin을 제외하고 다른 user들의 권한을 저장
+	private List<AuthorizationVO> authorizationList;
+		
+	// authorizationList를 Collection<SimpleGrantedAuthority>로 변환
+	// security framework는 개발자가 정의한 UserVO를 모르기 때문에 따로 설정
 	public Collection<SimpleGrantedAuthority> getAuthorities() {
+			
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-		for(AuthVO authorization: authList) {
+			
+		for(AuthorizationVO authorization : authorizationList)
 			authorities.add(new SimpleGrantedAuthority(authorization.getAuthorization()));
-		} 		
+		
 		return authorities;
+	}
+	
+	public void updateNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 }

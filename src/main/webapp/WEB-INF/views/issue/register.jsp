@@ -33,6 +33,14 @@ $(document).ready(function() {
 		attachList.html(fileList);
 	});
 	
+    // 게시판 종류 선택 이벤트 처리
+    $('#boardTypeSelect').change(function() {
+        // 선택한 값 가져오기
+        let selectedValue = $(this).val();
+        
+        // categoryId input에 선택한 값 설정
+        $('#categoryId').val(selectedValue);
+    });
 });
 
 </script>
@@ -43,22 +51,25 @@ $(document).ready(function() {
 
 <div class="panel panel-default">
 
+  
+<label for="boardTypeSelect"> 게시판 종류 선택: </label>
+  <select id="boardTypeSelect">
+    <option value="2">갑론을박 게시판</option>
+    <option value="1">이슈고르기 게시판</option>
+  </select>
+
+
 	<div class="panel-body">
 		<form:form modelAttribute="board" action="?_csrf=${_csrf.token}" role="form" enctype="multipart/form-data">	
+			<input type="hidden" id="categoryId" name="categoryId" />
 			<form:hidden path="nickname" value="${username}" />
 			<div class="form-group">
+				
 				<form:label path="title">제목</form:label>
 				<form:input path="title" cssClass="form-control" />
 				<form:errors path="title" cssClass="error"/>
 			</div>
-		
-			<div class="form-group">
-				<div id="file-list"></div>
-    			<label for="attaches">첨부파일</label>
-				<div id="attach-list" class="my-1"></div>    
-				<input type="file" class="form-control" multiple name="files"/>
-			</div>	
-			
+
 			<div class="form-group">
 				<form:label path="content">내용</form:label>
 				<form:textarea path="content" class="form-control"></form:textarea>
@@ -80,3 +91,13 @@ $(document).ready(function() {
 
 
 <%@include file="../layouts/footer.jsp"%>
+
+
+<%--
+	<div class="form-group">
+		<div id="file-list"></div>
+  	 	<label for="attaches">첨부파일</label>
+		<div id="attach-list" class="my-1"></div>    
+		<input type="file" class="form-control" multiple name="files"/>
+</div>	
+--%>

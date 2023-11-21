@@ -1,6 +1,6 @@
 package org.galapagos.mapper;
 
-import org.galapagos.domain.AuthVO;
+import org.galapagos.domain.AuthorizationVO;
 import org.galapagos.domain.MemberVO;
 
 public interface MemberMapper {
@@ -8,7 +8,7 @@ public interface MemberMapper {
 	
 	public void insert(MemberVO member);
 	
-	public void insertAuth(AuthVO authorization);
+	public void insertAuth(AuthorizationVO authorization);
 	
 	
 }

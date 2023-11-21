@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface BoardService {
 	
-public int getTotal(Criteria cri);
+	public int getTotal(Criteria cri);
 	
 	public List<BoardVO> getList(Criteria cri, Principal principal);
 	

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.galapagos.mapper.MemberMapper">
-	<resultMap id="authMap" type="org.galapagos.domain.AuthVO">
+	<resultMap id="authMap" type="org.galapagos.domain.AuthorizationVO">
 		<result property="username" column="username" />
 		<result property="authorization" column="authorization" />
 	</resultMap>
@@ -17,7 +17,7 @@
 		<result property="password" column="password" />
 		<result property="email" column="email" />
 		<result property="registerDate" column="register_date" />
-		<collection property="authList" resultMap="authMap" />
+		<collection property="authorizationList" resultMap="authMap" />
 	</resultMap>
 
 	<select id="read" resultMap="memberMap">

@@ -10,16 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import org.galapagos.domain.BoardAttachmentVO;
 import org.galapagos.domain.BoardVO;
 import org.galapagos.domain.Criteria;
 import org.galapagos.domain.PageDTO;
-import org.galapagos.service.BoardService;
+import org.galapagos.service.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,7 +36,7 @@ import lombok.extern.log4j.Log4j;
 public class IssueController {
 
 	@Autowired
-	private BoardService service;
+	private IssueService service;
 
 	@ModelAttribute("searchTypes")
 	public Map<String, String> searchTypes() {
@@ -55,22 +53,22 @@ public class IssueController {
 	}	
 
 	@GetMapping("/list")
-	public void list(@ModelAttribute("cri") Criteria cri, Principal principal, Model model) {
+	public void listIssue(@ModelAttribute("cri") Criteria cri, Principal principal, Model model) {
 	
 		log.info("list" + cri);
-		int total = service.getTotal(cri);//		model.addAttribute("list", service.getList());
-		model.addAttribute("list", service.getList(cri, principal));
-		model.addAttribute("pageMaker", new PageDTO(cri, total));	// 임의로 123  요청
+		int total = service.getIssueTotal(cri);
+		model.addAttribute("list", service.getIssueList(cri, principal));
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 
 	}
 	
 	@GetMapping("/register")
-	public void register(@ModelAttribute("board") BoardVO board) {	
+	public void registerIssue(@ModelAttribute("board") BoardVO board) {	
 		log.info("register");	
 	}
 
 	@PostMapping("/register")
-	public String register(
+	public String registerIssue(
 			@Valid @ModelAttribute("board") BoardVO board,
 			Errors errors,
 			List<MultipartFile> files,
@@ -80,14 +78,16 @@ public class IssueController {
 			return "issue/register";
 		}
 
-		service.register(board, files);
+		board.setCategoryId(1L);
+		 
+		service.registerIssue(board);
 		rttr.addFlashAttribute("result", board.getBno());
 
 		return "redirect:/issue/list";
 	}
 	
 	@GetMapping({ "/get", "/modify" })
-	public String get(
+	public String getIssue(
 			@RequestParam("bno") Long bno,
 			@ModelAttribute("cri") Criteria cri,
 			Principal principal,
@@ -116,7 +116,7 @@ public class IssueController {
      // 이미 방문한 경우 처리
         if (hasVisited) {
             // 이미 방문한 사용자에게 처리할 내용
-            model.addAttribute("board", service.get(bno, principal));
+            model.addAttribute("board", service.getIssue(bno, principal));
             return "issue/get";
         }
         
@@ -127,13 +127,13 @@ public class IssueController {
         visitedCookie.setMaxAge(24 * 60 * 60); // 24시간 유지
         response.addCookie(visitedCookie);
         
-		model.addAttribute("board", service.get(bno, principal));
+		model.addAttribute("board", service.getIssue(bno, principal));
 	
 		return "issue/get";
 	}
 	
 	@PostMapping("/modify")
-	public String modify(
+	public String modifyIssue(
 			@Valid @ModelAttribute("board") BoardVO board,
 			Errors errors,
 			List<MultipartFile> files,			
@@ -145,7 +145,7 @@ public class IssueController {
 			return "issue/modify";
 		}		
 		
-		if (service.modify(board, files)) {
+		if (service.modifyIssue(board)) {
 			// Flash --> 1회성
 			rttr.addFlashAttribute("result", "success");
 		}
@@ -155,36 +155,22 @@ public class IssueController {
 	}	
 	
 	@PostMapping("/remove")
-	public String remove(
+	public String removeIssue(
 			@RequestParam("bno") Long bno, 
 			@ModelAttribute("cri") Criteria cri,
 			RedirectAttributes rttr) {
 	
 		log.info("remove..." + bno);
-		if (service.remove(bno)) {
+		if (service.removeIssue(bno)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/issue/list" + cri.getLink();
-
 	}
 	
 	@GetMapping("/download/{no}")
 	@ResponseBody	// view를 사용하지 않고, 직접 내보냄
 	public void download(
 			@PathVariable("no") Long no, 
-			HttpServletResponse response) throws Exception {
-
-		BoardAttachmentVO attach = service.getAttachment(no);
-		attach.download(response);		
-		
-	}
-
-	@DeleteMapping("/remove/attach/{no}")
-	@ResponseBody	
-	public String removeAttach(
-			@PathVariable("no") Long no) throws Exception {
-
-		service.removeAttachment(no);
-		return "OK";
+			HttpServletResponse response) throws Exception {	
 	}
 }

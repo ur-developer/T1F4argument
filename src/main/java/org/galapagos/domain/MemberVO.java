@@ -33,12 +33,11 @@ public class MemberVO {
 	private Date registerDate;
 	private Date updateDate;
 	
-	private List<AuthVO> authList;
-	
+	private List<AuthorizationVO> authorizationList;
 	
 	public Collection<SimpleGrantedAuthority> getAuthorities() {
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-		for(AuthVO authorization: authList) {
+		for(AuthorizationVO authorization: authorizationList) {
 			authorities.add(new SimpleGrantedAuthority(authorization.getAuthorization()));
 		} 		
 		return authorities;

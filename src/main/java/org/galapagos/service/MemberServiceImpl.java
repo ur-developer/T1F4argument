@@ -3,7 +3,7 @@ package org.galapagos.service;
 import java.io.File;
 import java.io.IOException;
 
-import org.galapagos.domain.AuthVO;
+import org.galapagos.domain.AuthorizationVO;
 import org.galapagos.domain.MemberVO;
 import org.galapagos.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,6 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.read(username);
 	}
 
-	
 	@Override
 	public void register(MemberVO member, MultipartFile avatar) throws IOException {
 		//1. 비밀번호 암호화
@@ -44,9 +43,9 @@ public class MemberServiceImpl implements MemberService {
 
 	
 		//3. tbl_member_auth에 저장
-		AuthVO auth = new AuthVO(member.getUsername(),
+		AuthorizationVO authorization = new AuthorizationVO(member.getUsername(),
 								"ROLE_USER");
-		mapper.insertAuth(auth);
+		mapper.insertAuth(authorization);
 		
 		// 4. avatar 이미지 저장
 		if(!avatar.isEmpty()) {			
@@ -56,6 +55,5 @@ public class MemberServiceImpl implements MemberService {
 				.size(50, 50)
 				.toFile(dest);			
 		}
-		
 	}
 }

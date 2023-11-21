@@ -1,14 +1,19 @@
 package org.galapagos.service;
 
-import org.galapagos.domain.AuthorizationVO;
+import java.io.File;
+import java.io.IOException;
+
+import org.galapagos.domain.AuthVO;
 import org.galapagos.domain.MemberVO;
-import org.galapagos.domain.UpdateMemberVO;
 import org.galapagos.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.log4j.Log4j;
+import net.coobird.thumbnailator.Thumbnails;
 
 @Service
 @Log4j
@@ -20,18 +25,18 @@ public class MemberServiceImpl implements MemberService {
 	MemberMapper mapper;
 
 	@Autowired
-	private PasswordEncoder passwordEncoder;	
+	private PasswordEncoder pwEncoder;	
 	
 	@Override
-	public MemberVO getMember(String username) {
+	public MemberVO get(String username) {
 		return mapper.read(username);
 	}
 
 	
 	@Override
-	public void registerMember(MemberVO member) {
+	public void register(MemberVO member, MultipartFile avatar) throws IOException {
 		//1. 비밀번호 암호화
-		String encPassword = passwordEncoder.encode(member.getPassword());
+		String encPassword = pwEncoder.encode(member.getPassword());
 		member.setPassword(encPassword);
 		
 		//2. tbl_member에 저장
@@ -39,18 +44,18 @@ public class MemberServiceImpl implements MemberService {
 
 	
 		//3. tbl_member_auth에 저장
-		AuthorizationVO authorization = new AuthorizationVO(member.getUsername(),
+		AuthVO auth = new AuthVO(member.getUsername(),
 								"ROLE_USER");
-		mapper.insertAuthorization(authorization);
+		mapper.insertAuth(auth);
 		
-	}
-	
-	@Override
-	public void updateMember(UpdateMemberVO updateMember) {
-
-		String encodingPassword = passwordEncoder.encode(updateMember.getNewPassword());
+		// 4. avatar 이미지 저장
+		if(!avatar.isEmpty()) {			
+			File dest = new File(AVATAR_UPLOAD_DIR, member.getUsername() + ".png");
 			
-		updateMember.setNewPassword(encodingPassword);
-		mapper.updateMember(updateMember);		
+			Thumbnails.of(avatar.getInputStream())
+				.size(50, 50)
+				.toFile(dest);			
+		}
+		
 	}
 }

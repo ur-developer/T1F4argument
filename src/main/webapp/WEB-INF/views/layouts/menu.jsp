@@ -17,7 +17,7 @@
 					<i class="fa-solid fa-chalkboard"></i>
 					게시판</a></li>
 			<li class="nav-item">
-				<a class="nav-link" href="/issue/list?amount=12">
+				<a class="nav-link" href="/issue/list">
 					<i class="fa-solid fa-plane-departure"></i>
 					이슈</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">메뉴3</a></li>
@@ -30,6 +30,7 @@
 				<%-- 로그인 된 상태 --%>
 				<li class="nav-item">
 					<a class="nav-link" href="/security/profile"> 
+						<img src="/security/avatar/sm/${username}" class="avatar-sm"/> 
 						${username}	
 					</a>
 				</li>			

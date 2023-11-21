@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.galapagos.domain.BoardAttachmentVO;
 import org.galapagos.domain.BoardVO;
 import org.galapagos.domain.Criteria;
+import org.galapagos.domain.LikeVO;
 import org.galapagos.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -32,8 +33,15 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<BoardVO> getList(Criteria cri, Principal principal) {
-		
-		return mapper.getListWithPaging(cri);
+		List<BoardVO> list = mapper.getList(cri);
+
+		if(principal != null) {
+			List<Long> likes = mapper.getLikesList(principal.getName());
+			for(BoardVO board: list) {
+			board.setMyLike(likes.contains(board.getBno()));
+			}
+		}
+		return list;
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
@@ -56,8 +64,11 @@ public class BoardServiceImpl implements BoardService {
 		List<BoardAttachmentVO> list  = mapper.getAttachmentList(bno);
 		board.setAttaches(list);
 		
-		return mapper.read(bno);
-
+		if(principal != null) {
+			List<Long> likes = mapper.getLikesList(principal.getName());
+			board.setMyLike(likes.contains(board.getBno()));
+		}
+		return board;
 	}
 	
 	@Transactional(rollbackFor = Exception.class)
@@ -95,10 +106,5 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public boolean plusHit(long bno) {
 		return mapper.plusHit(bno);
-	}
-	
-	@Override
-	public boolean plusLikes(long bno) {
-		return mapper.plusLikes(bno);
 	}
 }

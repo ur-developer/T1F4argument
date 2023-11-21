@@ -1,12 +1,12 @@
 package org.galapagos.service;
 
+import java.io.IOException;
+
 import org.galapagos.domain.MemberVO;
-import org.galapagos.domain.UpdateMemberVO;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface MemberService {
-	public MemberVO getMember(String username);
+	public MemberVO get(String username);
 	
-	public void registerMember(MemberVO member);
-	
-	public void updateMember(UpdateMemberVO updateMember);
+	public void register(MemberVO member, MultipartFile avatar)  throws IOException;
 }

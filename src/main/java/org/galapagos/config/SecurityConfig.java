@@ -1,15 +1,11 @@
 package org.galapagos.config;
 
-import java.util.Properties;
-
 import javax.sql.DataSource;
 
 import org.galapagos.security.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -44,8 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		
 		http.authorizeRequests()
-			.antMatchers("/security/login", "/security/signup").permitAll()
-			.antMatchers("/security/profile", "/security/updateform").authenticated()
 			.antMatchers("/security/profile").authenticated();
 		
 		http.formLogin()
@@ -97,27 +91,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return repo;
 	}
 
-	@Bean
-	public JavaMailSender getJavaMailSender() {
-		
-		Properties properties = new Properties(); 
-		properties.put("mail.smtp.auth", true);
-		properties.put("mail.transport.protocol", "smtp");
-		properties.put("mail.smtp.starttls.enable", true);
-		properties.put("mail.smtp.starttls.required", true);
-		properties.put("mail.debug", true);
-		properties.put("mail.smtp.ssl.enable", true);
-		
-		// 네이버 smtp 설정
-		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-		mailSender.setHost("smtp.naver.com");
-		mailSender.setPort(465); // 네이버 smtp 포트 번호
-		mailSender.setUsername("daily_bubbly@naver.com"); // 보내는 이메일
-		mailSender.setPassword("J6WU8PRC9XG1"); // 이메일 계정 비밀번호
-		mailSender.setDefaultEncoding("utf-8");
-		mailSender.setJavaMailProperties(properties);
-		
-		return mailSender;
-		
-	}
+	
 }

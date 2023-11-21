@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/board/like") // 수정: 경로 변경
-public class BoardLikeController { // 수정: 클래스명 변경
+@RequestMapping("/api/issue/like")
+public class BoardLikeController { 
     @Autowired
-    BoardMapper mapper; // 수정: Mapper 클래스명 변경
+    BoardMapper mapper; 
 
-    @PostMapping("/add") // 수정: 엔드포인트 변경
-    public LikeVO addLike(@RequestBody LikeVO like) { // 수정: 클래스명 변경
-        mapper.addLike(like); // 수정: 메서드명 변경
+    @PostMapping("/add") 
+    public LikeVO addLike(@RequestBody LikeVO like) { 
+        mapper.addLike(like);
         return like;
     }
 
-    @DeleteMapping("/delete") // 수정: 엔드포인트 변경
-    public String deleteLike(LikeVO like) { // 수정: 클래스명 변경
-        mapper.deleteLike(like); // 수정: 메서드명 변경
+    @DeleteMapping("/delete") // 
+    public String deleteLike(LikeVO like) { // 
+        mapper.deleteLike(like); // 
         return "OK";
     }
 }

@@ -59,11 +59,8 @@ public class BoardController {
 	@GetMapping("/register")
 	public void register(@ModelAttribute("board") BoardVO board) {
 		
-		
 	}
 	
-	
-
 	@PostMapping("/register")
 	public String register(
 			@Valid @ModelAttribute("board") BoardVO board,

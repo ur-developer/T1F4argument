@@ -30,6 +30,6 @@ public class BoardVO {
 	private Date updateDate;
 	
 	private int hit;
-	private Integer likeCount;
+	private Integer likes;
 	private Boolean myLike;
 }

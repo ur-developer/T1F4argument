@@ -32,10 +32,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="getList" resultType="BoardVO">
-	
 		select * from view_post
 		order by bno desc
-		
 	</select>
 
 	<select id="getListWithPaging" resultType="BoardVO">
@@ -47,7 +45,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		limit #{offset}, #{amount}
 	</select>
 
-
 	<insert id="insert">
 		insert into argument_post (title, content, nickname)
 		values (#{title}, #{content}, #{nickname})
@@ -55,8 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insertSelectKey">
 		insert into argument_post (title, content, nickname)
-		values (#{title},
-		#{content}, #{nickname})
+		values (#{title},#{content}, #{nickname})
 
 		<selectKey resultType="Long" keyProperty="bno"
 			keyColumn="bno" order="AFTER">
@@ -65,20 +61,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<select id="read" resultType="BoardVO">
-		select * from view_post where
-		bno = #{bno}
+		select * from view_post 
+		where bno = #{bno}
 	</select>
 
 	<delete id="delete">
-		delete from argument_post where bno = #{bno}
+		delete from argument_post
+		where bno = #{bno}
 	</delete>
 
 	<update id="update">
-		update argument_board set
-		title = #{title},
-		content = #{content},
-		nickname = #{nickname}
-		update_date = now()
+		update argument_post set
+			title = #{title},
+			content = #{content},
+			nickname = #{nickname},
+			update_date = now()
 		where bno = #{bno}
 	</update>
 	
@@ -109,25 +106,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where bno = #{bno}
 	</update>
 	
-	<update id="plusLikes" parameterType="long">
-		update argument_post set
-		like_count = likeCount + 1
-		where bno = #{bno}
-	</update>
-	
 	<select id="getLikesList" resultType="long">
-		select count(*) 
-		from argument_post
-		where bno = #{bno} and username = #{username}
+		select bno from argument_post_likes
+		where username = #{username}
 	</select>
 	
 	<insert id="addLike">
-		insert into argument_post_like(bno, username)
+		insert into argument_post_likes(bno, username)
 		values (#{bno}, #{username})
 	</insert>
-
+	
 	<delete id="deleteLike">
-		delete from argument_post_like
+		delete from argument_post_likes
 		where bno = #{bno} and username = #{username} 
 	</delete>
 

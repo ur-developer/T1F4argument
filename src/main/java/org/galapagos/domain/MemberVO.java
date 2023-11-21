@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -14,33 +15,32 @@ import lombok.Data;
 
 @Data
 public class MemberVO {
-	@NotBlank(message = "아이디를 입력하세요.")
+	@NotBlank(message = "사용자 id는 필수항목입니다.")
+	@Size(min = 4, message="사용자 id는 4글자 이상이어야 합니다.")
 	private String username;
 	
-	@NotBlank(message = "비밀번호를 입력하세요.")
+	@NotBlank(message = "비밀번호는 필수항목입니다.")
 	private String password;
 	
-	@NotBlank(message = "비밀번호 확인을 입력하세요.")
-	private String checkPassword;
-	
-	@NotBlank(message = "닉네임을 입력하세요.")
-	private String nickname;
-	
-	@NotBlank(message = "이메일을 입력하세요.")
-	@Email(message = "이메일 형식에 맞게 입력하세요.")
+	@NotBlank(message = "비밀번호 확인은 필수항목입니다.")
+	private String password2;
+
+	@NotBlank(message = "email는 필수항목입니다.")
+	@Email(message="email 형식에 맞지 않습니다.")
 	private String email;
 	
-	private Date registryDate;
+	private String nickname;
+	private Date registerDate;
+	private Date updateDate;
 	
-	private List<AuthorizationVO> authorizationList;
+	private List<AuthVO> authList;
+	
 	
 	public Collection<SimpleGrantedAuthority> getAuthorities() {
-			
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-			
-		for(AuthorizationVO authorization : authorizationList)
+		for(AuthVO authorization: authList) {
 			authorities.add(new SimpleGrantedAuthority(authorization.getAuthorization()));
-		
+		} 		
 		return authorities;
 	}
 

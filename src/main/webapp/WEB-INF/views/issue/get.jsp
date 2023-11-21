@@ -27,21 +27,20 @@
 <script>
 $(document).ready(function() {
     let username = '${username}';
-    const BASE_URL = '/api/board/like';
+    const BASE_URL = '/api/issue/like';
 
     // 좋아요 추가
     $('span.like').on('click', '.fa-thumbs-up.fa-regular', async function(e){
         let bno = parseInt($(this).data("bno"));
         let like = { bno, username };
-        console.log(like);
         
         await rest_create(BASE_URL + "/add", like);
-
-        let likeCount = $(this).parent().find(".like-count");
-        console.log(likeCount);
-        let count = parseInt(likeCount.text());
-        likeCount.text(count + 1);
-       
+        
+        let likes = $(this).parent().find(".like-count");
+        console.log(likes);
+        let count = parseInt(likes.text());
+        likes.text(count+1);
+        
         $(this)
             .removeClass('fa-regular')
             .addClass('fa-solid');
@@ -50,14 +49,16 @@ $(document).ready(function() {
     // 좋아요 제거
     $('span.like').on('click', '.fa-thumbs-up.fa-solid', async function(e){
         let bno = parseInt($(this).data("bno"));
-       
-        await rest_delete(`${BASE_URL}/delete?bno=${bno}&username=${username}`);
         
-        let likeCount = $(this).parent().find(".like-count");
-        console.log(likeCount);
-       
-        let count = parseInt(likeCount.text());
-        likeCount.text(count - 1);
+        await rest_delete(
+       		 `\${BASE_URL}/delete?bno=\${bno}&username=\${username}`);
+
+
+        let likes = $(this).parent().find(".like-count");
+        console.log(likes);
+        let count = parseInt(likes.text());
+        likes.text(count-1);
+
         $(this)
             .removeClass('fa-solid')
             .addClass('fa-regular');
@@ -82,7 +83,7 @@ $(document).ready(function() {
 	<div><i class="fas fa-user"></i> ${board.nickname}</div>
 	<tr>
 		<td> 조회 수 ${board.hit} </td>
-		<td> 추천 수 ${board.likeCount} </td>
+		<td> 추천 수 ${board.likes} </td>
 	</tr>
 </div>
 	
@@ -99,13 +100,12 @@ $(document).ready(function() {
 	
 <hr>
 	
-    <div class="board-body">
-        <span class="like">
-            <i class="${board.myLike ? 'fa-solid' : 'fa-regular'} fa-thumbs-up text-primary"
-                data-bno="${board.bno}"></i>
-            <span class="like-count">${board.likeCount}</span>
-        </span>
-    </div>
+<span class="like">
+	<i class="${ board.myLike ? 'fa-solid' : 'fa-regular' } fa-regular fa-thumbs-up text-primary"
+		data-bno="${board.bno}"></i>
+	<span class="like-count">${board.likes}</span>
+</span>
+
 
 <hr>
 

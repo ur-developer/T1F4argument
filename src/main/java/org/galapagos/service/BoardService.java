@@ -6,6 +6,7 @@ import java.util.List;
 import org.galapagos.domain.BoardAttachmentVO;
 import org.galapagos.domain.BoardVO;
 import org.galapagos.domain.Criteria;
+import org.galapagos.domain.LikeVO;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface BoardService {
@@ -28,8 +29,5 @@ public int getTotal(Criteria cri);
 	
 	// 조회수 +1
 	public boolean plusHit(long bno);
-
-	// 좋아요수 +1
-	public boolean plusLikes(long bno);
 }
 

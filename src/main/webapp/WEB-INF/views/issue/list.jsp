@@ -35,13 +35,12 @@
 		<c:forEach var="board" items="${list}">
 			<tr>
 				<td style="width: 60px; text-align: center;">${board.bno}</td>
-				<td><a href="get?bno=${board.bno}">${board.title}</a></td>
-				<td style="width: 100px; text-align: center;">${board.nickname}</td>
-				<td style="width: 130px; text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd"
-						value="${board.registerDate}" /></td>
-				<td style="width: 80px; text-align: center;">${board.hit}</td>
-				<td style="width: 80px; text-align: center;">${board.hit}</td>
-			</tr>
+       	 		<td><a href="get?bno=${board.bno}">${board.title}</a></td>
+      			<td style="width: 100px; text-align: center;">${board.nickname}</td>
+        		<td style="width: 130px; text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.registerDate}" /></td>
+        		<td style="width: 80px; text-align: center;">${board.hit}</td>
+        		<td style="width: 80px; text-align: center;">${board.likes}</td>
+      		</tr>
 		</c:forEach>
 	</tbody>
 </table>

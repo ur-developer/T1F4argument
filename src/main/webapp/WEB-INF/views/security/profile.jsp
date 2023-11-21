@@ -1,74 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-
 <%@ include file="../layouts/header.jsp" %>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 <sec:authentication property="principal.member" var="member" />
-
-<div style="width: 500px" class="mx-auto">
-
-	<br>
-	
-	<h1><i class="fa-solid fa-users"></i> 마이페이지</h1>
-
-	<hr>
-	<br>
-	<br>
-
-	<!-- <form action="update" method="post"> -->
-		<div class="form-group">
-			<label for="username"><i class="fa-solid fa-at"></i> 아이디</label>
-			<input type="text" class="form-control" id="username" value="${member.username}"
-				name="username" readonly="readonly">
+<%-- 개별 페이지 --%>
+<h1>Profile</h1>
+<div class="d-flex my-3 align-items-center">
+	<div>
+		<img src="/security/avatar/lg/${member.username }"/>
+	</div>
+	<div class="ml-4">
+		<div>
+			사용자 ID: ${member.username }
 		</div>
-		
-		<br>
-		
-		<div class="form-group">
-			<label for="nickname"><i class="fa-solid fa-file-signature"></i> 닉네임</label>
-			<input type="text" class="form-control" id="nickname" value="${member.nickname}"
-				name="nickname" readonly="readonly">
+		<div>
+			사용자 별명: ${member.nickname }
 		</div>
-		
-		<br>
-		
-		<div class="form-group">
-			<label for="email"><i class="fa-solid fa-envelope-open-text"></i> 이메일</label>
-			<input type="text" class="form-control" id="nickname" value="${member.email}"
-				name="email" readonly="readonly">
+		<div>
+			email: ${member.email }
 		</div>
-		
-		<br>
-			
-		<div class="form-group">
-			<label for="regDate"><i class="fa-regular fa-calendar"></i> 가입일</label>
-			<input type="text" class="form-control" id="regDate" 
-				value="<fmt:formatDate value="${member.registryDate}" pattern="yyyy-MM-dd HH:mm"/>"
-				name="email" readonly="readonly">
+		<div>
+			가입일: 
+			<fmt:formatDate value="${member.registerDate}"
+				pattern="yyyy-MM-dd HH:mm"/> 			
 		</div>
-		
-		<br>
-		
-		<div class="btn">
-			
-			<div>
-				<a href="/security/updateform" class="btn btn-primary modifyBtn">
-					<i class="fa-regular fa-pen-to-square"></i> 정보수정
-				</a>
-			</div>
-			
-			<div>			
-				<a href="#" class="btn btn-primary deleteBtn">
-					<i class="fa-solid fa-user-slash"></i> 회원탈퇴
-				</a>
-			</div>
-			
-		</div>
-		
+	</div>	
 </div>
 
 <%@ include file="../layouts/footer.jsp" %>

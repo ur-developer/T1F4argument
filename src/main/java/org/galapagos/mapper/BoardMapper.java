@@ -35,14 +35,12 @@ public interface BoardMapper {
 
 	// 조회수 +1
 	public boolean plusHit(long bno);
-	
-	// 좋아요수 +1
-	public boolean plusLikes(long bno);
-	
-	// 좋아요 처리
+
+	// 좋아요
 	public List<Long> getLikesList(String username);
+
+	public void addLike(LikeVO like);
 	
-	public int addLike(LikeVO like);
-	
-	public int deleteLike(LikeVO like);
+	public void deleteLike(LikeVO like);
+
 }

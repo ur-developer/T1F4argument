@@ -1,7 +1,7 @@
 package org.galapagos.mapper;
 
 import org.galapagos.config.RootConfig;
-import org.galapagos.domain.AuthVO;
+import org.galapagos.domain.AuthorizationVO;
 import org.galapagos.domain.MemberVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,8 +23,8 @@ public class MemberMapperTest {
 		MemberVO member = mapper.read("admin");
 		log.info(member);
 
-		for(AuthVO auth : member.getAuthList()) {
-			log.info(auth);
+		for(AuthorizationVO authorization : member.getAuthorizationList()) {
+			log.info(authorization);
 		}
 	}
 }

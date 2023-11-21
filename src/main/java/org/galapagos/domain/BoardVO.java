@@ -13,7 +13,7 @@ public class BoardVO {
 	
 	private Long bno;
 	
-	private int categoryId;
+	private Long categoryId;
 	
 	private String username;
 	

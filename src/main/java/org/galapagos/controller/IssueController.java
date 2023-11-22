@@ -77,16 +77,17 @@ public class IssueController {
 		if(errors.hasErrors()) {
 			return "issue/register";
 		}
-
-		board.setCategoryId(1L);
 		 
+	    // categoryId 값 확인
+	    System.out.println("categoryId: " + board.getCategoryId());
+	    
 		service.registerIssue(board);
 		rttr.addFlashAttribute("result", board.getBno());
 
 		return "redirect:/issue/list";
 	}
 	
-	@GetMapping({ "/get", "/modify" })
+	@GetMapping("/get")
 	public String getIssue(
 			@RequestParam("bno") Long bno,
 			@ModelAttribute("cri") Criteria cri,
@@ -95,7 +96,7 @@ public class IssueController {
 			HttpServletResponse response,
 			HttpServletRequest request) throws Exception {
 		
-			log.info("/get or modify");
+			log.info("/get");
 
 		 // 사용자 정보를 얻어옴
 	    String username = (principal != null) ? principal.getName() : "";
@@ -129,28 +130,68 @@ public class IssueController {
         
 		model.addAttribute("board", service.getIssue(bno, principal));
 	
-		return "issue/get";
+		return "/issue/get";
+	}
+	
+	@GetMapping("/modify")
+	public String modifyIssue(
+			@RequestParam("bno") Long bno,
+			@ModelAttribute("cri") Criteria cri,
+			Principal principal,
+			Model model,
+			HttpServletResponse response,
+			HttpServletRequest request) throws Exception {
+		
+			log.info("/modify");
+
+		 // 사용자 정보를 얻어옴
+	    String username = (principal != null) ? principal.getName() : "";
+
+	    // 쿠키에서 조회 여부 확인
+	    Cookie[] cookies = request.getCookies();
+	    boolean hasVisited = false;
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (("board_visited_" + bno).equals(cookie.getName())) {
+                    hasVisited = true;
+                    break;
+                }
+            }
+        }
+
+     // 이미 방문한 경우 처리
+        if (hasVisited) {
+            // 이미 방문한 사용자에게 처리할 내용
+            model.addAttribute("board", service.getIssue(bno, principal));
+            return "issue/modify";
+        }
+        
+		service.plusHit(bno);
+		
+		 // 쿠키 설정
+        Cookie visitedCookie = new Cookie("board_visited_" + bno, "true");
+        visitedCookie.setMaxAge(24 * 60 * 60); // 24시간 유지
+        response.addCookie(visitedCookie);
+        
+		model.addAttribute("board", service.getIssue(bno, principal));
+	
+		return "/issue/get";
 	}
 	
 	@PostMapping("/modify")
 	public String modifyIssue(
-			@Valid @ModelAttribute("board") BoardVO board,
-			Errors errors,
-			List<MultipartFile> files,			
-			@ModelAttribute("cri") Criteria cri,
-			RedirectAttributes rttr)  throws Exception{
-		log.info("modify:" + board);
-	
-		if(errors.hasErrors()) {
-			return "issue/modify";
-		}		
-		
-		if (service.modifyIssue(board)) {
-			// Flash --> 1회성
-			rttr.addFlashAttribute("result", "success");
-		}
+			BoardVO board,
+			@ModelAttribute("cri")
+			Criteria cri,
+			RedirectAttributes rttr) throws Exception {
 
-		return "redirect:" + cri.getLinkWithBno("/issue/get", board.getBno());
+		if (service.modifyIssue(board)) {
+			rttr.addAttribute("bno", board.getBno());
+			rttr.addAttribute("pageNum", cri.getPageNum());
+			rttr.addAttribute("amount", cri.getAmount());
+		}	
+		return "redirect:/board/get";
 
 	}	
 	
@@ -168,7 +209,7 @@ public class IssueController {
 	}
 	
 	@GetMapping("/download/{no}")
-	@ResponseBody	// view를 사용하지 않고, 직접 내보냄
+	@ResponseBody
 	public void download(
 			@PathVariable("no") Long no, 
 			HttpServletResponse response) throws Exception {	

@@ -40,7 +40,7 @@ public class RootConfig {
 		
 		config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/argument_db");
 		config.setUsername("argument");
-		config.setPassword("t1f4");
+		config.setPassword("1234");
 		
 		HikariDataSource dataSource = new HikariDataSource(config);
 		return dataSource;

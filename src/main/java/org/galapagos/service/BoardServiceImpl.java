@@ -25,15 +25,15 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper mapper;
 	
 	@Override
-	public int getTotal(Criteria cri) {
+	public int getBoardTotal(Criteria cri) {
 		log.info("get total count");
 
-		return mapper.getTotalCount(cri);
+		return mapper.getBoardTotalCount(cri);
 	}
 
 	@Override
-	public List<BoardVO> getList(Criteria cri, Principal principal) {
-		List<BoardVO> list = mapper.getList(cri);
+	public List<BoardVO> getBoardList(Criteria cri, Principal principal) {
+		List<BoardVO> list = mapper.getBoardList(cri);
 
 		if(principal != null) {
 			List<Long> likes = mapper.getLikesList(principal.getName());
@@ -46,19 +46,19 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public void register(BoardVO board, List<MultipartFile> files) throws Exception {
+	public void registerBoard(BoardVO board, List<MultipartFile> files) throws Exception {
 		mapper.insertSelectKey(board);
 		Long bno = board.getBno();
 		
-		for(MultipartFile part: files) {
-			if(part.isEmpty()) continue;
-			BoardAttachmentVO attach = new BoardAttachmentVO(bno, part);
-			mapper.insertAttachment(attach);
-		}
+		/*
+		 * for(MultipartFile part: files) { if(part.isEmpty()) continue;
+		 * BoardAttachmentVO attach = new BoardAttachmentVO(bno, part);
+		 * mapper.insertAttachment(attach); }
+		 */
 	}
 
 	@Override
-	public BoardVO get(Long bno, Principal principal) throws Exception {
+	public BoardVO getBoard(Long bno, Principal principal) throws Exception {
 		BoardVO board = mapper.read(bno);
 	
 		List<BoardAttachmentVO> list  = mapper.getAttachmentList(bno);
@@ -73,7 +73,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public boolean modify(BoardVO board, List<MultipartFile> files)  throws Exception{
+	public boolean modifyBoard(BoardVO board, List<MultipartFile> files)  throws Exception{
 		int reuslt = mapper.update(board);
 		
 		Long bno = board.getBno();
@@ -89,7 +89,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public boolean remove(Long bno) {
+	public boolean removeBoard(Long bno) {
 		log.info("remove...." + bno);
 
 		return mapper.delete(bno) == 1;

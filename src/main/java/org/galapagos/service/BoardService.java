@@ -11,17 +11,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface BoardService {
 	
-	public int getTotal(Criteria cri);
+	public int getBoardTotal(Criteria cri);
 	
-	public List<BoardVO> getList(Criteria cri, Principal principal);
+	public List<BoardVO> getBoardList(Criteria cri, Principal principal);
 	
-	public BoardVO get(Long bno, Principal principal) throws Exception;
+	public BoardVO getBoard(Long bno, Principal principal) throws Exception;
 
-	public void register(BoardVO board, List<MultipartFile> files) throws Exception;
+	public void registerBoard(BoardVO board, List<MultipartFile> files) throws Exception;
 
-	public boolean modify(BoardVO board, List<MultipartFile> files) throws Exception;
+	public boolean modifyBoard(BoardVO board, List<MultipartFile> files) throws Exception;
 
-	public boolean remove(Long bno);
+	public boolean removeBoard(Long bno);
 
 	public BoardAttachmentVO getAttachment(Long no);
 

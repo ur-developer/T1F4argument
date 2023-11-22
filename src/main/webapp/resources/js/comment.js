@@ -13,6 +13,10 @@ const commentUpdatable = `
 	<button class="btn btn-light btn-sm comment-delete-btn">
 		<i class="fa-solid fa-times"></i> 삭제
 	</button>
+	<button class="btn btn-light btn-sm reply-add-show-btn">
+		<i class="fa-solid fa-pen-to-square"></i> 답글
+	</button>
+	
 `;
 
 //댓글 생성 하기 화면
@@ -25,7 +29,6 @@ function createCommentTemplate(comment, nickname) {
 		<div class="comment-title my-2 d-flex justify-content-between">
 			<div >
 				<strong class="nickname">
-					<img src="/security/avatar/sm/${comment.nickname}" class="avatar-sm">
 					${comment.nickname}
          		</strong>
 				<span class="text-muted ms-3 comment-date">
@@ -37,9 +40,14 @@ function createCommentTemplate(comment, nickname) {
 			${nickname && (nickname == comment.nickname) ? commentUpdatable : ''} 
 			${nickname && (nickname != comment.nickname) ? replyAddable : ''}      		
 			</div>
-		</div>
+		</div> 
 		<div class="comment-body">
 			<div class="comment-content">${comment.content}</div>
+		</div>
+		<span class="like">
+				<i class="${comment.myLike ? 'fa-solid' : 'fa-regular'} fa-thumbs-up text-danger" data-no="${comment.no}"></i>
+				<span class="like-count">${comment.likeCount}</span>
+			</span>
 		</div>
 		<div class="reply-list ml-5">
 		<!-- 답글 목록 출력 영역 -->

@@ -36,17 +36,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </resultMap>
 
 
-	<select id="getTotalCount" resultType="int">
+	<select id="getBoardTotalCount" resultType="int">
 		select count(*) from view_post
 		<where>
 			<include refid="criteria"></include>
 		</where>
+		where category_id = 2
+		order by bno desc
 	</select>
 
 
-	<select id="getList" resultType="BoardVO">
-		select * from view_post
-		order by bno desc
+	<select id="getBoardList" resultType="BoardVO">
+		select vp.*, ac.category_id
+		from view_post vp
+		join argument_category ac on vp. category_id = ac.category_id	
+		where vp.category_id = 2
+		order by vp.bno desc
 	</select>
 
 	<select id="getListWithPaging" resultType="BoardVO">

@@ -10,13 +10,12 @@
 <script src="/resources/js/comment.js"></script>
 <script src="/resources/js/rest.js"></script>
 <script src="/resources/js/reply.js"></script>
-<script src="/resources/js/infiniteScroll.js"></script>
+<script src="/resources/js/commentLike.js"></script>
 
 <script>
 //댓글, 답글 기본 URL 상수 - 전역 상수
 const COMMENT_URL = '/api/board/${param.bno}/comment/';
 const REPLY_URL = '/api/board/${param.bno}/reply/';
-
 
 $(document).ready(async function() {
 
@@ -44,7 +43,7 @@ $(document).ready(async function() {
 		// 댓글 수정 확인 버튼 클릭
 		$('.comment-list').on('click', '.comment-update-btn', function (e){
 		const el = $(this).closest('.comment');
-		updateComment(el, nickname);
+		updateComment(el, username);
 		});
 		
 		// 댓글 수정 취소 버튼 클릭
@@ -58,12 +57,12 @@ $(document).ready(async function() {
 	/////// 답글 버튼 이벤트 핸들링
 		// 답글 추가버튼 인터페이스 보이기
 		$('.comment-list').on('click', '.reply-add-show-btn', function(e) {
-		showReplyAdd($(this), nickname);
+		showReplyAdd($(this), username);
 		});
 		
 		// 답글 추가해서 작성 후 "확인" 버튼
 		$('.comment-list').on('click', '.reply-add-btn', function(e){
-		addReply($(this), nickname);
+		addReply($(this), username);
 		});
 		
 		// 답글 수정 화면 보이기
@@ -85,7 +84,14 @@ $(document).ready(async function() {
 		
 		// 답글 삭제
 		$('.comment-list').on('click', '.reply-delete-btn', deleteReply);
-
+		
+		
+		$('.comment-list').on('click', '.fa-thumbs-up.fa-regular', addCommentLike);
+		
+		$('.comment-list').on('click', '.fa-thumbs-up.fa-solid', deleteCommentLike);
+	
+		
+	
 
 });
 
@@ -111,29 +117,28 @@ $(document).ready(async function() {
 
 <!-- 새 댓글 작성 (작성자 아니어야 가능)-->
 <%-- <c:if test="${username != board.nickname }"> --%>
-	<div class="bg-light p-2 rounded my-5">
-		<div>${username == null ? '댓글을 작성하려면 먼저 로그인하세요' : '댓글 작성' }</div>
-		<div>
-			<textarea class="form-control new-comment-content" rows="3"
-				${username == null ? 'disabled' : '' }></textarea>
-			<div class="text-right">
-				<button onClick="window.location.reload()"
-					class="btn btn-primary btn-sm my-2 comment-add-btn"
-					${username == null ? 'disabled' : '' }>
-					<i class="fa-regular fa-comment"></i> 확인
-				</button>
-			</div>
+<div class="bg-light p-2 rounded my-5">
+	<div>${username == null ? '댓글을 작성하려면 먼저 로그인하세요' : '댓글 작성' }</div>
+	<div>
+		<textarea class="form-control new-comment-content" rows="3"
+			${username == null ? 'disabled' : '' }></textarea>
+		<div class="text-right">
+			<button onClick="window.location.reload()"
+				class="btn btn-primary btn-sm my-2 comment-add-btn"
+				${username == null ? 'disabled' : '' }>
+				<i class="fa-regular fa-comment"></i> 확인
+			</button>
 		</div>
 	</div>
+</div>
 <%-- </c:if> --%>
 
 
 <div class="my-5">
 	<i class="fa-regular fa-comments"></i> 댓글 목록
 	<hr>
-	<div class="comment-list">
-	</div>
-	
+	<div class="comment-list"></div>
+
 </div>
 
 

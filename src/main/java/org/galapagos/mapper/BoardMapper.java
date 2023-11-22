@@ -9,9 +9,9 @@ import org.galapagos.domain.LikeVO;
 
 public interface BoardMapper {
 	
-	public int getTotalCount(Criteria cri);
+	public int getBoardTotalCount(Criteria cri);
 
-	public List<BoardVO> getList(Criteria cri);
+	public List<BoardVO> getBoardList(Criteria cri);
 
 	public List<BoardVO> getListWithPaging(Criteria cri);
 	

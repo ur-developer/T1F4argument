@@ -51,8 +51,8 @@ public class BoardController {
 	public void list(@ModelAttribute("cri") Criteria cri, Principal principal, Model model) {
 		
 		log.info("list" + cri);
-		int total = service.getTotal(cri);
-		model.addAttribute("list", service.getList(cri, principal));
+		int total = service.getBoardTotal(cri);
+		model.addAttribute("list", service.getBoardList(cri, principal));
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 
@@ -71,8 +71,10 @@ public class BoardController {
 		if (errors.hasErrors()) {
 			return "board/register";
 		}
+		
+		board.setCategoryId(2L);
 
-		service.register(board, files);
+		service.registerBoard(board, files);
 		rttr.addFlashAttribute("result", board.getBno());
 		
 		return "redirect:/board/list";
@@ -82,14 +84,14 @@ public class BoardController {
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, 
 			Principal principal, Model model) throws Exception {
 
-		model.addAttribute("board", service.get(bno, principal));
+		model.addAttribute("board", service.getBoard(bno, principal));
 
 	}
 
 	@PostMapping("/remove")
 	public String remove(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 
-		if (service.remove(bno)) {
+		if (service.removeBoard(bno)) {
 			//rttr.addFlashAttribute("result", "success");
 			rttr.addAttribute("pageNum", cri.getPageNum());
 			rttr.addAttribute("amount", cri.getAmount());
@@ -102,7 +104,7 @@ public class BoardController {
 	public String modify(BoardVO board, @ModelAttribute("cri") Criteria cri,
 			List<MultipartFile> files, RedirectAttributes rttr) throws Exception {
 
-		if (service.modify(board, files)) {
+		if (service.modifyBoard(board, files)) {
 			//rttr.addFlashAttribute("result", "success");
 			rttr.addAttribute("bno", board.getBno());
 			rttr.addAttribute("pageNum", cri.getPageNum());

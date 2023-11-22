@@ -2,6 +2,7 @@ package org.galapagos.mapper;
 
 import java.util.List;
 
+import org.galapagos.domain.CommentLikeVO;
 import org.galapagos.domain.CommentVO;
 import org.galapagos.domain.Criteria;
 
@@ -18,5 +19,11 @@ public interface CommentMapper {
 	void update(CommentVO vo);
 
 	void delete(Long no);
+	
+	List<Long> getLikesList(String username);
+	
+	int addCommentLike(CommentLikeVO commentLike);
+	
+	int deleteCommentLike(CommentLikeVO commentLike);
 
 }

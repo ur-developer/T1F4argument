@@ -70,6 +70,6 @@ local.properties
 .classpath
 .project
 /target/
-/argument/src/main/java/org/galapagos/config/RootConfig.java
+/src/main/java/org/galapagos/config/RootConfig.java
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse

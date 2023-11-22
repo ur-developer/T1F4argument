@@ -49,13 +49,22 @@
 
 </script> -->
 
-<%@ include file="../common/search_bar.jsp"%>
+<hr>
 
 
 <%-- 개별 페이지 --%>
 <h1 class="page-header">
-	<i class="fas fa-list"></i> 게시글 목록
+	<i class="fas fa-list"></i> 갑론을박
 </h1>
+
+<div class="text-right">
+	<a href="register" class="btn btn-primary"> <i class="far fa-edit">
+	</i>글쓰기
+	</a>
+</div>
+
+<p></p>
+
 
 <%-- <div class="d-flex justify-content-between align-items-center my-4">
 	<div class=" ">
@@ -87,10 +96,10 @@
 <table class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th>No</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>등록일</th>
+			<th style = "text-align: center">No</th>
+			<th style = "text-align: center">제목</th>
+			<th style = "text-align: center">작성자</th>
+			<th style = "text-align: center">등록일</th>
 		</tr>
 	</thead>
 
@@ -147,11 +156,10 @@
 </ul> --%>
 
 
-<div class="text-right">
-	<a href="register" class="btn btn-primary"> <i class="far fa-edit">
-	</i>글쓰기
-	</a>
-</div>
+
+
+<%@ include file="../common/search_bar.jsp"%>
+
 
 <%@include file="../common/pagination.jsp"%>
 

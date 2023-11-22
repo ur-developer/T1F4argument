@@ -18,7 +18,9 @@ public class CommentVO {
 	private String nickname;
 	private Date registerDate;
 	private Date updateDate;
-	
+	private Integer likeCount;
+	private Boolean myLike;
+
 	List<ReplyVO> replyList;
 
 }

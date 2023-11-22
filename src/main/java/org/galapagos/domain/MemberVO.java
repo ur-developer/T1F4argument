@@ -23,7 +23,7 @@ public class MemberVO {
 	private String password;
 	
 	@NotBlank(message = "비밀번호 확인은 필수항목입니다.")
-	private String password2;
+	private String checkPassword;
 
 	@NotBlank(message = "email는 필수항목입니다.")
 	@Email(message="email 형식에 맞지 않습니다.")

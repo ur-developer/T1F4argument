@@ -17,6 +17,9 @@ public class UpdateMemberVO {
 	@NotBlank(message = "이메일을 입력하세요.")
 	public String newEmail;
 	
+	@NotBlank(message = "기존 비밀번호를 입력하세요.")
+	public String originallyPassword;
+	
 	@NotBlank(message = "새로운 비밀번호를 입력하세요.")
 	public String newPassword;
 	

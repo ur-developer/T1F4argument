@@ -15,25 +15,20 @@ public class CustomUserDetailsService implements UserDetailsService {
 	
 	@Autowired
 	private MemberMapper mapper;
-	
 
 	@Override
-	public UserDetails loadUserByUsername(String username) 
-		throws UsernameNotFoundException {
-
-		log.warn("Load User By Username:===== " + username);
-
-		MemberVO vo = mapper.read(username);
-		log.warn("user vo: " + vo);
-		if(vo == null) {
-			log.warn(username + "은 없는 id입니다.");
-			throw new UsernameNotFoundException(username + "은 없는 id입니다.");
-		}
-
-		log.warn("user vo: " + vo);
-		return new CustomUser(vo);
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
+		//log.warn("load user username : " + username);
+		
+		MemberVO member = mapper.readMember(username);
+		
+		if(member == null)
+			throw new UsernameNotFoundException(username + "is not found");
+		
+		//log.warn(member);		
+		
+		return new CustomUser(member);
 	}
-
 
 }

@@ -4,12 +4,6 @@
 	font-family: 'Noto Sans KR'
 }
 
-.avatar-sm {
-	width: 24px;
-	height: 24px;
-	border-radius: 50%;
-} 
-
 .jumbotron {
 	background-image: url('/resources/images/mainex.jpg');
 	background-repeat: no-repeat;
@@ -17,8 +11,6 @@
 	background-size: cover;
 	color: white;	
 }
-
-
 
 a.page-link {
   border-width: 0px;
@@ -29,8 +21,76 @@ a.page-link {
 	font-size: 0.9rem;
 }
 
+.mailCheckWrap {
+	overflow: hidden;
+}
 
+.mailCheckButton {
+	border: none;
+	width: 6.5rem;
+	height: 2.5rem;
+	float: right;
+	align-items: center;
+}
 
+.mailInput {
+	width: 31rem;
+	height: 2.5rem;
+}
+
+.mailWarnMessage {
+	color: red;
+}
+
+.mailCheckInput {
+	width: 23rem;
+	height: 2.5rem;
+	float: left;
+}
+
+#mailCheckInputBoxFalse {
+	background-color: #ebebe4;
+}
+
+#mailCheckInputBoxTrue {
+	background-color: white;
+}
+
+.correct {
+	color: green;
+}
+
+.incorrect {
+	color: red;
+}
+
+.input {
+	width: 25rem;
+	height: 2.5rem;
+}
+
+.nicknameCheckTrue {
+	color: green;
+	display: none;
+}
+
+.nickCheckFalse {
+	color: red;
+	display: none;
+}
+
+.modifyBtn {
+	width: 25rem;
+	height: 2.5rem;
+	margin: auto;
+	display: block;
+}
+
+.loginBtn {
+	width: 14rem;
+	height: 2.5rem;
+	float: left;
+}
 
 
 

@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -19,6 +20,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @ComponentScan(basePackages = {"org.galapagos.service", "org.galapagos.controller"})
 @MapperScan(basePackages  = {"org.galapagos.mapper"})
+@EnableAspectJAutoProxy
 @EnableTransactionManagement
 public class RootConfig {
 	
@@ -32,9 +34,13 @@ public class RootConfig {
 //		config.setJdbcUrl("jdbc:mysql://localhost:3306/glory_db");
 		
 		config.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-		config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3307/argument_db");
-		config.setUsername("urdeveloper");
-		config.setPassword("mk9295");
+		//config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3307/argument_db");
+		//config.setUsername("urdeveloper");
+		//config.setPassword("mk9295");
+		
+		config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/argument_db");
+		config.setUsername("argument");
+		config.setPassword("t1f4");
 		
 		HikariDataSource dataSource = new HikariDataSource(config);
 		return dataSource;

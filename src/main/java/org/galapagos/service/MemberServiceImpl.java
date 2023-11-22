@@ -1,59 +1,66 @@
 package org.galapagos.service;
 
-import java.io.File;
-import java.io.IOException;
-
 import org.galapagos.domain.AuthorizationVO;
 import org.galapagos.domain.MemberVO;
+import org.galapagos.domain.UpdateMemberVO;
 import org.galapagos.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-
-import lombok.extern.log4j.Log4j;
-import net.coobird.thumbnailator.Thumbnails;
 
 @Service
-@Log4j
 public class MemberServiceImpl implements MemberService {
-
-	public static final String AVATAR_UPLOAD_DIR = "c:/upload/avatar";
 	
 	@Autowired
 	MemberMapper mapper;
-
-	@Autowired
-	private PasswordEncoder pwEncoder;	
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@Override
-	public MemberVO get(String username) {
-		return mapper.read(username);
+	public MemberVO getMember(String username) {
+		
+		return mapper.readMember(username);
 	}
 
 	@Override
-	public void register(MemberVO member, MultipartFile avatar) throws IOException {
-		//1. 비밀번호 암호화
-		String encPassword = pwEncoder.encode(member.getPassword());
-		member.setPassword(encPassword);
+	public void registerMember(MemberVO member) {
 		
-		//2. tbl_member에 저장
-		mapper.insert(member);
+		// 1. password 암호화 - 기존에 가지고 있던 비밀번호
+		String encodingPassword = passwordEncoder.encode(member.getPassword());
+		member.setPassword(encodingPassword); // 암호화 한 비밀번호 다시 저장
+		
+		// 2. tbl_member 테이블에 저장
+		mapper.insertMember(member);
+		
+		// 3. tbl_member_auth에 저장
+		AuthorizationVO authorization = new AuthorizationVO(member.getUsername(), "ROLE_USER");
+		
+		mapper.insertAuthorization(authorization);
+	}
 
-	
-		//3. tbl_member_auth에 저장
-		AuthorizationVO authorization = new AuthorizationVO(member.getUsername(),
-								"ROLE_USER");
-		mapper.insertAuth(authorization);
+	@Override
+	public boolean getNickname(String nickname) {
+				
+		return mapper.readNickname(nickname);
+	}
+
+	@Override
+	public boolean updateMember(UpdateMemberVO updateMember) {
 		
-		// 4. avatar 이미지 저장
-		if(!avatar.isEmpty()) {			
-			File dest = new File(AVATAR_UPLOAD_DIR, member.getUsername() + ".png");
+		MemberVO member = mapper.readMember(updateMember.getUsername());
+
+		// 저장 된 비밀번호와 입력한 기존 비밀번호 일치 시 새로운 비밀번호 수정
+		if(passwordEncoder.matches(updateMember.getOriginallyPassword(), member.getPassword())) {
 			
-			Thumbnails.of(avatar.getInputStream())
-				.size(50, 50)
-				.toFile(dest);			
+			String encodingPassword = passwordEncoder.encode(updateMember.getNewPassword());
+			
+			updateMember.setNewPassword(encodingPassword);
+			mapper.updateMember(updateMember);
+			
+			return true;
 		}
+		
+		return false;
 	}
 }

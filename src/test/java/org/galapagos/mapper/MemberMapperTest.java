@@ -20,7 +20,7 @@ public class MemberMapperTest {
 
 	@Test
 	public void testRead() {
-		MemberVO member = mapper.read("admin");
+		MemberVO member = mapper.readMember("admin");
 		log.info(member);
 
 		for(AuthorizationVO authorization : member.getAuthorizationList()) {

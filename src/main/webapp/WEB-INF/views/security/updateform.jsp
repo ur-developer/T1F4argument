@@ -10,7 +10,7 @@
 
 	<br>
 	
-	<h1><i class="fa-solid fa-users"></i> 정보 수정</h1>
+	<h4><i class="fa-solid fa-users"></i> 정보 수정</h4>
 
 	<hr>
 	<br>
@@ -24,6 +24,12 @@
 			<form:label path="newNickname"><i class="fa-solid fa-file-signature"></i> 닉네임</form:label>
 			<form:input path="newNickname" value="${updateMember.newNickname}" class="form-control"/>
 			<form:errors path="newNickname" cssClass="error"/>
+		</div>
+		
+		<div class="form-group">
+			<form:label path="originallyPassword"><i class="fa-solid fa-lock"></i> 현재 비밀번호</form:label>
+			<form:password path="originallyPassword" class="form-control"/>
+			<form:errors path="originallyPassword" cssClass="error"/>
 		</div>
 		
 		<div class="form-group">

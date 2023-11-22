@@ -30,7 +30,6 @@
 				<%-- 로그인 된 상태 --%>
 				<li class="nav-item">
 					<a class="nav-link" href="/security/profile"> 
-						<img src="/security/avatar/sm/${username}" class="avatar-sm"/> 
 						${username}	
 					</a>
 				</li>			

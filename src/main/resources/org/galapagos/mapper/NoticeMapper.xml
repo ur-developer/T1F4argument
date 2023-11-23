@@ -30,10 +30,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 
-
 	<select id="getNoticeList" resultType="BoardVO">
-		select * from view_post
-		order by bno desc
+		SELECT VP.*, AC.category_id
+		FROM view_post VP
+		JOIN argument_category AC ON VP.category_id = AC.category_id
+		WHERE VP.category_id = 4
+		ORDER BY VP.bno DESC;
 	</select>
 
 	<select id="getNoticeListWithPaging" resultType="BoardVO">
@@ -47,12 +49,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insertNotice">
 		insert into argument_post (category_id, title, content, nickname)
-		values (#{categoryId}, #{title}, #{content}, #{nickname})
+		values(4, #{title}, #{content}, #{nickname} )
 	</insert>
 
-	<insert id="insertSelectKeyNotice">
-		insert into argument_post (title, content, nickname)
-		values (#{title},#{content}, #{nickname})
+	<insert id="insertNoticeSelectKey">
+		insert into argument_post (category_id, title, content, nickname)
+		values(4, #{title}, #{content}, #{nickname} )
 
 		<selectKey resultType="Long" keyProperty="bno"
 			keyColumn="bno" order="AFTER">

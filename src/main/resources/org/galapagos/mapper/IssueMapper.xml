@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by bno desc
 		limit #{offset}, #{amount}
 	</select>
-
+	
 	<select id="readIssue" resultType="BoardVO">
 		select * from view_post 
 		where bno = #{bno}

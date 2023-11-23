@@ -14,7 +14,7 @@ public interface IssueMapper {
 	public List<BoardVO> getIssueList(Criteria cri);
 
 	public List<BoardVO> getIssueListWithPaging(Criteria cri);
-	
+		
 	public BoardVO readIssue(Long bno);
 	
 	public void insertIssue(BoardVO board);

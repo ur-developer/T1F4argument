@@ -13,13 +13,12 @@
 </h1>
 
 <div class="text-left">
-	<a href="/hotissue/list" class="btn btn-primary">
-		인기순
+	<a href="/issue/list" class="btn btn-primary"> <i class="fa-brands fa-instagram fa-lg"></i>
+		Pick이슈
 	</a>
 </div>
 
 <%@ include file="../common/search_bar.jsp" %>
-
 
 <p></p>
 
@@ -37,7 +36,7 @@
 	<tbody>
 		<c:forEach var="board" items="${list}">
 			<tr>
-				<td style="width: 60px; text-align: center;">이슈</td>
+				<td style="width: 60px; text-align: center;">인기</td>
        	 		<td><a href="get?bno=${board.bno}">${board.title}</a></td>
       			<td style="width: 100px; text-align: center;">${board.nickname}</td>
         		<td style="width: 130px; text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.registerDate}" /></td>

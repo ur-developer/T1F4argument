@@ -74,7 +74,7 @@ $(document).ready(function() {
 </script>
 </c:if>
 
-<h2> 갑론을박 </h2>
+<h2> Pick이슈 </h2>
 
 <div class="page-header d-flex justify-content-between">
     <div style="font-size: 2.2em;">${board.title}</div>

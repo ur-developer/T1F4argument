@@ -86,7 +86,10 @@ $(document).ready(async function() {
 		$('.comment-list').on('click', '.reply-delete-btn', deleteReply);
 		
 		
-		$('.comment-list').on('click', '.fa-thumbs-up.fa-regular', addCommentLike);
+		$('.comment-list').on('click', '.fa-thumbs-up.fa-regular', function(e) {
+			addCommentLike(nickname, $(this));
+		});
+		 
 		
 		$('.comment-list').on('click', '.fa-thumbs-up.fa-solid', deleteCommentLike);
 	

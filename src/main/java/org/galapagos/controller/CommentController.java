@@ -23,6 +23,8 @@ public class CommentController {
 	@GetMapping("")
 	public List<CommentVO> readComments(@PathVariable Long bno) { // 글번호(게시글 보여줌)
 		return mapper.readAll(bno); // 경로변수에 있던 글번호
+		
+		
 	}
 
 	@GetMapping("/{no}") // 자체적인 pathvariable List<>로 생성된 배열[] 뒤에 붙여라.

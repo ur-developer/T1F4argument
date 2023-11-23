@@ -74,7 +74,7 @@ $(document).ready(function() {
 </script>
 </c:if>
 
-<h2> 공지사항 </h2>
+<h2> 이슈고르기 </h2>
 
 <div class="page-header d-flex justify-content-between">
     <div style="font-size: 2.2em;">${board.title}</div>

@@ -15,12 +15,23 @@
 			<li class="nav-item">
 				<a class="nav-link" href="/board/list">
 					<i class="fa-solid fa-chalkboard"></i>
-					게시판</a></li>
+					갑론을박</a>
+			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="/issue/list">
-					<i class="fa-solid fa-plane-departure"></i>
-					이슈</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">메뉴3</a></li>
+					<i class="fa-brands fa-instagram fa-lg"></i>
+					Pick이슈</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/notice/list">
+					<i class="fa-solid fa-bullhorn"></i>
+					공지사항</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/notice/list">
+					<i class="fa-regular fa-hand fa-lg"></i>
+				건의게시판</a>
+			</li>
 		</ul>
 
 		<!-- 우측 메뉴 -->

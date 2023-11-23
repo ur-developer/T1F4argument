@@ -17,7 +17,7 @@
 	    		cssClass="form-select rounded-0 ml-1" />
 	    	<div class="input-group">
 		        <form:input path="keyword" cssClass="form-control rounded-0"/>         
-		        <button type="submit" class="btn btn-success  rounded-0" >
+		        <button type="submit" class="btn btn-primary  rounded-0" >
 		          <i class="fa-solid fa-magnifying-glass"></i>
 		          검색</button>
 		    </div>

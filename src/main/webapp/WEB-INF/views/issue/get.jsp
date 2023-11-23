@@ -33,7 +33,7 @@ $(document).ready(function() {
 	});	
 	
     let username = '${username}';
-    const BASE_URL = '/api/issue/like';
+    const BASE_URL = '/api/board/like';
 
     // 좋아요 추가
     $('span.like').on('click', '.fa-thumbs-up.fa-regular', async function(e){
@@ -74,7 +74,7 @@ $(document).ready(function() {
 </script>
 </c:if>
 
-<h2> 갑론을박 </h2>
+<h2> Pick이슈 </h2>
 
 <div class="page-header d-flex justify-content-between">
     <div style="font-size: 2.2em;">${board.title}</div>

@@ -62,9 +62,11 @@ async function loadComments(bno, nickname) {
 	let comments = [];
 	
 	// API로 불러오기
+	console.log(COMMENT_URL);
 	comments = await rest_get(COMMENT_URL);
 
 	for(let comment of comments) {
+		console.log(comment);
 		const commentEl = $(createCommentTemplate(comment, nickname));
 		$('.comment-list').append(commentEl);
 		

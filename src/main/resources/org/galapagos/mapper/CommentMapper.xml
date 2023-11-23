@@ -88,7 +88,7 @@
 
 	<select id="getLikesList" resultType="Long">
 		select cno from
-		argument_post_comment
+		argument_comment_like
 		where username = #{username}
 	</select>
 

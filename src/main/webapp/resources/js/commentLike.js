@@ -7,7 +7,7 @@ async function addCommentLike(nickname, btn) { // 닉넴이 아니라 유저의 
 
     await rest_create(COMMENT_LIKE_URL + "/add", commentLike);
 
-    let likeCount = $(this).parent().find(".like-count");
+    let likeCount = btn.parent().find(".like-count");
     console.log(likeCount);
     let count = parseInt(likeCount.text());
     likeCount.text(count + 1);
@@ -25,7 +25,7 @@ async function deleteCommentLike(e) {
 	const COMMENT_LIKE_URL = '/api/board/commentlike';	
     let cno = parseInt($(this).data("no"));
 
-    await rest_delete(COMMENT_LIKE_URL + "/delete");
+    await rest_delete(`\${COMMENT_LIKE_URL}/delete?cno=\${cno}&username=\${username}`);
 
     let likeCount = $(this).parent().find(".like-count");
     console.log(likeCount);

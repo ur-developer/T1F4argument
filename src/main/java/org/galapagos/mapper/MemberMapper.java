@@ -16,4 +16,5 @@ public MemberVO readMember(String username);
 	
 	public void updateMember(UpdateMemberVO updateMember);
 	
+	public void deleteMember(MemberVO member);
 }

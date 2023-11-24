@@ -52,4 +52,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where username = #{username}
 	</update>
 	
+	<delete id="deleteMember" parameterType="org.galapagos.domain.MemberVO">
+		delete from argument_member
+		where username = #{username}
+	</delete>
+	
 </mapper>

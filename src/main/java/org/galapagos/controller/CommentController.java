@@ -4,7 +4,6 @@ import java.security.Principal;
 import java.util.List;
 
 import org.galapagos.domain.CommentVO;
-import org.galapagos.domain.Criteria;
 import org.galapagos.mapper.CommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,15 +23,9 @@ import lombok.extern.log4j.Log4j;
 public class CommentController {
 	@Autowired
 	CommentMapper mapper;
-	
-	public int getCommentTotal(Criteria cri) {
-		log.info("get total count");
-
-		return mapper.getCommnetTotalCount(cri);
-	}
 
 	@GetMapping("")
-	public List<CommentVO> readComments(@PathVariable Long bno, Principal principal, Criteria cri) { // 글번호(게시글 보여줌)
+	public List<CommentVO> readComments(@PathVariable Long bno, Principal principal) { // 글번호(게시글 보여줌)
 		
 		List<CommentVO> list = mapper.readAll(bno);
 		

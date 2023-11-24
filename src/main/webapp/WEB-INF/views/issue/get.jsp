@@ -4,6 +4,7 @@
 
 <%@include file="../layouts/header.jsp"%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <script src="/resources/js/rest.js"></script>
 <script src="/resources/js/comment.js"></script>
 <script src="/resources/js/reply.js"></script>
@@ -33,7 +34,7 @@ $(document).ready(function() {
 	});	
 	
     let username = '${username}';
-    const BASE_URL = '/api/board/like';
+    const BASE_URL = '/api/issue/like';
 
     // 좋아요 추가
     $('span.like').on('click', '.fa-thumbs-up.fa-regular', async function(e){
@@ -105,6 +106,8 @@ $(document).ready(function() {
 </div>
 	
 <hr>
+
+<div>${board.content}</div>
 	
 <span class="like">
 	<i class="${ board.myLike ? 'fa-solid' : 'fa-regular' } fa-regular fa-thumbs-up text-primary"

@@ -53,7 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		// 요청에 대한 접근 권한 설정
 		http.authorizeRequests()
-			.antMatchers("/security/login", 
+			.antMatchers(
+					"/security/login", 
 					"/security/signup").permitAll()
 			
 			.antMatchers("/security/profile", 

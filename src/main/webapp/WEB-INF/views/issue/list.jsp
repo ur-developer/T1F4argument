@@ -18,11 +18,7 @@
 	</a>
 </div>
 
-<%@ include file="../common/search_bar.jsp" %>
-
-
-<p></p>
-
+<hr>
 <table class="table table-striped table-hover">
 	<thead>
 		<tr>
@@ -47,6 +43,10 @@
 		</c:forEach>
 	</tbody>
 </table>
+
+<hr>
+
+<%@ include file="../common/search_bar.jsp" %>
 
 <hr>
 

@@ -33,7 +33,7 @@ $(document).ready(function() {
 	});	
 	
     let username = '${username}';
-    const BASE_URL = '/api/board/like';
+    const BASE_URL = '/api/issue/like';
 
     // 좋아요 추가
     $('span.like').on('click', '.fa-thumbs-up.fa-regular', async function(e){

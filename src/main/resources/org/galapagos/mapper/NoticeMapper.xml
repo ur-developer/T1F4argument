@@ -28,6 +28,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<where>
 			<include refid="criteria"></include>
 		</where>
+		where category_id = 4
+		order by bno desc
 	</select>
 
 	<select id="getNoticeList" resultType="BoardVO">
@@ -39,13 +41,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="getNoticeListWithPaging" resultType="BoardVO">
-		select * from argument_post
+		select * from view_post
 		<where>
 			<include refid="criteria"></include>
 		</where>
 		order by bno desc
 		limit #{offset}, #{amount}
 	</select>
+
+	<select id="readNoitce" resultType="BoardVO">
+		select * from view_post 
+		where bno = #{bno}
+	</select>
+
 
 	<insert id="insertNotice">
 		insert into argument_post (category_id, title, content, nickname)

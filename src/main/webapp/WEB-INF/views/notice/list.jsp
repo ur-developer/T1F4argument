@@ -12,8 +12,6 @@
 	<i class="fas fa-list"></i> 공지사항
 </h1>
 
-<%@ include file="../common/search_bar.jsp" %>
-
 <p></p>
 
 <table class="table table-striped table-hover">
@@ -24,7 +22,6 @@
 			<th style = "text-align: center">작성자</th>
 			<th style = "text-align: center">등록일</th>
 			<th style = "text-align: center">조회</th>
-			<th style = "text-align: center">추천</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -35,7 +32,6 @@
       			<td style="width: 100px; text-align: center;">${board.nickname}</td>
         		<td style="width: 130px; text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.registerDate}" /></td>
         		<td style="width: 80px; text-align: center;">${board.hit}</td>
-        		<td style="width: 80px; text-align: center;">${board.likes}</td>
       		</tr>
 		</c:forEach>
 	</tbody>
@@ -48,6 +44,12 @@
 		글쓰기
 	</a>
 </div>
+
+<hr>
+
+<%@ include file="../common/search_bar.jsp" %>
+
+<hr>
 
 <%@include file="../common/pagination.jsp"%>
 

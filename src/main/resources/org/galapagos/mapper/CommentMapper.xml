@@ -85,8 +85,7 @@
 		on c.no = r.cno
 		where c.no = #{no}
 	</select>
-	
-	
+
 	<select id="getLikesList" resultType="Long">
 		select cno from
 		argument_comment_like

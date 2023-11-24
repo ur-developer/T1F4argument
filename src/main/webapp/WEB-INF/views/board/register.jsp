@@ -23,7 +23,14 @@
 
 	$('#summernote').summernote('fontName', 'Arial');
 	
-
+	 // 게시판 종류 선택 이벤트 처리
+    $('#boardTypeSelect').change(function() {
+        // 선택한 값 가져오기
+        let selectedValue = $(this).val();
+        
+        // categoryId input에 선택한 값 설정
+        $('#categoryId').val(selectedValue);
+    });
 </script>
 <style>
 input[readonly] {
@@ -43,7 +50,11 @@ input[readonly]:hover {
 
 <div class="panel panel-default">
 
-
+<label for="boardTypeSelect"> 게시판 종류 선택: </label>
+  <select id="boardTypeSelect">
+    <option value="2">갑론을박 게시판</option>
+    <option value="1">이슈고르기 게시판</option>
+  </select>
   
 	<div class="panel-body">
 		<form:form modelAttribute="board" action="?_csrf=${_csrf.token}" role="form" enctype="multipart/form-data">	

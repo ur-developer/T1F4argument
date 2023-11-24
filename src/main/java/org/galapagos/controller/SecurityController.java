@@ -6,13 +6,15 @@ import java.util.Random;
 import javax.mail.internet.MimeMessage;
 import javax.validation.Valid;
 
-import org.galapagos.domain.DeleteMemberVO;
 import org.galapagos.domain.MemberVO;
 import org.galapagos.domain.UpdateMemberVO;
 import org.galapagos.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +37,9 @@ public class SecurityController {
 
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
 	@GetMapping("/login")
 	public void login() {
@@ -191,33 +196,11 @@ public class SecurityController {
 			return "/security/updateform";
 		}
 		
+		// 세션 등록 (DB가 변경된 후의 정보를 가져와야 하므로 Service가 끝난 후(=트랜잭션 끝난 후)에 이루어져야 한다.
+	    Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(updateMember.getUsername(), updateMember.getNewPassword()));
+	    SecurityContextHolder.getContext().setAuthentication(authentication);
+
 		return "redirect:/security/login";
 
 	}
-	
-	@GetMapping("/deleteform")
-	public void deleteForm(Principal principal, Model model, DeleteMemberVO deleteMember) {
-		
-		deleteMember.setUsername(principal.getName());		
-		model.addAttribute("deleteMember", deleteMember);
-		
-	}
-	
-	@PostMapping("/deleteform")
-	public String deleteForm(@Valid @ModelAttribute("deleteMember") DeleteMemberVO deleteMember,
-			Errors errors) {
-		
-		// 비밀번호 틀려서 false 반환 시
-		if(!service.deleteMember(deleteMember)) {
-			
-			errors.rejectValue("deletePassword", "비밀번호 에러", "비밀번호를 확인하세요.");
-			
-			return "/security/deleteform";
-		}
-		
-		SecurityContextHolder.clearContext();
-		
-		return "redirect:/";
-	}
-	
 }

@@ -28,8 +28,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<where>
 			<include refid="criteria"></include>
 		</where>
-		where category_id = 1
-		order by bno desc
 	</select>
 
 	<select id="getIssueList" resultType="BoardVO">

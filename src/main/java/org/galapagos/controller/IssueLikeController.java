@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/issue/like")
 public class IssueLikeController { 
-    @Autowired
+    
+	@Autowired
     BoardMapper mapper; 
 
     @PostMapping("/add") 

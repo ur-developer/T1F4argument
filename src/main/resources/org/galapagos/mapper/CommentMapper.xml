@@ -13,6 +13,7 @@
 		<result property="registerDate" column="c_register_date" />
 		<result property="updateDate" column="c_update_date" />
 		<result property="likeCount" column="c_like_count" />
+
 		<!-- collection의 자식태그로 정의 -->
 		<!-- collection은 java에서 List이므로 JSON에서는 배열[]처리해야 한다. -->
 		<collection property="replyList"
@@ -87,7 +88,7 @@
 
 	<select id="getLikesList" resultType="Long">
 		select cno from
-		argument_post_comment
+		argument_comment_like
 		where username = #{username}
 	</select>
 

@@ -45,7 +45,8 @@ function createCommentTemplate(comment, nickname) {
 			<div class="comment-content">${comment.content}</div>
 		</div>
 		<span class="like">
-				<i class="${comment.myLike ? 'fa-solid' : 'fa-regular'} fa-thumbs-up text-danger" data-no="${comment.no}"></i>
+				<i class="${ comment.myLike ? 'fa-solid' : 'fa-regular' } fa-thumbs-up text-danger"
+		data-no="${comment.no}"></i>
 				<span class="like-count">${comment.likeCount}</span>
 			</span>
 		</div>
@@ -61,9 +62,11 @@ async function loadComments(bno, nickname) {
 	let comments = [];
 	
 	// API로 불러오기
+	console.log(COMMENT_URL);
 	comments = await rest_get(COMMENT_URL);
 
 	for(let comment of comments) {
+		console.log(comment);
 		const commentEl = $(createCommentTemplate(comment, nickname));
 		$('.comment-list').append(commentEl);
 		

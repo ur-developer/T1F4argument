@@ -191,7 +191,7 @@ public class IssueController {
 			rttr.addAttribute("pageNum", cri.getPageNum());
 			rttr.addAttribute("amount", cri.getAmount());
 		}	
-		return "redirect:/board/get";
+		return "redirect:/issue/get";
 
 	}	
 	

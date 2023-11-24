@@ -60,7 +60,6 @@ function createCommentTemplate(comment, nickname) {
 async function loadComments(bno, nickname) {
 	let comments = [];
 	
-	
 	// API로 불러오기
 	console.log(COMMENT_URL);
 	comments = await rest_get(COMMENT_URL);
@@ -78,12 +77,8 @@ async function loadComments(bno, nickname) {
 
 		};
 	}
-
-
 	
 }
-
-
 
 
 window.addEventListener("scroll", function () {
@@ -131,7 +126,7 @@ function createCommentEditTemplate(comment) {
 			<textarea class="form-control mb-1 comment-editor"
 				>${comment.content}</textarea>
 			<div class="text-end">
-				<button onClick="window.location.reload()" class="btn btn-light btn-sm py-1 comment-update-btn">
+				<button class="btn btn-light btn-sm py-1 comment-update-btn">
 					<i class="fa-solid fa-check"></i> 확인</button>
 				<button class="btn btn-light btn-sm  py-1 comment-update-cancel-btn">
 					<i class="fa-solid fa-undo"></i> 최소</button>

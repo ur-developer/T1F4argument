@@ -4,22 +4,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@include file="../layouts/header.jsp"%>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 <script src="/resources/js/comment.js"></script>
-<script src="/resources/js/comment2.js"></script>
 <script src="/resources/js/rest.js"></script>
 <script src="/resources/js/reply.js"></script>
-<script src="/resources/js/reply2.js"></script>
 <script src="/resources/js/commentLike.js"></script>
 
 <script>
 //댓글, 답글 기본 URL 상수 - 전역 상수
 const COMMENT_URL = '/api/board/${param.bno}/comment/';
 const REPLY_URL = '/api/board/${param.bno}/reply/';
-const COMMENT2_URL = '/api/board/${param.bno}/comment2/';
-const REPLY2_URL = '/api/board/${param.bno}/reply2/';
 
 $(document).ready(async function() {
 
@@ -147,10 +143,7 @@ $(document).ready(async function() {
 	<i class="fa-regular fa-comments"></i> 댓글 목록
 	<hr>
 	<div class="comment-list"></div>
-	
-	 <div class="pagination-container">
-        <!-- 페이징이 여기에 자동으로 추가될 것입니다. -->
-    </div>
+
 </div>
 
 

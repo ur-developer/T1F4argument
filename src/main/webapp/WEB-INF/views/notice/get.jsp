@@ -8,22 +8,6 @@
 <script src="/resources/js/comment.js"></script>
 <script src="/resources/js/reply.js"></script>
 
-<style>
-    .page-header {
-        border-top: 1px solid lightgray;
-        border-bottom: 1px solid lightgray; /* 여기서 색상을 조절할 수 있어요 */
-        padding-bottom: 5px;
-        margin-bottom: 10px;
-    }
-</style>
-
-<c:if test="${not empty username}">
-<style>	
-	.fa-like {
-	cursor: pointer;
-}
-</style>
-
 <script>
 $(document).ready(function() {
 	
@@ -32,47 +16,9 @@ $(document).ready(function() {
 		document.forms.removeForm.submit();
 	});	
 	
-    let username = '${username}';
-    const BASE_URL = '/api/board/like';
-
-    // 좋아요 추가
-    $('span.like').on('click', '.fa-thumbs-up.fa-regular', async function(e){
-        let bno = parseInt($(this).data("bno"));
-        let like = { bno, username };
-        
-        await rest_create(BASE_URL + "/add", like);
-        
-        let likes = $(this).parent().find(".like-count");
-        console.log(likes);
-        let count = parseInt(likes.text());
-        likes.text(count+1);
-        
-        $(this)
-            .removeClass('fa-regular')
-            .addClass('fa-solid');
-    });
-
-    // 좋아요 제거
-    $('span.like').on('click', '.fa-thumbs-up.fa-solid', async function(e){
-        let bno = parseInt($(this).data("bno"));
-        
-        await rest_delete(
-       		 `\${BASE_URL}/delete?bno=\${bno}&username=\${username}`);
-
-
-        let likes = $(this).parent().find(".like-count");
-        console.log(likes);
-        let count = parseInt(likes.text());
-        likes.text(count-1);
-
-        $(this)
-            .removeClass('fa-solid')
-            .addClass('fa-regular');
-    });
 });
 
 </script>
-</c:if>
 
 <h2> 공지사항 </h2>
 
@@ -103,15 +49,10 @@ $(document).ready(function() {
 		</div>
 	</c:forEach>
 </div>
-	
-<hr>
-	
-<span class="like">
-	<i class="${ board.myLike ? 'fa-solid' : 'fa-regular' } fa-regular fa-thumbs-up text-primary"
-		data-bno="${board.bno}"></i>
-	<span class="like-count">${board.likes}</span>
-</span>
 
+<hr>
+
+<div>${board.content}</div>
 
 <hr>
 

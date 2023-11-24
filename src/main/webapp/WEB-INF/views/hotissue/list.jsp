@@ -1,58 +1,76 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 <%@include file="../layouts/header.jsp"%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
+<style>
+    .likes-container {
+        display: flex;
+        align-items: center;
+    }
 
-<hr>
+    .likes-icon {
+        margin-right: 50px; /* 아이콘과 텍스트 사이 간격 조절 */
+    }
+</style>
 
-<h1 class="page-header">
-	<i class="fas fa-list"></i> Pick이슈
+<hr> 
+
+<h1 class="page-header" style="margin-left: 20px;">
+    <i class="fa-solid fa-fire fa-lg"></i> 인기순
 </h1>
 
-<div class="text-left">
-	<a href="/issue/list" class="btn btn-primary"> <i class="fa-brands fa-instagram fa-lg"></i>
-		Pick이슈
-	</a>
-</div>
-
-<%@ include file="../common/search_bar.jsp" %>
-
 <p></p>
-
-<table class="table table-striped table-hover">
-	<thead>
-		<tr>
-			<th style = "text-align: center">탭</th>
-			<th style = "text-align: center">제목</th>
-			<th style = "text-align: center">작성자</th>
-			<th style = "text-align: center">등록일</th>
-			<th style = "text-align: center">조회</th>
-			<th style = "text-align: center">추천</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach var="board" items="${list}">
-			<tr>
-				<td style="width: 60px; text-align: center;">인기</td>
-       	 		<td><a href="get?bno=${board.bno}">${board.title}</a></td>
-      			<td style="width: 100px; text-align: center;">${board.nickname}</td>
-        		<td style="width: 130px; text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.registerDate}" /></td>
-        		<td style="width: 80px; text-align: center;">${board.hit}</td>
-        		<td style="width: 80px; text-align: center;">${board.likes}</td>
-      		</tr>
-		</c:forEach>
-	</tbody>
-</table>
-
+<div class="row">
+    <c:forEach var="board" items="${list}">
+        <div class="col-12 mb-3">
+            <div class="card" style="width:100%">
+                <div class="row no-gutters">
+                    <!-- 왼쪽에 사진 -->
+                    <div class="col-md-3 d-flex align-items-center justify-content-center">
+						<a href="${cri.getLink('get')}&bno=${board.bno}">
+							<img class="card-img-top" src="/resources/images/issue.png" 
+						alt="${board.title}" style="width: 100%;">
+						</a>
+					</div>
+                    <!-- 중간에 제목과 내용 -->
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h4 class="card-title" style="font-size: 24px;">
+                                <a href="${cri.getLink('get')}&bno=${board.bno}">
+                                    ${board.title}
+                                </a>
+                            </h4>
+                            <p class="card-text" style="font-size: 16px;">
+                                ${board.content}
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 오른쪽에 좋아요 표시와 닉네임 -->
+					<div class="col-md-3 mb-3 d-flex justify-content-center align-items-center">
+						<div class="likes-text">
+       						 ${board.nickname}
+						</div>
+						<div style="margin: 0 20px;"></div>
+    					<div class="likes-icon">
+        					<i class="fas fa-thumbs-up fa-2x"></i>
+    					</div>
+						<div>
+						${board.likes}
+						</div>
+					</div>
+               	</div>
+            </div>
+        </div>
+    </c:forEach>
+</div>
 <hr>
 
 <div class="text-right">
-	<a href="register" class="btn btn-primary"> <i class="far fa-edit"></i>
-		글쓰기
-	</a>
+    <a href="register" class="btn btn-primary"> <i class="far fa-edit"></i>
+        글쓰기
+    </a>
 </div>
 
 <%@include file="../common/pagination.jsp"%>

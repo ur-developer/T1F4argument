@@ -30,18 +30,12 @@ public class RootConfig {
 	@Bean
 	public DataSource dataSource() {
 		HikariConfig config = new HikariConfig();
-//		config.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//		config.setJdbcUrl("jdbc:mysql://localhost:3306/glory_db");
-		
+	
 		config.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-		//config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3307/argument_db");
-		//config.setUsername("urdeveloper");
-		//config.setPassword("mk9295");
-		
-		config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/argument_db");
-		config.setUsername("argument");
-		config.setPassword("1234");
-		
+		config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3307/argument_db");
+		config.setUsername("urdeveloper");
+		config.setPassword("mk9295");
+
 		HikariDataSource dataSource = new HikariDataSource(config);
 		return dataSource;
 	}

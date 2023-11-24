@@ -17,10 +17,8 @@
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 
-		insert into argument_post_reply(cno, nickname, content)
-		values(#{cno},
-		#{nickname},
-		#{content})
+		insert into argument_post_reply(cno, username, nickname, content)
+		values(#{cno}, #{username}, #{nickname},#{content})
 	</insert>
 
 	<update id="update">

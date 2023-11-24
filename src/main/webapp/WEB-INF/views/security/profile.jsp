@@ -60,7 +60,7 @@
 		<br>
 			
 		<div>			
-			<a href="#" class="deleteBtn">
+			<a href="/security/deleteform" class="deleteBtn">
 				<i class="fa-solid fa-user-slash"></i> 회원탈퇴
 			</a>
 		</div>

@@ -21,18 +21,22 @@ async function addCommentLike(nickname, btn) { // 닉넴이 아니라 유저의 
 }
 
 
-async function deleteCommentLike(e) {
+async function deleteCommentLike(nickname, btn) {
 	const COMMENT_LIKE_URL = '/api/board/commentlike';	
-    let cno = parseInt($(this).data("no"));
-
-    await rest_delete(`\${COMMENT_LIKE_URL}/delete?cno=\${cno}&username=\${username}`);
-
-    let likeCount = $(this).parent().find(".like-count");
+    let cno = parseInt(btn.data("no"));
+	
+	let commentLike = { cno, username: nickname };
+	
+    await rest_delete(`${COMMENT_LIKE_URL}/delete?cno=${cno}&username=${nickname}`);
+	
+	
+	
+    let likeCount = btn.parent().find(".like-count");
     console.log(likeCount);
     let count = parseInt(likeCount.text());
     likeCount.text(count - 1);
 
-    $(this)
+    btn
         .removeClass('fa-solid')
         .addClass('fa-regular');
 

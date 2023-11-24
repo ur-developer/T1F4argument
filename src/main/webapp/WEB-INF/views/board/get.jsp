@@ -91,7 +91,9 @@ $(document).ready(async function() {
 		});
 		 
 		
-		$('.comment-list').on('click', '.fa-thumbs-up.fa-solid', deleteCommentLike);
+		$('.comment-list').on('click', '.fa-thumbs-up.fa-solid', function(e) {
+			deleteCommentLike(nickname, $(this));
+		});
 	
 		
 	

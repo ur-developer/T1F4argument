@@ -10,7 +10,6 @@ public interface CommentMapper {
 
 	List<CommentVO> readAll(Long bno);
 
-	public List<CommentVO> getListWithPaging(Criteria cri);
 	
 	CommentVO get(Long no);
 
@@ -25,5 +24,7 @@ public interface CommentMapper {
 	int addCommentLike(CommentLikeVO commentLike);
 	
 	int deleteCommentLike(CommentLikeVO commentLike);
+
+	int getCommnetTotalCount(Criteria cri);
 
 }

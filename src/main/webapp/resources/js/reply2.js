@@ -90,7 +90,7 @@ async function addReply(el, nickname) { //el이 답글 작성하고 누르는 "�
 	let reply = { cno, nickname, content };
 
 	// REPLY POST API 호출
-	reply = await rest_create(REPLY_URL, reply);
+	reply = await rest_create(REPLY2_URL, reply);
 	console.log(reply);
 
 	const replyEl = $(createReplyTemplate(reply, nickname));
@@ -126,7 +126,7 @@ async function updateReply(el) {
 	const no = replyEl.data("no"); 
 	let reply = { no, content };
 	
-	reply = await rest_modify(REPLY_URL + no, reply);
+	reply = await rest_modify(REPLY2_URL + no, reply);
 	
 	replyContent.html(content);
 	replyContent.show();
@@ -158,6 +158,6 @@ async function deleteReply(e) {
 	const replyEl = $(this).closest('.reply');
 	const no = parseInt(replyEl.data("no"));
 	
-	await rest_delete(REPLY_URL + no);
+	await rest_delete(REPLY2_URL + no);
 	replyEl.remove();
 }

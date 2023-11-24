@@ -96,7 +96,7 @@
 <table class="table table-striped table-hover">
 	<thead>
 		<tr>
-			<th style = "text-align: center">No</th>
+			<th style = "text-align: center">탭</th>
 			<th style = "text-align: center">제목</th>
 			<th style = "text-align: center">작성자</th>
 			<th style = "text-align: center">등록일</th>
@@ -106,7 +106,7 @@
 	<tbody>
 		<c:forEach var="board" items="${list}">
 			<tr>
-				<td style="width: 60px">${board.bno}</td>
+				<td style="width: 100px">갑론을박</td>
 				<td><a class="move"
 					href="${cri.getLinkWithBno('get', board.bno)}">${board.title}</a></td>
 				<td style="width: 100px">${board.nickname}</td>

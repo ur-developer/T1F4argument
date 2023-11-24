@@ -48,7 +48,7 @@ function createCommentTemplate(comment, nickname) {
 				<i class="${comment.myLike ? 'fa-solid' : 'fa-regular'} fa-thumbs-up text-danger" data-no="${comment.no}"></i>
 				<span class="like-count">${comment.likeCount}</span>
 			</span>
-		</div>
+		
 		<div class="reply-list ml-5">
 		<!-- 답글 목록 출력 영역 -->
 		</div>

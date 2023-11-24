@@ -16,7 +16,7 @@
 //댓글, 답글 기본 URL 상수 - 전역 상수
 const COMMENT_URL = '/api/board/${param.bno}/comment/';
 const REPLY_URL = '/api/board/${param.bno}/reply/';
-
+// const COMMENT_LIKE_URL = '/api/board/${param.bno}/commentlike';
 $(document).ready(async function() {
 
 	$('.remove').click(function(){
@@ -26,6 +26,7 @@ $(document).ready(async function() {
 	
 	let bno = ${param.bno}; // 글번호
 	let nickname = '${username}'; // 작성자(로그인 유저)
+	
 	
 	loadComments(bno, nickname); // 댓글 목록 불러오기
 	
@@ -43,7 +44,7 @@ $(document).ready(async function() {
 		// 댓글 수정 확인 버튼 클릭
 		$('.comment-list').on('click', '.comment-update-btn', function (e){
 		const el = $(this).closest('.comment');
-		updateComment(el, username);
+		updateComment(el, nickname);
 		});
 		
 		// 댓글 수정 취소 버튼 클릭
@@ -57,12 +58,12 @@ $(document).ready(async function() {
 	/////// 답글 버튼 이벤트 핸들링
 		// 답글 추가버튼 인터페이스 보이기
 		$('.comment-list').on('click', '.reply-add-show-btn', function(e) {
-		showReplyAdd($(this), username);
+		showReplyAdd($(this), nickname);
 		});
 		
 		// 답글 추가해서 작성 후 "확인" 버튼
 		$('.comment-list').on('click', '.reply-add-btn', function(e){
-		addReply($(this), username);
+		addReply($(this), nickname);
 		});
 		
 		// 답글 수정 화면 보이기
@@ -86,10 +87,26 @@ $(document).ready(async function() {
 		$('.comment-list').on('click', '.reply-delete-btn', deleteReply);
 		
 		
-		$('.comment-list').on('click', '.fa-thumbs-up.fa-regular', addCommentLike);
+		$('.comment-list').on('click', '.fa-thumbs-up.fa-regular', function(e) {
+			addCommentLike(nickname, $(this));
+			});
+				
+				
 		
-		$('.comment-list').on('click', '.fa-thumbs-up.fa-solid', deleteCommentLike);
-	
+		/*  $('.comment-list').on('click', '.fa-thumbs-up.fa-regular', () => {
+	         
+	         const cno = $(this).data('no')
+	         const cno2 = $(this).data('comment')
+	         
+	         console.log('username on click', nickname)
+	         console.log('cno on click', cno)
+	         console.log('cno on click', cno2)
+	         addCommentLike(username)
+	      }); */
+		
+		$('.comment-list').on('click', '.fa-thumbs-up.fa-solid', function(e) {
+			deleteCommentLike(nickname, $(this));
+		});
 		
 	
 

@@ -23,4 +23,6 @@ public class CommentVO {
 
 	List<ReplyVO> replyList;
 
+		
+
 }

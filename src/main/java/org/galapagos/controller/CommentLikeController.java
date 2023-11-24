@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @RestController
 @RequestMapping("/api/board/commentlike")
 public class CommentLikeController {
@@ -27,7 +30,7 @@ public class CommentLikeController {
 	
 	@DeleteMapping("/delete")
 	public String deleteCommentLike(CommentLikeVO commentLike) {
-		
+		log.info("Comment Delete" + commentLike);
 		mapper.deleteCommentLike(commentLike);
 		return "OK";
 		

@@ -7,5 +7,5 @@ public class CommentLikeVO {
 	
 	private Long cno;
 	private String username;
-
+	//private Boolean myLike;
 }

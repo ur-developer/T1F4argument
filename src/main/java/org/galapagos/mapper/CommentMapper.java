@@ -8,22 +8,24 @@ import org.galapagos.domain.Criteria;
 
 public interface CommentMapper {
 
-	List<CommentVO> readAll(Long bno);
+	public List<CommentVO> readAll(Long bno);
 
 	public List<CommentVO> getListWithPaging(Criteria cri);
 	
-	CommentVO get(Long no);
+	public CommentVO get(Long no);
 
-	void create(CommentVO vo);
+	public void create(CommentVO vo);
 
-	void update(CommentVO vo);
+	public void update(CommentVO vo);
 
-	void delete(Long no);
+	public void delete(Long no);
 	
-	List<Long> getLikesList(String username);
+	public List<Long> getLikesList(String username);
 	
-	int addCommentLike(CommentLikeVO commentLike);
+	public int addCommentLike(CommentLikeVO commentLike);
 	
-	int deleteCommentLike(CommentLikeVO commentLike);
+	public int deleteCommentLike(CommentLikeVO commentLike);
+
+
 
 }

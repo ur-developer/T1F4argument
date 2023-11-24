@@ -87,7 +87,7 @@
 
 	<select id="getLikesList" resultType="Long">
 		select cno from
-		argument_post_comment
+		argument_comment_like
 		where username = #{username}
 	</select>
 
@@ -103,8 +103,7 @@
 
 	<delete id="deleteCommentLike">
 		delete from argument_comment_like
-		where cno = #{cno}
-		and username = #{username}
+		where cno = #{cno} and username = #{username}
 	</delete>
 
 </mapper>

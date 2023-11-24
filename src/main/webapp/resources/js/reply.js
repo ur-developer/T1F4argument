@@ -17,8 +17,7 @@ function createReplyTemplate(reply, nickname) {
 			<div class="reply-title my-2 d-flex justify-content-between">
 				<div class="reply-head">
 					<strong class="reply-nickname">
-						<img src="/security/avatar/sm/${reply.nickname}" class="avatar-sm">${reply.nickname}
-					</strong>
+					${reply.nickname}</strong>
 					<span class="text-muted ml-3 reply-date">
 						${moment(reply.registerDate).format('YYYY-MM-DD hh:mm')}
 					</span>
@@ -72,9 +71,13 @@ function showReplyAdd(el, nickname) {
 	const reply = { cno, nickname };
 	const template = createReplyEditTemplate(reply);
 
+	console.log('--------------------------------');
+	console.log(commentEl);
+	console.log(commentEl.find('.reply-list'));
 	commentEl.find('.reply-list').append($(template));
 	commentEl.find('.btn-group').hide();
 	commentEl.find('.reply-editor').focus();
+	
 }
 
 // 답글 추가

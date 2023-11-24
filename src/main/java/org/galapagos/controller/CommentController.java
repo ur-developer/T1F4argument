@@ -1,8 +1,11 @@
 package org.galapagos.controller;
 
+import java.security.Principal;
 import java.util.List;
 
+import org.galapagos.domain.BoardVO;
 import org.galapagos.domain.CommentVO;
+import org.galapagos.domain.Criteria;
 import org.galapagos.mapper.CommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @RestController
 @RequestMapping("/api/board/{bno}/comment") // ("")로 할 경우 공통 url로 들어갈 부분
 public class CommentController {
@@ -21,8 +27,23 @@ public class CommentController {
 	CommentMapper mapper;
 
 	@GetMapping("")
-	public List<CommentVO> readComments(@PathVariable Long bno) { // 글번호(게시글 보여줌)
-		return mapper.readAll(bno); // 경로변수에 있던 글번호
+
+	public List<CommentVO> readComments(@PathVariable Long bno, Principal principal) { // 글번호(게시글 보여줌)
+
+		List<CommentVO> list = mapper.readAll(bno);
+
+		log.info("Comments " + principal );
+		if(principal != null) { 
+			List<Long> likes = mapper.getLikesList(principal.getName());
+			log.info("like list" + likes);
+			for(CommentVO comment : list) {
+				log.info("check " + comment.getNo());
+				comment.setMyLike(likes.contains(comment.getNo())); 
+			}
+
+		 }
+
+		return list; // 경로변수에 있던 글번호
 	}
 
 	@GetMapping("/{no}") // 자체적인 pathvariable List<>로 생성된 배열[] 뒤에 붙여라.

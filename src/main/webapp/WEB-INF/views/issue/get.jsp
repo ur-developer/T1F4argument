@@ -59,7 +59,6 @@ $(document).ready(function() {
         await rest_delete(
        		 `\${BASE_URL}/delete?bno=\${bno}&username=\${username}`);
 
-
         let likes = $(this).parent().find(".like-count");
         console.log(likes);
         let count = parseInt(likes.text());

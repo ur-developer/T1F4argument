@@ -1,17 +1,17 @@
-async function addCommentLike(nickname) { // 닉넴이 아니라 유저의 고유값을 받아야한다~ 왜냐? 
-const COMMENT_LIKE_URL = '/api/board/commentlike';	 
-	let cno = parseInt($(this).data("no"));
-    let commentLike = { cno, nickname };
+async function addCommentLike(nickname, btn) { // 닉넴이 아니라 유저의 고유값을 받아야한다~ 왜냐? 
+	const COMMENT_LIKE_URL = '/api/board/commentlike';	 
+	let cno = parseInt(btn.data("no"));
+    let commentLike = { cno, username: nickname };
     console.log(commentLike);
 
     await rest_create(COMMENT_LIKE_URL + "/add", commentLike);
 
-    let likeCount = $(this).parent().find(".like-count");
+    let likeCount = btn.parent().find(".like-count");
     console.log(likeCount);
     let count = parseInt(likeCount.text());
     likeCount.text(count + 1);
 
-    $(this)
+    btn
         .removeClass('fa-regular')
         .addClass('fa-solid');
         
@@ -20,21 +20,22 @@ const COMMENT_LIKE_URL = '/api/board/commentlike';
 }
 
 
-async function deleteCommentLike(e) {
-const COMMENT_LIKE_URL = '/api/board/commentlike';	
-    let cno = parseInt($(this).data("no"));
+async function deleteCommentLike(nickname, btn) {
+	const COMMENT_LIKE_URL = '/api/board/commentlike';		
+    
+    let cno = parseInt(btn.data("no"));
+ 	let commentLike = { cno, username: nickname };
+ 	
+	await rest_delete( `${COMMENT_LIKE_URL}/delete?cno=${cno}&username=${nickname}`);
+	//await rest_delete( COMMENT_LIKE_URL + "/delete" );
 
-    await rest_delete( `\${COMMENT_LIKE_URL}/delete?bno=\${bno}&username=\${username}`);
-
-    let likeCount = $(this).parent().find(".like-count");
+    let likeCount = btn.parent().find(".like-count");
     console.log(likeCount);
     let count = parseInt(likeCount.text());
     likeCount.text(count - 1);
 
-    $(this)
+    btn
         .removeClass('fa-solid')
         .addClass('fa-regular');
-
-
 
 }

@@ -62,8 +62,8 @@ async function loadComments(bno, nickname) {
 	
 	
 	// API로 불러오기
-	console.log(COMMENT_URL);
-	comments = await rest_get(COMMENT_URL);
+	console.log(COMMENT2_URL);
+	comments = await rest_get(COMMENT2_URL);
 
 	for(let comment of comments) {
 		console.log(comment);
@@ -114,7 +114,7 @@ async function createComment(bno, nickname) {
 	console.log(comment);
 	
 	// REST로 등록
-	comment = await rest_create(COMMENT_URL, comment);
+	comment = await rest_create(COMMENT2_URL, comment);
 		
 
 	// 등록 성공 후 DOM 처리
@@ -174,7 +174,7 @@ async function updateComment(commentEl, nickname) {
 	let comment = { no, nickname,	content };
 	
 	
-	comment = await rest_modify(COMMENT_URL + comment.no, comment);
+	comment = await rest_modify(COMMENT2_URL + comment.no, comment);
 	console.log('수정', comment);	
 		
 	const contentEl = commentEl.find('.comment-content')	
@@ -205,7 +205,7 @@ async function deleteComment(e) {
 	const comment = $(this).closest('.comment')
 	const no = comment.data("no");	
 
-	await rest_delete(COMMENT_URL + no);
+	await rest_delete(COMMENT2_URL + no);
 		
 	// api 호출	
 	comment.remove();

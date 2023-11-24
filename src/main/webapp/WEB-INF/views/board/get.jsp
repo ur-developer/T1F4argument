@@ -8,14 +8,18 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 <script src="/resources/js/comment.js"></script>
+<script src="/resources/js/comment2.js"></script>
 <script src="/resources/js/rest.js"></script>
 <script src="/resources/js/reply.js"></script>
+<script src="/resources/js/reply2.js"></script>
 <script src="/resources/js/commentLike.js"></script>
 
 <script>
 //댓글, 답글 기본 URL 상수 - 전역 상수
 const COMMENT_URL = '/api/board/${param.bno}/comment/';
 const REPLY_URL = '/api/board/${param.bno}/reply/';
+const COMMENT2_URL = '/api/board/${param.bno}/comment2/';
+const REPLY2_URL = '/api/board/${param.bno}/reply2/';
 
 $(document).ready(async function() {
 
@@ -43,7 +47,7 @@ $(document).ready(async function() {
 		// 댓글 수정 확인 버튼 클릭
 		$('.comment-list').on('click', '.comment-update-btn', function (e){
 		const el = $(this).closest('.comment');
-		updateComment(el, username);
+		updateComment(el, nickname);
 		});
 		
 		// 댓글 수정 취소 버튼 클릭
@@ -57,12 +61,12 @@ $(document).ready(async function() {
 	/////// 답글 버튼 이벤트 핸들링
 		// 답글 추가버튼 인터페이스 보이기
 		$('.comment-list').on('click', '.reply-add-show-btn', function(e) {
-		showReplyAdd($(this), username);
+		showReplyAdd($(this), nickname);
 		});
 		
 		// 답글 추가해서 작성 후 "확인" 버튼
 		$('.comment-list').on('click', '.reply-add-btn', function(e){
-		addReply($(this), username);
+		addReply($(this), nickname);
 		});
 		
 		// 답글 수정 화면 보이기
@@ -143,7 +147,10 @@ $(document).ready(async function() {
 	<i class="fa-regular fa-comments"></i> 댓글 목록
 	<hr>
 	<div class="comment-list"></div>
-
+	
+	 <div class="pagination-container">
+        <!-- 페이징이 여기에 자동으로 추가될 것입니다. -->
+    </div>
 </div>
 
 

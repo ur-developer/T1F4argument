@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.galapagos.mapper.Reply2Mapper">
+	<select id="readAll" resultType="Reply2VO">
+		select * from
+		argument_post_reply2
+		where cno = #{cno}
+		order by no
+	</select>
+
+	<insert id="create">
+		<selectKey resultType="Long" keyProperty="no" keyColumn="no"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+
+		insert into argument_post_reply2(cno, nickname, content)
+		values(#{cno},
+		#{nickname},
+		#{content})
+	</insert>
+
+	<update id="update">
+		update argument_post_reply2
+		set
+		content = #{content},
+		update_date= now()
+		where no = #{no}
+	</update>
+	<delete id="delete">
+		delete from argument_post_reply2
+		where no = #{no}
+	</delete>
+	
+	<select id="get" resultType="ReplyVO">
+		select * from
+		argument_post_reply2
+		where cno = #{cno}
+	</select>
+</mapper>

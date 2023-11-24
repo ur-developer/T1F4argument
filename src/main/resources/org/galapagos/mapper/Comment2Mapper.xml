@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.galapagos.mapper.CommentMapper">
+<mapper namespace="org.galapagos.mapper.Comment2Mapper">
 
-	<resultMap id="CommentMap" type="CommentVO">
+	<resultMap id="Comment2Map" type="Comment2VO">
 		<id property="no" column="no" />
 		<result property="bno" column="bno" />
 		<result property="content" column="c_content" />
@@ -16,8 +16,8 @@
 
 		<!-- collection의 자식태그로 정의 -->
 		<!-- collection은 java에서 List이므로 JSON에서는 배열[]처리해야 한다. -->
-		<collection property="replyList"
-			ofType="org.galapagos.domain.ReplyVO">
+		<collection property="reply2List"
+			ofType="org.galapagos.domain.Reply2VO">
 			<id property="no" column="r_no" />
 			<result property="cno" column="cno" />
 			<result property="content" column="r_content" />
@@ -29,7 +29,7 @@
 	</resultMap>
 
 	<insert id="create">
-		insert into argument_post_comment (bno, username, nickname, content)
+		insert into argument_post_comment2 (bno, username, nickname, content)
 		values(#{bno}, #{username}, #{nickname}, #{content})
 		<!-- insert로 인해 property랑 column에 auto_increment 된 값이 무엇인지 확인용 -->
 		<selectKey resultType="Long" keyProperty="no" keyColumn="no"
@@ -38,19 +38,19 @@
 		</selectKey>
 	</insert>
 	<update id="update">
-		update argument_post_comment
+		update argument_post_comment2
 		set
 		content = #{content},
 		update_date = now()
 		where no = #{no}
 	</update>
 	<delete id="delete">
-		delete from argument_post_comment
+		delete from argument_post_comment2
 		where no = #{no}
 	</delete>
 
 	<!-- SQL에서 select 조인문 가져오기 -->
-	<select id="readAll" resultMap="CommentMap">
+	<select id="readAll" resultMap="Comment2Map">
 		select
 		c.no, c.bno, c.content
 		c_content, c.nickname c_nickname,
@@ -62,13 +62,13 @@
 		r.register_date r_register_date, r.update_date
 		r_update_date
 		from
-		view_argument_post_comment c left join argument_post_reply
+		view_argument_post_comment2 c left join argument_post_reply2
 		r
 		on c.no = r.cno
 		where bno = #{bno}
 		order by c.no desc, r.no
 	</select>
-	<select id="get" resultType="CommentVO">
+	<select id="get" resultType="Comment2VO">
 		select
 		c.no, c.bno, c.content
 		c_content, c.nickname c_nickname,
@@ -80,7 +80,7 @@
 		r.register_date r_register_date, r.update_date
 		r_update_date
 		from
-		view_argument_post_comment c left join argument_post_reply
+		view_argument_post_comment2 c left join argument_post_reply2
 		r
 		on c.no = r.cno
 		where c.no = #{no}
@@ -89,7 +89,7 @@
 	
 	<select id="getLikesList" resultType="Long">
 		select cno from
-		argument_comment_like
+		argument_comment2_like
 		where username = #{username}
 	</select>
 
@@ -99,12 +99,12 @@
 		#{cno} and username = #{username} </select> -->
 
 	<insert id="addCommentLike">
-		insert into argument_comment_like (cno, username)
+		insert into argument_comment2_like (cno, username)
 		values (#{cno}, #{username})
 	</insert>
 
 	<delete id="deleteCommentLike">
-		delete from argument_comment_like
+		delete from argument_comment2_like
 		where cno = #{cno}
 		and username = #{username}
 	</delete>

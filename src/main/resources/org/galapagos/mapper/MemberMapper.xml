@@ -22,7 +22,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<select id="readMember" resultMap="memberMap">
-		select m.username, password, nickname, email, register_date, authorization
+		select m.username, m.password, m.nickname, m.email, m.register_date,
+				a.username, a.authorization
 		from argument_member m left outer join argument_member_authorization a
 		on m.username = a.username
 		where m.username = #{username}
@@ -51,5 +52,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			email = #{newEmail}
 		where username = #{username}
 	</update>
+	
+	<delete id="deleteMember" parameterType="org.galapagos.domain.MemberVO">
+		delete from argument_member
+		where username = #{username}
+	</delete>
 	
 </mapper>

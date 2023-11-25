@@ -58,9 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					"/security/signup").permitAll()
 			
 			.antMatchers("/security/profile", 
-					"/security/updateform").authenticated()
-			
-			.antMatchers("/security/admin").hasRole("ADMIN");
+					"/security/updateform",
+					"/security/deleteform").authenticated();
 
 		// 로그인 설정
 		http.formLogin()
@@ -132,9 +131,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	}
 
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-	    return super.authenticationManagerBean();
-	}
 }

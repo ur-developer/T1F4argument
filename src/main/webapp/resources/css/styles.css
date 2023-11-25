@@ -11248,3 +11248,109 @@ li {
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
 body {
   font-family: 'Black Han Sans', sans-serif;}
+  
+  
+  
+  
+  
+  /* security */
+  
+.error {
+	color: red;
+	font-size: 12pt;
+}
+
+.mailCheckWrap {
+	overflow: hidden;
+}
+
+.mailCheckButton {
+	border: none;
+	width: 6.5rem;
+	height: 2.5rem;
+	float: right;
+	align-items: center;
+}
+
+.mailInput {
+	width: 31rem;
+	height: 2.5rem;
+}
+
+.mailWarnMessage {
+	color: red;
+}
+
+.mailCheckInput {
+	width: 23rem;
+	height: 2.5rem;
+	float: left;
+}
+
+#mailCheckInputBoxFalse {
+	background-color: #ebebe4;
+}
+
+#mailCheckInputBoxTrue {
+	background-color: white;
+}
+
+.correct {
+	color: green;
+}
+
+.incorrect {
+	color: red;
+}
+
+.input {
+	width: 30rem;
+	height: 2.5rem;
+}
+
+.nicknameCheckTrue {
+	color: green;
+	display: none;
+}
+
+.nickCheckFalse {
+	color: red;
+	display: none;
+}
+
+.updateBtn {
+	width: 14rem;
+	height: 2.5rem;
+	display :inline-block;
+}
+
+.deleteBtn {
+	width: 14rem;
+	height: 2.5rem;
+	display :inline-block;
+}
+
+.signupBtn {
+	width: 14rem;
+	height: 2.5rem;
+	display :inline-block;
+}
+
+.loginBtn {
+	width: 14rem;
+	height: 2.5rem;
+	margin: auto;
+	display: block;
+}
+
+.memberBtn {
+	text-align: center;
+}
+
+.warningText {
+	text-align: center;
+}
+
+.warningRed {
+	color: red;
+}

@@ -7,13 +7,10 @@
 <%@ include file="../layouts/header.jsp" %>
 
 <div style="width: 500px" class="mx-auto">
-
-	<br>
 	
-	<h4><i class="fa-solid fa-users"></i> 정보 수정</h4>
+	<h4 class="mt-5"><i class="fa-solid fa-users"></i> 정보 수정</h4>
 
 	<hr>
-	<br>
 	<br>
 	
 	<form:form modelAttribute="updateMember" action="/security/updateform?_csrf=${_csrf.token}">
@@ -26,11 +23,15 @@
 			<form:errors path="newNickname" cssClass="error"/>
 		</div>
 		
+		<br>
+		
 		<div class="form-group">
 			<form:label path="originallyPassword"><i class="fa-solid fa-lock"></i> 현재 비밀번호</form:label>
 			<form:password path="originallyPassword" class="form-control"/>
 			<form:errors path="originallyPassword" cssClass="error"/>
 		</div>
+		
+		<br>
 		
 		<div class="form-group">
 			<form:label path="newPassword"><i class="fa-solid fa-lock"></i> 비밀번호</form:label>
@@ -38,11 +39,15 @@
 			<form:errors path="newPassword" cssClass="error"/>
 		</div>
 		
+		<br>
+		
 		<div class="form-group">
 			<form:label path="checkNewPassword"><i class="fa-solid fa-lock"></i> 비밀번호 확인</form:label>
 			<form:password path="checkNewPassword" class="form-control"/>
 			<form:errors path="checkNewPassword" cssClass="error"/>
 		</div>
+		
+		<br>
 		
 		<div class="form-group">
 			<form:label path="newEmail"><i class="fa-solid fa-envelope-open-text"></i> 이메일</form:label>
@@ -50,9 +55,16 @@
 			<form:errors path="newEmail" cssClass="error"/>
 		</div>
 		
-		<button type="submit" class="btn btn-primary">
-             <i class="fas fa-check"></i> 수정
-		</button>
+		<br>
+		<br>
+		
+		<div class="memberBtn">
+		
+			<button type="submit" class="btn btn-primary updateBtn">
+	             <i class="fas fa-check"></i> 수정
+			</button>
+			
+		</div>
 		
 	</form:form>
 </div>

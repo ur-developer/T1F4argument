@@ -15,7 +15,6 @@
 
 	<hr>
 	<br>
-	<br>
 
 	<!-- <form action="update" method="post"> -->
 		<div class="form-group">
@@ -43,26 +42,23 @@
 		<br>
 			
 		<div class="form-group">
-			<label for="registryDate"><i class="fa-regular fa-calendar"></i> 가입일</label>
-			<input type="text" class="form-control" id="registryDate" 
-				value="<fmt:formatDate value="${member.registerDate}" pattern="yyyy-MM-dd HH:mm"/>"
-				name="registryDate" readonly="readonly">
+			<label for="registerDate"><i class="fa-regular fa-calendar"></i> 가입일</label>
+			<input type="text" class="form-control" id="registerDate" 
+				value="<fmt:formatDate value="${member.registerDate}" pattern="yyyy-MM-dd"/>"
+				name="registerDate" readonly="readonly">
 		</div>
 		
 		<br>
-			
-		<div>
-			<a href="/security/updateform" class="btn btn-primary modifyBtn">
-				<i class="fa-regular fa-pen-to-square"></i> 정보수정
-			</a>
-		</div>
-			
 		<br>
-			
-		<div>			
-			<a href="#" class="deleteBtn">
-				<i class="fa-solid fa-user-slash"></i> 회원탈퇴
-			</a>
+		
+		<div class="memberBtn">
+				<a href="/security/updateform" class="btn btn-primary updateBtn">
+					<i class="fa-regular fa-pen-to-square"></i> 정보수정
+				</a>
+	
+				<a href="/security/deleteform" class="btn btn-primary deleteBtn">
+					<i class="fa-solid fa-user-slash"></i> 회원탈퇴
+				</a>				
 		</div>
 		
 </div>

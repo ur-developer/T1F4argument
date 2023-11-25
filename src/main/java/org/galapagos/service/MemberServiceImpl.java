@@ -1,6 +1,7 @@
 package org.galapagos.service;
 
 import org.galapagos.domain.AuthorizationVO;
+import org.galapagos.domain.DeleteMemberVO;
 import org.galapagos.domain.MemberVO;
 import org.galapagos.domain.UpdateMemberVO;
 import org.galapagos.mapper.MemberMapper;
@@ -22,6 +23,12 @@ public class MemberServiceImpl implements MemberService {
 		
 		return mapper.readMember(username);
 	}
+	
+	@Override
+	public boolean getNickname(String nickname) {
+				
+		return mapper.readNickname(nickname);
+	}
 
 	@Override
 	public void registerMember(MemberVO member) {
@@ -40,12 +47,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean getNickname(String nickname) {
-				
-		return mapper.readNickname(nickname);
-	}
-
-	@Override
 	public boolean updateMember(UpdateMemberVO updateMember) {
 		
 		MemberVO member = mapper.readMember(updateMember.getUsername());
@@ -57,6 +58,22 @@ public class MemberServiceImpl implements MemberService {
 			
 			updateMember.setNewPassword(encodingPassword);
 			mapper.updateMember(updateMember);
+			
+			return true;
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public boolean deleteMember(DeleteMemberVO deleteMember) {
+		
+		MemberVO member = mapper.readMember(deleteMember.getUsername());
+		
+		// 비밀번호 일치 시 해당 멤버 삭제
+		if(passwordEncoder.matches(deleteMember.getDeletePassword(), member.getPassword())) {
+			
+			mapper.deleteMember(member);
 			
 			return true;
 		}

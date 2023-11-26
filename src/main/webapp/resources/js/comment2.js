@@ -1,55 +1,55 @@
 //같이 보여줄 답글 버튼
-const replyAddable = `
-<button class="btn btn-light btn-sm reply-add-show-btn">
+const reply2Addable = `
+<button class="btn btn-light btn-sm reply2-add-show-btn">
 <i class="fa-solid fa-pen-to-square"></i> 답글
 </button>
+console.log(reply2-add-show-btn);
 `;
-
 //답글 버튼 구성
-const commentUpdatable = `
-	<button class="btn btn-light btn-sm comment-update-show-btn">
+const comment2Updatable = `
+	<button class="btn btn-light btn-sm comment2-update-show-btn">
 		<i class="fa-solid fa-pen-to-square"></i> 수정
 	</button>
-	<button class="btn btn-light btn-sm comment-delete-btn">
+	<button class="btn btn-light btn-sm comment2-delete-btn">
 		<i class="fa-solid fa-times"></i> 삭제
 	</button>
-	<button class="btn btn-light btn-sm reply-add-show-btn">
+	<button class="btn btn-light btn-sm reply2-add-show-btn">
 		<i class="fa-solid fa-pen-to-square"></i> 답글
 	</button>
 	
 `;
 
 //댓글 생성 하기 화면
-function createCommentTemplate(comment, nickname) {
-	console.log(comment, comment.nickname, comment.content)
+function createComment2Template(comment2, nickname) {
+	console.log(comment2, comment2.nickname, comment2.content)
 	console.log(nickname)
 	
 	return `
-	<div class="comment my-3" data-no="${comment.no}" data-nickname = "${comment.nickname}">
-		<div class="comment-title my-2 d-flex justify-content-between">
+	<div class="comment2 my-3" data-no="${comment2.no}" data-nickname = "${comment2.nickname}">
+		<div class="comment2-title my-2 d-flex justify-content-between">
 			<div >
 				<strong class="nickname">
-					${comment.nickname}
+					${comment2.nickname}
          		</strong>
-				<span class="text-muted ms-3 comment-date">
-					${moment(comment.registerDate).format('YYYY-MM-DD hh:mm')}
+				<span class="text-muted ms-3 comment2-date">
+					${moment(comment2.registerDate).format('YYYY-MM-DD hh:mm')}
 				</span>
 			</div>
 			
 			<div  class="btn-group">
-			${nickname && (nickname == comment.nickname) ? commentUpdatable : ''} 
-			${nickname && (nickname != comment.nickname) ? replyAddable : ''}      		
+			${nickname && (nickname == comment2.nickname) ? comment2Updatable : ''} 
+			${nickname && (nickname != comment2.nickname) ? reply2Addable : ''}      		
 			</div>
 		</div> 
-		<div class="comment-body">
-			<div class="comment-content">${comment.content}</div>
+		<div class="comment2-body">
+			<div class="comment2-content">${comment2.content}</div>
 		</div>
 		<span class="like">
-				<i class="${ comment.myLike ? 'fa-solid' : 'fa-regular' } fa-thumbs-up text-danger"
-		data-no="${comment.no}"></i>
-				<span class="like-count">${comment.likeCount}</span>
+				<i class="${ comment2.myLike ? 'fa-solid' : 'fa-regular' } fa-thumbs-up text-danger"
+		data-no="${comment2.no}"></i>
+				<span class="like-count">${comment2.likeCount}</span>
 			</span>
-		<div class="reply-list ml-5">
+		<div class="reply2-list ml-5">
 		<!-- 답글 목록 출력 영역 -->
 		</div>
 	</div>
@@ -57,24 +57,24 @@ function createCommentTemplate(comment, nickname) {
 }
 
 //댓글 목록 불러오기
-async function loadComments(bno, nickname) {
-	let comments = [];
+async function loadComments2(bno, nickname) {
+	let comments2 = [];
 	
 	
 	// API로 불러오기
 	console.log(COMMENT2_URL);
-	comments = await rest_get(COMMENT2_URL);
+	comments2 = await rest_get(COMMENT2_URL);
 
-	for(let comment of comments) {
-		console.log(comment);
-		const commentEl = $(createCommentTemplate(comment, nickname));
-		$('.comment-list').append(commentEl);
+	for(let comment2 of comments2) {
+		console.log(comment2);
+		const comment2El = $(createComment2Template(comment2, nickname));
+		$('.comment2-list').append(comment2El);
 		
-		let replyListEl = commentEl.find('.reply-list');
+		let reply2ListEl = comment2El.find('.reply2-list');
 		// 답글 목록 처리
-		for(let reply of comment.replyList) {
-			let replyEl = $(createReplyTemplate(reply, nickname));
-			replyListEl.append(replyEl);
+		for(let reply2 of comment2.reply2List) {
+			let reply2El = $(createReply2Template(reply2, nickname));
+			reply2ListEl.append(reply2El);
 
 		};
 	}
@@ -93,47 +93,47 @@ window.addEventListener("scroll", function () {
   const IS_BOTTOM = WINDOW_HEIGHT + SCROLLED_HEIGHT === DOC_TOTAL_HEIGHT;
  
   if (IS_BOTTOM && !isFetching) {
-    loadComments();
+    loadComments2();
   }
 });
 
 // 댓글 입력 가이드 이벤트 처리
 
-async function createComment(bno, nickname) {
-	const content = $('.new-comment-content').val();
+async function createComment2(bno, nickname) {
+	const content = $('.new-comment2-content').val();
 	console.log(content);
 	
 	if(!content) {
 		alert('내용을 입력하세요.');
-		$('.new-comment-content').focus();
+		$('.new-comment2-content').focus();
 		return;
 	}
 	
 	if(!confirm('댓글을 추가할까요?')) return;
-	let comment  = { bno, nickname , content }
-	console.log(comment);
+	let comment2  = { bno, nickname , content }
+	console.log(comment2);
 	
 	// REST로 등록
-	comment = await rest_create(COMMENT2_URL, comment);
+	comment2 = await rest_create(COMMENT2_URL, comment2);
 		
 
 	// 등록 성공 후 DOM 처리
-	const commentEl = createCommentTemplate(comment, nickname);
-	$('.comment-list').prepend($(commentEl));	
-	$('.new-comment-content').val('');
+	const comment2El = createComment2Template(comment2, nickname);
+	$('.comment2-list').prepend($(comment2El));	
+	$('.new-comment2-content').val('');
 		
 }
 
 //댓글 수정 입력칸 만들기
-function createCommentEditTemplate(comment) {
+function createComment2EditTemplate(comment2) {
 	return `
-		<div class="bg-light p-2 rounded comment-edit-block">
-			<textarea class="form-control mb-1 comment-editor"
-				>${comment.content}</textarea>
+		<div class="bg-light p-2 rounded comment2-edit-block">
+			<textarea class="form-control mb-1 comment2-editor"
+				>${comment2.content}</textarea>
 			<div class="text-end">
-				<button onClick="window.location.reload()" class="btn btn-light btn-sm py-1 comment-update-btn">
+				<button onClick="window.location.reload()" class="btn btn-light btn-sm py-1 comment2-update-btn">
 					<i class="fa-solid fa-check"></i> 확인</button>
-				<button class="btn btn-light btn-sm  py-1 comment-update-cancel-btn">
+				<button class="btn btn-light btn-sm  py-1 comment2-update-cancel-btn">
 					<i class="fa-solid fa-undo"></i> 최소</button>
 			</div>
 		</div>
@@ -142,22 +142,22 @@ function createCommentEditTemplate(comment) {
 
 //댓글 수정 화면 보여주기
 //
-function showUpdateComment(e) {
-	const commentEl = $(this).closest('.comment');
-	const no = commentEl.data("no");
+function showUpdateComment2(e) {
+	const comment2El = $(this).closest('.comment2');
+	const no = comment2El.data("no");
 	
-	const contentEl = commentEl.find('.comment-content');
-	const comment = { no, content: contentEl.html().trim() };
+	const contentEl = comment2El.find('.comment2-content');
+	const comment2 = { no, content: contentEl.html().trim() };
 	
-	console.log(comment);
+	console.log(comment2);
 	
 	contentEl.hide();
-	commentEl.find('.btn-group').hide();
+	comment2El.find('.btn-group').hide();
 	
 	
-	const template = createCommentEditTemplate(comment);
+	const template = createComment2EditTemplate(comment2);
 	const el = $(template);	
-	commentEl.find('.comment-body').append(el);
+	comment2El.find('.comment2-body').append(el);
 	
 }
 
@@ -165,50 +165,50 @@ function showUpdateComment(e) {
 
 
 // 댓글 수정 처리하기
-async function updateComment(commentEl, nickname) {
+async function updateComment2(comment2El, nickname) {
 	if(!confirm('수정할까요?')) return;
 
-	const editContentEl = commentEl.find('.comment-edit-block');	// 수정 창 
-	const content = editContentEl.find('.comment-editor').val();	// 수정 내용
-	const no = parseInt(commentEl.data("no"));
-	let comment = { no, nickname,	content };
+	const editContentEl = comment2El.find('.comment2-edit-block');	// 수정 창 
+	const content = editContentEl.find('.comment2-editor').val();	// 수정 내용
+	const no = parseInt(comment2El.data("no"));
+	let comment2 = { no, nickname,	content };
 	
 	
-	comment = await rest_modify(COMMENT2_URL + comment.no, comment);
-	console.log('수정', comment);	
+	comment2 = await rest_modify(COMMENT2_URL + comment2.no, comment2);
+	console.log('수정', comment2);	
 		
-	const contentEl = commentEl.find('.comment-content')	
+	const contentEl = comment2El.find('.comment2-content')	
 	editContentEl.remove();
-	contentEl.html(comment.content);	// 변경된 내용으로 화면 내용 수정
+	contentEl.html(comment2.content);	// 변경된 내용으로 화면 내용 수정
 	contentEl.show();	
 	
-	commentEl.find('.btn-group').show();
+	comment2El.find('.btn-group').show();
 }
 
 
 // 댓글 수정 취소 처리
-function cancelCommentUpdate(e) {
-	const commentEl = $(this).closest('.comment');
-	commentEl.find('.comment-content').show();
+function cancelComment2Update(e) {
+	const comment2El = $(this).closest('.comment2');
+	comment2El.find('.comment2-content').show();
 			//.css('display', 'block');
 	
-	commentEl.find('.comment-edit-block').remove();
-	commentEl.find('.btn-group').show();
+	comment2El.find('.comment2-edit-block').remove();
+	comment2El.find('.btn-group').show();
 }
 
 
 
 // 댓글 삭제
-async function deleteComment(e) {
+async function deleteComment2(e) {
 	if(!confirm('댓글을 삭제할까요?')) return;
 	
-	const comment = $(this).closest('.comment')
-	const no = comment.data("no");	
+	const comment2 = $(this).closest('.comment2')
+	const no = comment2.data("no");	
 
 	await rest_delete(COMMENT2_URL + no);
 		
 	// api 호출	
-	comment.remove();
+	comment2.remove();
 
 }
 

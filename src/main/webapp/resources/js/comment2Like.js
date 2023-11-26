@@ -1,11 +1,11 @@
-async function addCommentLike(nickname, btn) { // 닉넴이 아니라 유저의 고유값을 받아야한다~ 왜냐? 
+async function addComment2Like(nickname, btn) { // 닉넴이 아니라 유저의 고유값을 받아야한다~ 왜냐? 
 	const COMMENT2_LIKE_URL = '/api/board/comment2like';	 
 	let cno = parseInt(btn.data("no"));
-    let commentLike = { cno, username: nickname };
+    let comment2Like = { cno, username: nickname };
     
-    console.log(commentLike);
+    console.log(comment2Like);
 
-    await rest_create(COMMENT2_LIKE_URL + "/add", commentLike);
+    await rest_create(COMMENT2_LIKE_URL + "/add", comment2Like);
 
     let likeCount = btn.parent().find(".like-count");
     console.log(likeCount);
@@ -21,11 +21,11 @@ async function addCommentLike(nickname, btn) { // 닉넴이 아니라 유저의 
 }
 
 
-async function deleteCommentLike(nickname, btn) {
+async function deleteComment2Like(nickname, btn) {
 	const COMMENT2_LIKE_URL = '/api/board/comment2like';	
     let cno = parseInt(btn.data("no"));
 	
-	let commentLike = { cno, username: nickname };
+	let comment2Like = { cno, username: nickname };
 	
     await rest_delete(`${COMMENT2_LIKE_URL}/delete?cno=${cno}&username=${nickname}`);
 	

@@ -1,35 +1,38 @@
 //답글 버튼 관리
-const replyUpdatable = `
-	<button class="btn btn-light btn-sm reply-update-show-btn">
+const reply2Updatable = `
+	<button class="btn btn-light btn-sm reply2-update-show-btn">
 		<i class="fa-solid fa-pen-to-square"></i> 수정
 	</button>
-	<button class="btn btn-light btn-sm reply-delete-btn">
+	<button class="btn btn-light btn-sm reply2-delete-btn">
 		<i class="fa-solid fa-times"></i> 삭제
 	</button>
 `;
 
 //답글 생성
-function createReplyTemplate(reply, nickname) {
+function createReply2Template(reply2, nickname) {
+	console.log(reply2, reply2.nickname, reply2.content)
+	console.log(nickname)
 	return `
-		<div class="reply my-3" 
-		data-no="${reply.no}" 
-		data-nickname="${reply.nickname}">
-			<div class="reply-title my-2 d-flex justify-content-between">
-				<div class="reply-head">
-					<strong class="reply-nickname">
-						${reply.nickname}
+	
+		<div class="reply2 my-3" 
+		data-no="${reply2.no}" 
+		data-nickname="${reply2.nickname}">
+			<div class="reply2-title my-2 d-flex justify-content-between">
+				<div class="reply2-head">
+					<strong class="reply2-nickname">
+						${reply2.nickname}
 					</strong>
-					<span class="text-muted ml-3 reply-date">
-						${moment(reply.registerDate).format('YYYY-MM-DD hh:mm')}
+					<span class="text-muted ml-3 reply2-date">
+						${moment(reply2.registerDate).format('YYYY-MM-DD hh:mm')}
 					</span>
 				</div>
 				
 				<div class="btn-group">
-					${nickname && (nickname == reply.nickname) ? replyUpdatable : ''} 
+					${nickname && (nickname == reply2.nickname) ? reply2Updatable : ''} 
 				</div>
 			</div>
-			<div class="reply-body">
-				<div class="reply-content">${ reply.content || '' }</div>
+			<div class="reply2-body">
+				<div class="reply2-content">${ reply2.content || '' }</div>
 			</div>
 		</div>
 	`;
@@ -37,27 +40,27 @@ function createReplyTemplate(reply, nickname) {
 
 
 //답글 입력칸 생성
-function createReplyEditTemplate(reply) {
+function createReply2EditTemplate(reply2) {
 	return `
-		<div class="bg-light p-2 rounded reply-edit-block" 
-			data-no = "${reply.no}"
-			data-cno="${reply.cno}" 
-			data-nickname="${reply.nickname}">
+		<div class="bg-light p-2 rounded reply2-edit-block" 
+			data-no = "${reply2.no}"
+			data-cno="${reply2.cno}" 
+			data-nickname="${reply2.nickname}">
 				
-			<div>${reply.no ? '' : ' 답글 작성'}</div>
+			<div>${reply2.no ? '' : ' 답글 작성'}</div>
 				
-				<textarea class="form-control mb-1 reply-editor">
-					${reply.content || '' }
+				<textarea class="form-control mb-1 reply2-editor">
+					${reply2.content || '' }
 				</textarea>
 				
 				<div class="text-end">
 					<button onClick="window.location.reload()" class="btn btn-light btn-sm py-1 
-						${reply.no ? 'reply-update' : 'reply-add-btn'} ">
+						${reply2.no ? 'reply2-update' : 'reply2-add-btn'} ">
 						<i class="fa-solid fa-check"></i> 확인
 					</button>
 						
 					<button class="btn btn-light btn-sm py-1 
-						${reply.no ? 'reply-update-cancel' : 'reply-add-cancel-btn'} ">
+						${reply2.no ? 'reply2-update-cancel' : 'reply2-add-cancel-btn'} ">
 						<i class="fa-solid fa-undo"></i> 최소
 					</button>
 			</div>
@@ -66,98 +69,98 @@ function createReplyEditTemplate(reply) {
 }
 
 //답글 화면에 보여주기
-function showReplyAdd(el, nickname) {
-	const commentEl = el.closest('.comment');
-	const cno = commentEl.data("no");
-	const reply = { cno, nickname };
-	const template = createReplyEditTemplate(reply);
+function showReply2Add(el, nickname) {
+	const commen2El = el.closest('.commen2');
+	const cno = commen2El.data("no");
+	const reply2 = { cno, nickname };
+	const template = createReply2EditTemplate(reply2);
 
-	commentEl.find('.reply-list').append($(template));
-	commentEl.find('.btn-group').hide();
-	commentEl.find('.reply-editor').focus();
+	commen2El.find('.reply2-list').append($(template));
+	commen2El.find('.btn-group').hide();
+	commen2El.find('.reply2-editor').focus();
 }
 
 // 답글 추가
-async function addReply(el, nickname) { //el이 답글 작성하고 누르는 "확인"버튼
-	console.log('reply 추가');
+async function addReply2(el, nickname) { //el이 답글 작성하고 누르는 "확인"버튼
+	console.log('reply2 추가');
 
 	// cno 추출, nickname 추출
-	const commentEl = el.closest('.comment');
-	const replyBlock = commentEl.find('.reply-edit-block');
+	const commen2El = el.closest('.commen2');
+	const reply2Block = commen2El.find('.reply2-edit-block');
 	
-	const cno = parseInt(commentEl.data("no"));
-	const content =replyBlock.find('.reply-editor').val(); 
-	let reply = { cno, nickname, content };
+	const cno = parseInt(commen2El.data("no"));
+	const content =reply2Block.find('.reply2-editor').val(); 
+	let reply2 = { cno, nickname, content };
 
-	// REPLY POST API 호출
-	reply = await rest_create(REPLY2_URL, reply);
-	console.log(reply);
+	// reply2 POST API 호출
+	reply2 = await rest_create(REPLY2_URL, reply2);
+	console.log(reply2);
 
-	const replyEl = $(createReplyTemplate(reply, nickname));
-	commentEl.find('.reply-list').append(replyEl);
-	commentEl.find('.reply-edit-block').remove();
-	commentEl.find('.btn-group').show();
+	const reply2El = $(createReply2Template(reply2, nickname));
+	commen2El.find('.reply2-list').append(reply2El);
+	commen2El.find('.reply2-edit-block').remove();
+	commen2El.find('.btn-group').show();
 }
 
 // 답글 수정 화면 보여주기
-function showUpdateReply(el) {
-	const replyEl = el.closest('.reply');
+function showUpdateReply2(el) {
+	const reply2El = el.closest('.reply2');
 	
-	const no = replyEl.data("no");
-	const content = replyEl.find('.reply-content').html();
+	const no = reply2El.data("no");
+	const content = reply2El.find('.reply2-content').html();
 	
-	const reply = { no, content };
-	const editor = $(createReplyEditTemplate(reply));
+	const reply2 = { no, content };
+	const editor = $(createReply2EditTemplate(reply2));
 
 	
-	replyEl.find('.reply-content').hide();
-	replyEl.find('.btn-group').hide();
-	replyEl.find('.reply-body').append(editor);
+	reply2El.find('.reply2-content').hide();
+	reply2El.find('.btn-group').hide();
+	reply2El.find('.reply2-body').append(editor);
 }
 
 // 답글 수정한 것 등록 처리
-async function updateReply(el) {
+async function updateReply2(el) {
 	if(!confirm('답글을 수정할까요?')) return;
 
-	const replyEl = el.closest('.reply');
-	const replyContent = replyEl.find('.reply-content');
-	const content = replyEl.find('.reply-editor').val();
+	const reply2El = el.closest('.reply2');
+	const reply2Content = reply2El.find('.reply2-content');
+	const content = reply2El.find('.reply2-editor').val();
 	
-	const no = replyEl.data("no"); 
-	let reply = { no, content };
+	const no = reply2El.data("no"); 
+	let reply2 = { no, content };
 	
-	reply = await rest_modify(REPLY2_URL + no, reply);
+	reply2 = await rest_modify(REPLY2_URL + no, reply2);
 	
-	replyContent.html(content);
-	replyContent.show();
-	replyEl.find('.reply-edit-block').remove();
+	reply2Content.html(content);
+	reply2Content.show();
+	reply2El.find('.reply2-edit-block').remove();
 	
-	replyEl.find('.btn-group').show();
+	reply2El.find('.btn-group').show();
 }
 
 // 답글 수정 화면 취소
-function cancelReplyUpdate() {
-	const replyEl = $(this).closest('.reply');
-	replyEl.find('.reply-content').show(); //취소니까 원래 화면 복원한 것
-	replyEl.find('.reply-edit-block').remove();
+function cancelReply2Update() {
+	const reply2El = $(this).closest('.reply2');
+	reply2El.find('.reply2-content').show(); //취소니까 원래 화면 복원한 것
+	reply2El.find('.reply2-edit-block').remove();
 }
 
 
 
 // 답글 취소
-function cancelReply(e) {
-	const commentEl = $(this).closest('.comment');
-	commentEl.find('.reply-edit-block').remove();
-	commentEl.find('.btn-group').show();
+function cancelReply2(e) {
+	const commen2El = $(this).closest('.commen2');
+	commen2El.find('.reply2-edit-block').remove();
+	commen2El.find('.btn-group').show();
 }
 
 // 답글 삭제
-async function deleteReply(e) {
+async function deleteReply2(e) {
 	if(!confirm('답글을 삭제할까요?')) return;
 
-	const replyEl = $(this).closest('.reply');
-	const no = parseInt(replyEl.data("no"));
+	const reply2El = $(this).closest('.reply2');
+	const no = parseInt(reply2El.data("no"));
 	
 	await rest_delete(REPLY2_URL + no);
-	replyEl.remove();
+	reply2El.remove();
 }

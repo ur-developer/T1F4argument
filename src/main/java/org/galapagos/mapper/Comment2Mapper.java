@@ -23,10 +23,10 @@ public interface Comment2Mapper {
 	
 	List<Long> getLikesList(String username);
 	
-	int addCommentLike(Comment2LikeVO commentLike);
+	int addComment2Like(Comment2LikeVO commentLike);
 	
-	int deleteCommentLike(Comment2LikeVO commentLike);
+	int deleteComment2Like(Comment2LikeVO commentLike);
 
-	int getCommnetTotalCount(Criteria cri);
+	int getCommnet2TotalCount(Criteria cri);
 
 }

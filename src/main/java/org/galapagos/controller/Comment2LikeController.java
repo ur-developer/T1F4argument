@@ -25,7 +25,7 @@ public class Comment2LikeController {
 	@PostMapping("/add")
 	public Comment2LikeVO add(@RequestBody Comment2LikeVO commentLike) {
 		
-		mapper.addCommentLike(commentLike);
+		mapper.addComment2Like(commentLike);
 		return commentLike;
 		
 	}
@@ -33,7 +33,7 @@ public class Comment2LikeController {
 	@DeleteMapping("/delete")
 	public String deleteCommentLike(Comment2LikeVO commentLike) {
 		log.info("Comment Delete" + commentLike);
-		mapper.deleteCommentLike(commentLike);
+		mapper.deleteComment2Like(commentLike);
 		return "OK";
 		
 	}

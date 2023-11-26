@@ -62,8 +62,7 @@
 		r.register_date r_register_date, r.update_date
 		r_update_date
 		from
-		view_argument_post_comment2 c left join argument_post_reply2
-		r
+		view_argument_post_comment2 c left join argument_post_reply2 r
 		on c.no = r.cno
 		where bno = #{bno}
 		order by c.no desc, r.no
@@ -80,8 +79,7 @@
 		r.register_date r_register_date, r.update_date
 		r_update_date
 		from
-		view_argument_post_comment2 c left join argument_post_reply2
-		r
+		view_argument_post_comment2 c left join argument_post_reply2 r
 		on c.no = r.cno
 		where c.no = #{no}
 	</select>
@@ -98,12 +96,12 @@
 		resultType="long"> select count(*) from argument_post_comment where cno = 
 		#{cno} and username = #{username} </select> -->
 
-	<insert id="addCommentLike">
+	<insert id="addComment2Like">
 		insert into argument_comment2_like (cno, username)
 		values (#{cno}, #{username})
 	</insert>
 
-	<delete id="deleteCommentLike">
+	<delete id="deleteComment2Like">
 		delete from argument_comment2_like
 		where cno = #{cno}
 		and username = #{username}

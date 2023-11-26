@@ -30,7 +30,7 @@ public class Comment2Controller {
 	public int getCommentTotal(Criteria cri) {
 		log.info("get total count");
 
-		return mapper.getCommnetTotalCount(cri);
+		return mapper.getCommnet2TotalCount(cri);
 	}
 
 	@GetMapping("")

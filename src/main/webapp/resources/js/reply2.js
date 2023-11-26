@@ -70,14 +70,14 @@ function createReply2EditTemplate(reply2) {
 
 //답글 화면에 보여주기
 function showReply2Add(el, nickname) {
-	const commen2El = el.closest('.commen2');
-	const cno = commen2El.data("no");
+	const comment2El = el.closest('.comment2');
+	const cno = comment2El.data("no");
 	const reply2 = { cno, nickname };
 	const template = createReply2EditTemplate(reply2);
 
-	commen2El.find('.reply2-list').append($(template));
-	commen2El.find('.btn-group').hide();
-	commen2El.find('.reply2-editor').focus();
+	comment2El.find('.reply2-list').append($(template));
+	comment2El.find('.btn-group').hide();
+	comment2El.find('.reply2-editor').focus();
 }
 
 // 답글 추가
@@ -85,10 +85,10 @@ async function addReply2(el, nickname) { //el이 답글 작성하고 누르는 "
 	console.log('reply2 추가');
 
 	// cno 추출, nickname 추출
-	const commen2El = el.closest('.commen2');
-	const reply2Block = commen2El.find('.reply2-edit-block');
+	const comment2El = el.closest('.comment2');
+	const reply2Block = comment2El.find('.reply2-edit-block');
 	
-	const cno = parseInt(commen2El.data("no"));
+	const cno = parseInt(comment2El.data("no"));
 	const content =reply2Block.find('.reply2-editor').val(); 
 	let reply2 = { cno, nickname, content };
 
@@ -97,9 +97,9 @@ async function addReply2(el, nickname) { //el이 답글 작성하고 누르는 "
 	console.log(reply2);
 
 	const reply2El = $(createReply2Template(reply2, nickname));
-	commen2El.find('.reply2-list').append(reply2El);
-	commen2El.find('.reply2-edit-block').remove();
-	commen2El.find('.btn-group').show();
+	comment2El.find('.reply2-list').append(reply2El);
+	comment2El.find('.reply2-edit-block').remove();
+	comment2El.find('.btn-group').show();
 }
 
 // 답글 수정 화면 보여주기
@@ -149,9 +149,9 @@ function cancelReply2Update() {
 
 // 답글 취소
 function cancelReply2(e) {
-	const commen2El = $(this).closest('.commen2');
-	commen2El.find('.reply2-edit-block').remove();
-	commen2El.find('.btn-group').show();
+	const comment2El = $(this).closest('.comment2');
+	comment2El.find('.reply2-edit-block').remove();
+	comment2El.find('.btn-group').show();
 }
 
 // 답글 삭제

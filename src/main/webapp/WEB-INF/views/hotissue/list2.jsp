@@ -22,7 +22,7 @@
 </h1>
 
 <p></p>
-<%-- <div class="row">
+<div class="row">
     <c:forEach var="board" items="${list}">
         <div class="col-12 mb-3">
             <div class="card" style="width:100%">
@@ -65,33 +65,6 @@
         </div>
     </c:forEach>
 </div>
- --%>
-<div class="row">
-    <c:forEach var="board" items="${list}">
-						<a href="${cri.getLink('get')}&bno=${board.bno}">
-							<img class="card-img-top" src="/resources/images/issue.png" 
-						alt="${board.title}" style="width: 100%;">
-						</a>
-  
-                            <h4 class="card-title" style="font-size: 24px;">
-                                <a href="${cri.getLink('get')}&bno=${board.bno}">
-                                    ${board.title}
-                                </a>
-                            </h4>
-                            <p class="card-text" style="font-size: 16px;">
-                                ${board.content}
-                            </p>
-                     
-						<div class="likes-text">
-       						 ${board.nickname}
-						</div>
-						
-						<div>
-						${board.likes}
-						</div>
-    </c:forEach>
-</div>
-
 <hr>
 
 <div class="text-right">

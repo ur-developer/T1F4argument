@@ -6,12 +6,11 @@
 <%@include file="../layouts/header.jsp"%>
 
 
-<hr>
 
 <h1 class="page-header">
 	<i class="fas fa-list"></i> 명예의전당
 </h1>
-
+<hr>
 <p></p>
 
 <table class="table table-striped table-hover">
@@ -46,6 +45,7 @@
 		글쓰기
 	</a>
 </div>
+<br>
 
 <%@include file="../common/pagination.jsp"%>
 

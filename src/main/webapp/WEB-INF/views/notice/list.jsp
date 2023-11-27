@@ -6,11 +6,12 @@
 <%@include file="../layouts/header.jsp"%>
 
 
-<hr>
+
 
 <h1 class="page-header">
 	<i class="fas fa-list"></i> 공지사항
 </h1>
+<hr>
 
 <p></p>
 
@@ -45,7 +46,7 @@
 	</a>
 </div>
 
-<hr>
+
 
 <%@ include file="../common/search_bar.jsp" %>
 

@@ -3,7 +3,6 @@ const reply2Addable = `
 <button class="btn btn-light btn-sm reply2-add-show-btn">
 <i class="fa-solid fa-pen-to-square"></i> 답글
 </button>
-console.log(reply2-add-show-btn);
 `;
 //답글 버튼 구성
 const comment2Updatable = `
@@ -122,6 +121,7 @@ async function createComment2(bno, nickname) {
 	$('.comment2-list').prepend($(comment2El));	
 	$('.new-comment2-content').val('');
 		
+	location.reload(true);
 }
 
 //댓글 수정 입력칸 만들기

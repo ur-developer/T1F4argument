@@ -94,7 +94,12 @@ window.addEventListener("scroll", function () {
 
 // 댓글 입력 가이드 이벤트 처리
 
+
 async function createComment(bno, nickname) {
+	console.log(window)
+
+
+
 	const content = $('.new-comment-content').val();
 	console.log(content);
 	
@@ -105,6 +110,7 @@ async function createComment(bno, nickname) {
 	}
 	
 	if(!confirm('댓글을 추가할까요?')) return;
+	
 	let comment  = { bno, nickname , content }
 	console.log(comment);
 	
@@ -114,8 +120,11 @@ async function createComment(bno, nickname) {
 
 	// 등록 성공 후 DOM 처리
 	const commentEl = createCommentTemplate(comment, nickname);
-	$('.comment-list').prepend($(commentEl));	
+	$('.comment-list').prepend($(commentEl));
 	$('.new-comment-content').val('');
+	
+	
+	location.reload(true);
 		
 }
 
@@ -204,6 +213,8 @@ async function deleteComment(e) {
 		
 	// api 호출	
 	comment.remove();
+	
+	location.reload(true);
 
 }
 

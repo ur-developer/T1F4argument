@@ -83,8 +83,9 @@ public class BoardController {
 	@GetMapping({ "/get", "/modify" })
 	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, 
 			Principal principal, Model model) throws Exception {
-
-		model.addAttribute("board", service.getBoard(bno, principal));
+		BoardVO board = service.getBoard(bno, principal);
+		log.info(board);
+		model.addAttribute("board", board);
 
 	}
 

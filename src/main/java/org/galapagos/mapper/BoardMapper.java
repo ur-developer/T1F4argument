@@ -42,5 +42,9 @@ public interface BoardMapper {
 	public void addLike(LikeVO like);
 	
 	public void deleteLike(LikeVO like);
+	
+	public List<Long> getCommentList(String username);
+	
+	public List<Long> getComment2List(String username);
 
 }

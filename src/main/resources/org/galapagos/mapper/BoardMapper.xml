@@ -33,6 +33,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result property="updateDate" column="update_date"/>
 	<result property="hit" column="hit"/>
 	<result property="likes" column="likes"/>
+	<result property="comment1Like" column="comment1_like"/>
+	<result property="comment2Like" column="comment2_like"/>
 </resultMap>
 
 
@@ -127,6 +129,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getLikesList" resultType="long">
 		select bno from argument_post_likes
 		where username = #{username}
+	</select>
+	
+	<select id="getCommentList" resultType="long">
+		select bno from argument_post_comment
+		where nickname = #{username}
+	</select>
+	
+	<select id="getComment2List" resultType="long">
+		select bno from argument_post_comment2
+		where nickname = #{username}
 	</select>
 	
 	<insert id="addLike">

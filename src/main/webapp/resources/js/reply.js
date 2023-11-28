@@ -58,7 +58,7 @@ function createReplyEditTemplate(reply) {
 						
 					<button class="btn btn-light btn-sm py-1 
 						${reply.no ? 'reply-update-cancel' : 'reply-add-cancel-btn'} ">
-						<i class="fa-solid fa-undo"></i> 최소
+						<i class="fa-solid fa-undo"></i> 취소
 					</button>
 			</div>
 		</div>

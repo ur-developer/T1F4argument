@@ -11,17 +11,24 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
- @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap'); div{
+ 
+ @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+ body {
+font-family: 'Do Hyeon', sans-serif;  }
+
+  
+div{
   border:black;
  }
+
+#content{position : absolute; top:50%; height:100px; margin-top:-50px;}
+
 img{
  text-align:center;
 }
 body {
   overflow-x: hidden;
   position: relative; }
- body {
-  font-family: 'Black Han Sans', sans-serif;}
 
  a {
   text-decoration: none;
@@ -11154,6 +11161,7 @@ html {
   user-select: none;
 }
 .slide_item {
+
   /* layout */
   display: flex;
   align-items: center;
@@ -11165,7 +11173,7 @@ html {
 
   /* size */
   width: 100%;
-  height: 300px;
+  height: 100%;
   /* flex item의 flex-shrink는 기본값이 1이므로 컨테이너 크기에 맞게 줄어드는데, 슬라이드를 구현할 것이므로 줄어들지 않도록 0을 준다. */
   flex-shrink: 0;
 
@@ -11189,8 +11197,9 @@ html {
 
   /* style */
   border-radius: 100%;
-  background-color: #00798c;
+/*  background-color: #534b52;*/
     cursor: pointer;
+   
 }
 
 .slide_prev_button {
@@ -11245,112 +11254,30 @@ li {
   flex-shrink: 0;
   transition: left 0.15s;
 }
-@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
-body {
-  font-family: 'Black Han Sans', sans-serif;}
-  
-  
-  
-  
-  
-  /* security */
-  
-.error {
-	color: red;
-	font-size: 12pt;
-}
 
-.mailCheckWrap {
-	overflow: hidden;
-}
+ body {
+font-family: 'Do Hyeon', sans-serif;  }
 
-.mailCheckButton {
-	border: none;
-	width: 6.5rem;
-	height: 2.5rem;
-	float: right;
-	align-items: center;
+.my_gradient_1{
+	background-image: linear-gradient(to bottom,aliceblue,#00798c);
+	
 }
+.my_gradient_2{
+	background-image: linear-gradient(to bottom,#00798c,#ffe4c4);
+	
+}
+body { height: 2000px; }
 
-.mailInput {
-	width: 31rem;
-	height: 2.5rem;
+.sideBanner {
+  position: absolute;
+  width: 150px;
+  height: 200px;
+  top: 50px;
+  background-color: #999900;
+  color: #fffffff;
 }
-
-.mailWarnMessage {
-	color: red;
-}
-
-.mailCheckInput {
-	width: 23rem;
-	height: 2.5rem;
-	float: left;
-}
-
-#mailCheckInputBoxFalse {
-	background-color: #ebebe4;
-}
-
-#mailCheckInputBoxTrue {
-	background-color: white;
-}
-
-.correct {
-	color: green;
-}
-
-.incorrect {
-	color: red;
-}
-
-.input {
-	width: 30rem;
-	height: 2.5rem;
-}
-
-.nicknameCheckTrue {
-	color: green;
-	display: none;
-}
-
-.nickCheckFalse {
-	color: red;
-	display: none;
-}
-
-.updateBtn {
-	width: 14rem;
-	height: 2.5rem;
-	display :inline-block;
-}
-
-.deleteBtn {
-	width: 14rem;
-	height: 2.5rem;
-	display :inline-block;
-}
-
-.signupBtn {
-	width: 14rem;
-	height: 2.5rem;
-	display :inline-block;
-}
-
-.loginBtn {
-	width: 14rem;
-	height: 2.5rem;
-	margin: auto;
-	display: block;
-}
-
-.memberBtn {
-	text-align: center;
-}
-
-.warningText {
-	text-align: center;
-}
-
-.warningRed {
-	color: red;
-}
+	
+div.head{
+	border: solid;
+	width:100px;
+	}

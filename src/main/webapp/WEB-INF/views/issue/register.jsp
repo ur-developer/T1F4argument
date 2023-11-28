@@ -58,6 +58,19 @@ $(document).ready(function() {
 				<form:textarea path="content" class="form-control"></form:textarea>
 				<form:errors path="content" cssClass="error"/>
 			</div>
+			
+			<div class="form-group">
+				<form:label path="leftword">이슈 단어</form:label>
+				<form:textarea path="leftword" class="form-control"></form:textarea>
+				<form:errors path="leftword" cssClass="error"/>
+			</div>
+			
+			
+			<div class="form-group">
+				<form:label path="rightword">이슈단어2</form:label>
+				<form:textarea path="rightword" class="form-control"></form:textarea>
+				<form:errors path="rightword" cssClass="error"/>
+			</div>
 
 			<button type="submit" class="btn btn-primary list">
 				<i class="fas fa-check"></i> 확인

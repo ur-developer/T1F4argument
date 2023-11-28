@@ -21,8 +21,7 @@ const commentUpdatable = `
 
 //댓글 생성 하기 화면
 function createCommentTemplate(comment, nickname) {
-	console.log(comment, comment.nickname, comment.content)
-	console.log(nickname)
+	
 	
 	return `
 	<div class="comment my-3" data-no="${comment.no}" data-nickname = "${comment.nickname}">
@@ -63,6 +62,7 @@ async function loadComments(bno, nickname) {
 	// API로 불러오기
 	console.log(COMMENT_URL);
 	comments = await rest_get(COMMENT_URL);
+	
 
 	for(let comment of comments) {
 		console.log(comment);

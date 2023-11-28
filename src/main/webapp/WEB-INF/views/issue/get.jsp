@@ -10,12 +10,28 @@
 <script src="/resources/js/reply.js"></script>
 
 <style>
-    .page-header {
+	.word-section {
+    text-align: center;
+	}
+
+	.word-container {
+    display: inline-block;
+    margin-right: 200px;
+ 	}
+  
+   .word-image {
+    width: 150px; /* 그림의 가로 크기를 조절 */
+    height: 150px; /* 그림의 세로 크기를 조절 */
+    margin-bottom: 5px; /* 그림과 단어 사이의 간격을 조절 */
+    }
+    
+   .page-header {
         border-top: 1px solid lightgray;
         border-bottom: 1px solid lightgray; /* 여기서 색상을 조절할 수 있어요 */
         padding-bottom: 5px;
         margin-bottom: 10px;
     }
+
 </style>
 
 <c:if test="${not empty username}">
@@ -108,6 +124,19 @@ $(document).ready(function() {
 <hr>
 
 <div>${board.content}</div>
+	
+<hr>
+
+<div class="word-section">
+  <div class="word-container">
+    <img src="/resources/images/dora.jpg" alt="Leftword Image" class="word-image">
+    <div>${board.leftword}</div>
+  </div>
+  <div class="word-container">
+    <img src="/resources/images/dora.jpg" alt="Rightword Image" class="word-image">
+    <div>${board.rightword}</div>
+  </div>
+</div>
 	
 <span class="like">
 	<i class="${ board.myLike ? 'fa-solid' : 'fa-regular' } fa-regular fa-thumbs-up text-primary"

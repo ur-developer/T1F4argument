@@ -2,10 +2,7 @@
 
 
 </div>
-<br>
-<br>
-<br>
-</section>
+
  <!-- Footer-->
         <footer class="bg-dark py-4 mt-auto mb-0">
             <div class="container px-5">

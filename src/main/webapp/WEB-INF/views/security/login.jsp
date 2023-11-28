@@ -7,23 +7,13 @@
 
 <%@ include file="../layouts/header.jsp"%>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
-<script>
-
-	// 로그인 성공 시 다시 로그인 페이지로 갈 수 없게 함
-	window.history.forward();	
-	
-</script>
-
-<div style="width: 500px" class="mx-auto mt-5">
+<div style="width: 500px" class="mx-auto">
 
 	<c:if test="${param.error == 'true' }">
-		<div class="error">
-			사용자 ID 또는 비밀번호가 일치하지 않습니다.	
-		</div>
+		<div class="error">사용자 ID 또는 비밀번호가 일치하지 않습니다.</div>
 	</c:if>
 	<c:if test="${param.error == 'login_required' }">
+
 		<div class="error">
 			로그인이 필요한 서비스입니다.
 		</div>

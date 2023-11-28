@@ -77,9 +77,9 @@
 	});
 </script>
 
-<div style="width: 500px" class="mx-auto mt-5">
+<div style="width: 500px" class="mx-auto">
 	
-	<h4 class="mt-5">회원가입</h4>
+	<h4 class="mt-5"><i class="fa-solid fa-user-plus"></i> 회원가입</h4>
 
 	<hr>
 	<br>
@@ -94,8 +94,6 @@
 					cssClass="form-control"/>
 				<form:errors path="username" cssClass="error"/>
 			</div>
-			
-			<br>
 	
 			<div class="form-group">
 				<form:label path="password"><i class="fa-solid fa-lock"></i> 비밀번호</form:label>
@@ -103,8 +101,6 @@
 					cssClass="form-control"/>
 				<form:errors path="password" cssClass="error"/>
 			</div>
-			
-			<br>
 		
 			<div class="form-group">
 				<form:label path="checkPassword"><i class="fa-solid fa-lock"></i> 비밀번호 확인</form:label>
@@ -113,16 +109,12 @@
 				<form:errors path="checkPassword" cssClass="error"/>
 			</div>
 			
-			<br>
-			
 			<div class="form-group">
 				<form:label path="nickname"><i class="fa-solid fa-file-signature"></i> 닉네임</form:label>
 				<form:input path="nickname" class="input" placeholder="닉네임을 입력하세요."
 					cssClass="form-control"/>
 				<form:errors path="nickname" cssClass="error"/>
 			</div>
-			
-			<br>
 		
 			<div class="form-group">
 				<label for="email" class="mailAddress"><i class="fa-solid fa-at"></i> 이메일</label>
@@ -156,13 +148,9 @@
 				</div>
 			</div>
 			
-			<br>
-			
-			<div class="memberBtn">
-				<button type="submit" class="btn btn-primary signupBtn">
-	                <i class="fa-solid fa-right-to-bracket"></i> 회원가입
-	        	</button>
-	        </div>
+			<button type="submit" class="btn btn-primary btn-block">
+                <i class="fa-solid fa-right-to-bracket"></i> 회원가입
+        	</button>
 
 		</form:form>
 	</div>

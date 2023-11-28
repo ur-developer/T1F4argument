@@ -6,45 +6,177 @@
 <%@include file="../layouts/header.jsp"%>
 
 
-<hr>
-
 <h1 class="page-header">
 	<i class="fas fa-list"></i> 명예의전당
 </h1>
-
-<p></p>
-
-<table class="table table-striped table-hover">
-	<thead>
-		<tr>
-			<th style = "text-align: center">탭</th>
-			<th style = "text-align: center">제목</th>
-			<th style = "text-align: center">작성자</th>
-			<th style = "text-align: center">등록일</th>
-			<th style = "text-align: center">조회</th>
-			<th style = "text-align: center">추천</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach var="board" items="${list}">
-			<tr>
-				<td style="width: 60px; text-align: center;">명예</td>
-       	 		<td><a href="get?bno=${board.bno}">${board.title}</a></td>
-      			<td style="width: 100px; text-align: center;">${board.nickname}</td>
-        		<td style="width: 130px; text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.registerDate}" /></td>
-        		<td style="width: 80px; text-align: center;">${board.hit}</td>
-        		<td style="width: 80px; text-align: center;">${board.likes}</td>
-      		</tr>
-		</c:forEach>
-	</tbody>
-</table>
-
 <hr>
 
-<div class="text-right">
-	<a href="register" class="btn btn-primary"> <i class="far fa-edit"></i>
-		글쓰기
-	</a>
+<section class="pt-5">
+<div class="col-md-5" style="float: none; margin: auto;">
+					<h2 style="text-align: center;">
+						.1.
+						</h1>
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<div class="col-lg-auto d-none d-lg-block">
+								<img
+									src="${pageContext.request.contextPath}/resources/images/hotissue.png">
+							</div>
+							<div class="col p-1 d-flex flex-column position-static">
+								<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
+								<h2 class="mb-0" style="float: none; margin: 0 auto;">
+									제목
+									</h3>
+
+									<div class="mb-1 text-body-secondary"
+										style="float: none; margin: 0 auto;">날짜</div>
+									<br> <br>
+									<p class="card-text mb-auto"
+										style="float: none; margin: 0 auto;">내용</p>
+									<br> <a href="${pageContext.request.contextPath}/hotissue/list"
+										class="icon-link gap-1 icon-link-hover stretched-link">
+										핫 이슈 보러가기 </a>
+							</div>
+
+						</div>
+				</div>
+<br>
+<br>
+</section> 
+<hr class="hr-layout">
+<Br>
+<br>
+<div class="container px-5">
+		<div class="row gx-10">
+
+			<div class="row mb-4">
+
+				<div class="col-md-5" style="float: none; margin: 0 auto;">
+					<h2 style="text-align: center;">
+						.2.
+						</h1>
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<div class="col-lg-auto d-none d-lg-block">
+								<img
+									src="${pageContext.request.contextPath}/resources/images/hotissue.png">
+							</div>
+							<div class="col p-1 d-flex flex-column position-static">
+								<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
+								<h2 class="mb-0" style="float: none; margin: 0 auto;">
+									제목
+									</h3>
+
+									<div class="mb-1 text-body-secondary"
+										style="float: none; margin: 0 auto;">날짜</div>
+									<br> <br>
+									<p class="card-text mb-auto"
+										style="float: none; margin: 0 auto;">내용</p>
+									<br> <a href="${pageContext.request.contextPath}/hotissue/list"
+										class="icon-link gap-1 icon-link-hover stretched-link">
+										핫 이슈 보러가기 </a>
+							</div>
+
+						</div>
+				</div>
+				<div class="col-md-5" style="float: none; margin: 0 auto;">
+					<h2 style="text-align: center;">
+						.3.
+						</h1>
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<div class="col-lg-auto d-none d-lg-block">
+								<img
+									src="${pageContext.request.contextPath}/resources/images/hotissue.png">
+							</div>
+							<div class="col p-1 d-flex flex-column position-static">
+								<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
+								<h2 class="mb-0" style="float: none; margin: 0 auto;">
+									제목
+									</h3>
+
+									<div class="mb-1 text-body-secondary"
+										style="float: none; margin: 0 auto;">날짜</div>
+									<br> <br>
+									<p class="card-text mb-auto"
+										style="float: none; margin: 0 auto;">내용</p>
+									<br> <a href="{pageContext.request.contextPath}/hotissue/list"
+										class="icon-link gap-1 icon-link-hover stretched-link">
+										핫 이슈 보러가기  </a>
+							</div>
+
+						</div>
+				</div>
+			</div>
+</div>
+</div>
+<br>
+
+<hr class="hr-layout">
+
+<div class="container pt-5 px-5">
+		<div class="row gx-10">
+
+			<div class="row mb-4">
+
+				<div class="col-md-5" style="float: none; margin: 0 auto;">
+					<h2 style="text-align: center;">
+						.4.
+						</h1>
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<div class="col-lg-auto d-none d-lg-block">
+								<img
+									src="${pageContext.request.contextPath}/resources/images/hotissue.png">
+							</div>
+							<div class="col p-1 d-flex flex-column position-static">
+								<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
+								<h2 class="mb-0" style="float: none; margin: 0 auto;">
+									제목
+									</h3>
+
+									<div class="mb-1 text-body-secondary"
+										style="float: none; margin: 0 auto;">날짜</div>
+									<br> <br>
+									<p class="card-text mb-auto"
+										style="float: none; margin: 0 auto;">내용</p>
+									<br> <a href="{pageContext.request.contextPath}/hotissue/list"
+										class="icon-link gap-1 icon-link-hover stretched-link">
+										핫 이슈 보러가기 </a>
+							</div>
+
+						</div>
+				</div>
+				<div class="col-md-5" style="float: none; margin: 0 auto;">
+					<h2 style="text-align: center;">
+						.5.
+						</h1>
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<div class="col-lg-auto d-none d-lg-block">
+								<img
+									src="${pageContext.request.contextPath}/resources/images/hotissue.png">
+							</div>
+							<div class="col p-1 d-flex flex-column position-static">
+								<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
+								<h2 class="mb-0" style="float: none; margin: 0 auto;">
+									제목
+									</h3>
+
+									<div class="mb-1 text-body-secondary"
+										style="float: none; margin: 0 auto;">날짜</div>
+									<br> <br>
+									<p class="card-text mb-auto"
+										style="float: none; margin: 0 auto;">내용</p>
+									<br> <a href="{pageContext.request.contextPath}/hotissue/list"
+										class="icon-link gap-1 icon-link-hover stretched-link">
+										핫 이슈 보러가기 </a>
+							</div>
+
+						</div>
+				</div>
+			</div>
+</div>
 </div>
 
 <%@include file="../common/pagination.jsp"%>

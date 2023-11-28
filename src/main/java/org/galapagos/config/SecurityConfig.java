@@ -55,11 +55,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers(
 					"/security/login", 
-					"/security/signup").permitAll()
+					"/security/signup",
+                    "/security/authentication",
+                    "/security/authenticationPassword").permitAll()
 			
 			.antMatchers("/security/profile", 
 					"/security/updateform",
-					"/security/deleteform").authenticated();
+					"/security/deleteform",
+					"/security/findIDResult").authenticated();
 
 		// 로그인 설정
 		http.formLogin()

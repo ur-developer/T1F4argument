@@ -3,6 +3,7 @@ package org.galapagos.service;
 import org.galapagos.domain.AuthorizationVO;
 import org.galapagos.domain.DeleteMemberVO;
 import org.galapagos.domain.MemberVO;
+import org.galapagos.domain.ResetPasswordVO;
 import org.galapagos.domain.UpdateMemberVO;
 import org.galapagos.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,29 @@ public class MemberServiceImpl implements MemberService {
 	public boolean getNickname(String nickname) {
 				
 		return mapper.readNickname(nickname);
+	}
+	
+	@Override
+	public MemberVO getEmail(String email) {
+		
+		MemberVO member = mapper.readEmail(email);
+		
+		if(member == null) {
+			return null;
+		}
+		
+		return member;
+	}
+	
+	@Override
+	public boolean resetPassword(ResetPasswordVO resetPassword) {
+		
+		String encodingPassword = passwordEncoder.encode(resetPassword.getNewPassword());
+		
+		resetPassword.setNewPassword(encodingPassword);
+		mapper.resetPassword(resetPassword);
+		
+		return true;
 	}
 
 	@Override

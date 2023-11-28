@@ -48,18 +48,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="readIssue" resultType="BoardVO">
-		select * from view_post 
+		select * from argument_post 
 		where bno = #{bno}
 	</select>
 
 	<insert id="insertIssue">
-		insert into argument_post (category_id, title, content, nickname)
-		values(1, #{title}, #{content}, #{nickname} )
+		insert into argument_post (category_id, title, content, nickname, leftword, rightword)
+		values(1, #{title}, #{content}, #{nickname}, #{leftword}, #{rightword})
     </insert>
 
 	<insert id="insertSelectKeyIssue">
-		insert into argument_post (category_id, title, content, nickname)
-		values(1, #{title}, #{content}, #{nickname} )
+		insert into argument_post (category_id, title, content, nickname, leftword, rightword)
+		values(1, #{title}, #{content}, #{nickname}, #{leftword}, #{rightword})
 
 		<selectKey resultType="Long" keyProperty="bno"
 			keyColumn="bno" order="AFTER">
@@ -77,6 +77,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			title = #{title},
 			content = #{content},
 			nickname = #{nickname},
+			leftword = #{leftword},
+			rightwrod = #{rightword},
 			update_date = now()
 		where bno = #{bno}
 	</update>

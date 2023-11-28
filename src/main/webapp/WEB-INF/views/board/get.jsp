@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -34,15 +33,15 @@
 
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
+        data.addColumn('string', '댓글창');
+        data.addColumn('number', '댓글수');
         data.addRows([
-          ['후보1', 7],
-          ['후보2', 4],
+          ['후보1', ${board.comment1Count}],
+          ['후보2', ${board.comment2Count}],
         ]);
 
         // Set chart options
-        var options = {'title':'여기에 타이틀을 넣어주세요',
+        var options = {'title':'갑론을박',
                        'width':400,
                        'height':300};
 
@@ -239,21 +238,58 @@ $(document).ready(async function() {
 			<i class="fa-regular fa-comments"></i> 후보1
 			<hr>
 			<div class="comment-list"></div>
-			<div class="bg-light p-2 rounded my-5">
-				<div>${username == null ? '댓글을 작성하려면 먼저 로그인하세요' : '댓글 작성' }</div>
-				<div>
-					<textarea class="form-control new-comment-content" rows="3"
-						${username == null ? 'disabled' : '' }></textarea>
-					<div class="text-right">
-						<button onClick="window.location.reload()"
-							class="btn btn-primary btn-sm my-2 comment-add-btn"
-							${username == null ? 'disabled' : '' }>
-							<i class="fa-regular fa-comment"></i> 확인
-						</button>
-					</div>
+		<div class="bg-light p-2 rounded my-5">
+	<c:choose>
+		<c:when test="${username == null}">
+			<div>댓글을 작성하려면 먼저 로그인하세요</div>
+			<div>
+				<textarea class="form-control new-comment-content" rows="3" disabled></textarea>
+				<div class="text-right">
+					<button class="btn btn-primary btn-sm my-2 comment-add-btn" disabled>
+						<i class="fa-regular fa-comment"></i> 확인
+					</button>
 				</div>
 			</div>
-			<%-- </c:if> --%>
+		</c:when>
+		<c:when test="${board.myComment}">
+			<div>댓글을 중복해서 작성할 수 없습니다</div>
+			<div>
+				<textarea class="form-control new-comment-content" rows="3" disabled></textarea>
+				<div class="text-right">
+					<button class="btn btn-primary btn-sm my-2 comment-add-btn" disabled>
+						<i class="fa-regular fa-comment"></i> 확인
+					</button>
+				</div>
+			</div>
+		</c:when>
+		<c:when test="${board.myComment2}">
+			<div>댓글을 중복해서 작성할 수 없습니다</div>
+			<div>
+				<textarea class="form-control new-comment-content" rows="3" disabled></textarea>
+				<div class="text-right">
+					<button class="btn btn-primary btn-sm my-2 comment-add-btn" disabled>
+						<i class="fa-regular fa-comment"></i> 확인
+					</button>
+				</div>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div>댓글 작성</div>
+			<div>
+				<textarea class="form-control new-comment-content" rows="3"></textarea>
+				<div class="text-right">
+					<button  class="btn btn-primary btn-sm my-2 comment-add-btn">
+						<i class="fa-regular fa-comment"></i> 확인
+					</button>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>
+	
+	
+	
+</div>
+<%-- </c:if> --%>
 
 		</div>
 
@@ -263,29 +299,84 @@ $(document).ready(async function() {
 		<div class="my-5">
 			<i class="fa-regular fa-comments"></i> 후보2
 			<hr>
-			<div class="comment-list"></div>
+			<div class="comment2-list"></div>
 		</div>
 		<div class="bg-light p-2 rounded my-5">
-			<div>${username == null ? '댓글을 작성하려면 먼저 로그인하세요' : '댓글 작성' }</div>
-			<div>
-				<textarea class="form-control new-comment-content" rows="3"
-					${username == null ? 'disabled' : '' }></textarea>
-				<div class="text-right">
-					<button onClick="window.location.reload()"
-						class="btn btn-primary btn-sm my-2 comment-add-btn"
-						${username == null ? 'disabled' : '' }>
-						<i class="fa-regular fa-comment"></i> 확인
-					</button>
-				</div>
-			</div>
+			<c:choose>
+				<c:when test="${username == null}">
+					<div>댓글을 작성하려면 먼저 로그인하세요</div>
+					<div>
+						<textarea class="form-control new-comment2-content" rows="3"
+							disabled></textarea>
+						<div class="text-right">
+							<button onClick="window.location.reload()"
+								class="btn btn-primary btn-sm my-2 comment2-add-btn" disabled>
+								<i class="fa-regular fa-comment"></i> 확인
+							</button>
+						</div>
+					</div>
+				</c:when>
+				<c:when test="${board.myComment}">
+					<div>댓글을 중복해서 작성할 수 없습니다</div>
+					<div>
+						<textarea class="form-control new-comment2-content" rows="3"
+							disabled></textarea>
+						<div class="text-right">
+							<button 
+								class="btn btn-primary btn-sm my-2 comment2-add-btn" disabled>
+								<i class="fa-regular fa-comment"></i> 확인
+							</button>
+						</div>
+					</div>
+				</c:when>
+				<c:when test="${board.myComment2}">
+					<div>댓글을 중복해서 작성할 수 없습니다</div>
+					<div>
+						<textarea class="form-control new-comment2-content" rows="3"
+							disabled></textarea>
+						<div class="text-right">
+							<button onClick="window.location.reload()"
+								class="btn btn-primary btn-sm my-2 comment2-add-btn" disabled>
+								<i class="fa-regular fa-comment"></i> 확인
+							</button>
+						</div>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div>댓글 작성</div>
+					<div>
+						<textarea class="form-control new-comment2-content" rows="3"></textarea>
+						<div class="text-right">
+							<button
+								class="btn btn-primary btn-sm my-2 comment2-add-btn">
+								<i class="fa-regular fa-comment"></i> 확인
+							</button>
+						</div>
+					</div>
+				</c:otherwise>
+			</c:choose>
+	
 		</div>
-		<%-- </c:if> --%>
+<%-- </c:if> --%>
 
 
 	</div>
 </div>
 
+<div class="mt-4">
+	<a href="${cri.getLink('list')}" class="btn btn-primary list"> <i
+		class="fas fa-list"></i> 목록
+	</a>
 
+	<c:if test="${username == board.nickname}">
+		<a href="${cri.getLinkWithBno('modify', board.bno) }"
+			class="btn btn-primary modify"> <i class="far fa-edit"></i> 수정
+		</a>
+		<a href="#" class="btn btn-danger remove"> <i
+			class="fas fa-trash-alt"></i> 삭제
+		</a>
+	</c:if>
+</div>
 
 
 <%-- 

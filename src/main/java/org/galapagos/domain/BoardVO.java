@@ -33,6 +33,10 @@ public class BoardVO {
 	private int hit;
 	private Integer likes;
 	private Boolean myLike;
+	private Integer comment1Count;
+	private Integer comment2Count;
+	private Boolean myComment;
+	private Boolean myComment2;
 	
 	// 단어 추가 기능
 	private String leftword;

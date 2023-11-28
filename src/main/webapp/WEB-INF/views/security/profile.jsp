@@ -48,21 +48,20 @@
 				value="<fmt:formatDate value="${member.registerDate}" pattern="yyyy-MM-dd HH:mm"/>"
 				name="registryDate" readonly="readonly">
 		</div>
+			
+		<br>
 		
-		<br>
-			
-		<div>
-			<a href="/security/updateform" class="btn btn-primary modifyBtn">
-				<i class="fa-regular fa-pen-to-square"></i> 정보수정
-			</a>
-		</div>
-			
-		<br>
-			
-		<div>			
-			<a href="#" class="deleteBtn">
-				<i class="fa-solid fa-user-slash"></i> 회원탈퇴
-			</a>
+		<div class="memberBtn">
+			<a href="/security/updateform" class="btn btn-primary updateBtn">
+            	정보수정
+            </a>
+            
+            <br>
+        
+	        <a href="/security/deleteform" class="deleteBtn">
+	            <i class="fa-solid fa-user-slash"></i> 회원탈퇴
+	        </a>                			
+
 		</div>
 		
 </div>

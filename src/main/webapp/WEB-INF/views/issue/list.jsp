@@ -4,13 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@include file="../layouts/header.jsp"%>
-
-
-<hr>
-
 <h1 class="page-header">
 	<i class="fas fa-list"></i> Pick이슈
 </h1>
+
+<hr>
 
 <div class="text-left">
 	<a href="/hotissue/list" class="btn btn-primary">
@@ -18,7 +16,9 @@
 	</a>
 </div>
 
-<hr>
+
+<p></p>
+
 <table class="table table-striped table-hover">
 	<thead>
 		<tr>
@@ -55,7 +55,7 @@
 		글쓰기
 	</a>
 </div>
-
+</div>
 <%@include file="../common/pagination.jsp"%>
 
 <%@include file="../layouts/footer.jsp"%>

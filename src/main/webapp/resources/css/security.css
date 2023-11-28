@@ -1,0 +1,141 @@
+  /* security */
+  
+.error {
+	color: red;
+	font-size: 12pt;
+}
+
+.mailCheckWrap {
+	overflow: hidden;
+}
+
+.mailCheckButton {
+	border: none;
+	width: 6.5rem;
+	height: 2.5rem;
+	float: right;
+	align-items: center;
+}
+
+.mailInput {
+	width: 31rem;
+	height: 2.5rem;
+}
+
+.mailWarnMessage {
+	color: red;
+}
+
+.mailCheckInput {
+	width: 23rem;
+	height: 2.5rem;
+	float: left;
+}
+
+#mailCheckInputBoxFalse {
+	background-color: #ebebe4;
+}
+
+#mailCheckInputBoxTrue {
+	background-color: white;
+}
+
+.correct {
+	color: green;
+}
+
+.incorrect {
+	color: red;
+}
+
+.input {
+	width: 30rem;
+	height: 2.5rem;
+}
+
+.nicknameCheckTrue {
+	color: green;
+	display: none;
+}
+
+.nickCheckFalse {
+	color: red;
+	display: none;
+}
+
+.updateBtn {
+	width: 14rem;
+	height: 2.5rem;
+	display :inline-block;
+}
+
+.deleteBtn {
+	width: 14rem;
+	height: 2.5rem;
+	display :inline-block;
+}
+
+.signupBtn {
+	width: 14rem;
+	height: 2.5rem;
+	display :inline-block;
+}
+
+.loginBtn {
+	width: 14rem;
+	height: 2.5rem;
+	margin: auto;
+	display: block;
+}
+
+.memberBtn {
+	text-align: center;
+}
+
+.warningText {
+	text-align: center;
+}
+
+.warningRed {
+	color: red;
+}
+
+.logoutBtn {
+    width: 14rem;
+    height: 2.5rem;
+    margin: auto;
+    display: inline-block;
+}
+
+.profileBtn {
+    width: 14rem;
+    height: 2.5rem;
+    margin: auto;
+    display: inline-block;
+}
+
+.memberBtn {
+    text-align: center;
+    word-spacing: 3rem;
+}
+
+.findloginBtn {
+    width: 13rem;
+    height: 2.5rem;
+    margin: auto;
+    display: inline-block;
+}
+
+.findBtn {
+    width: 13rem;
+    height: 2.5rem;
+    margin: auto;
+    display: inline-block;
+}
+
+.submitBtn {
+    width: 14rem;
+    height: 2.5rem;
+    margin: auto;
+    display: block;
+}

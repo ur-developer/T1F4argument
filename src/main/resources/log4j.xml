@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="org.galapagos.T1F4argument">
+	<logger name="org.galapagos">
 		<level value="info" />
 	</logger>
 	

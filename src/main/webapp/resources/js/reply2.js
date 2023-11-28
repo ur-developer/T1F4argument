@@ -61,7 +61,7 @@ function createReply2EditTemplate(reply2) {
 						
 					<button class="btn btn-light btn-sm py-1 
 						${reply2.no ? 'reply2-update-cancel' : 'reply2-add-cancel-btn'} ">
-						<i class="fa-solid fa-undo"></i> 최소
+						<i class="fa-solid fa-undo"></i> 취소
 					</button>
 			</div>
 		</div>

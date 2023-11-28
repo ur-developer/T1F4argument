@@ -33,6 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*)
 		from argument_member
 		where nickname = #{nickname}
+	</select>
+	
+	<select id="readEmail" resultType="MemberVO" parameterType="org.galapagos.domain.MemberVO">
+		select * from argument_member
+		where email = #{email}
 	</select>	
 	
 	<insert id="insertMember">
@@ -44,6 +49,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into argument_member_authorization(username, authorization)
 		values (#{username}, #{authorization})
 	</insert>
+	
+	<update id="resetPassword" parameterType="org.galapagos.domain.ResetPasswordVO">
+		update argument_member
+		set password = #{newPassword}
+		where username = #{username}
+	</update>
 	
 	<update id="updateMember" parameterType="org.galapagos.domain.UpdateMemberVO">
 		update argument_member

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.galapagos.domain.DeleteMemberVO;
 import org.galapagos.domain.MemberVO;
+import org.galapagos.domain.ResetPasswordVO;
 import org.galapagos.domain.UpdateMemberVO;
 import org.galapagos.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -143,6 +144,18 @@ public class SecurityController {
 		return code;
 
 	}
+	
+	@ResponseBody
+	@GetMapping("/checkMail")
+	public boolean checkMail(String email) throws Exception {
+		
+		if(service.getEmail(email) == null) {
+			
+			return false;
+		}
+		
+		return true;
+	}
 
 	@GetMapping("/profile")
 	public void profile(@ModelAttribute("member") MemberVO member) {
@@ -241,4 +254,57 @@ public class SecurityController {
 		
 		return "redirect:/";
 	}
+	
+	@GetMapping({"/authentication", "/findIDResult", "/authenticationPassword"})
+	public void authentication() {
+		
+	}
+	
+	@PostMapping("/authentication")
+	public String authentication(@ModelAttribute("member") MemberVO member, UpdateMemberVO updateMember,
+			Model model) {
+		
+		member = service.getEmail(member.getEmail());
+		model.addAttribute("member", member);
+		
+		return "/security/findIDResult";
+	}
+	
+    @PostMapping("/authenticationPassword")
+    public String authenticationPassword(String username, ResetPasswordVO resetPassword, Model model) {
+        
+        MemberVO member = service.getMember(username);
+        
+        resetPassword.setUsername(member.getUsername());
+
+        model.addAttribute("resetPassword", resetPassword);
+        
+        return "/security/resetPassword";
+    }
+    
+    @PostMapping("/resetPassword")
+    public String resetPassword(@ModelAttribute("resetPassword") ResetPasswordVO resetPassword,
+            Errors errors) {
+        
+    	log.info("newPassword : " + resetPassword.getNewPassword());
+    	log.info("checkPassword : "+ resetPassword.getCheckNewPassword());
+    	
+        // 비밀번호, 비밀번호 확인 일치 여부
+        if (!resetPassword.getNewPassword().equals(resetPassword.getCheckNewPassword())) {
+
+            // 특정 필드에 대해 에러 추가
+            // (변수명, 에러코드, 출력할 메세지)
+            errors.rejectValue("checkNewPassword", "비밀번호확인 에러", "비밀번호 확인이 일치하지 않습니다.");
+        }
+        
+        if(errors.hasErrors()) {
+            return "/security/resetPassword";
+        }
+        
+        service.resetPassword(resetPassword);
+        
+        log.info("update :" + resetPassword);
+        
+        return "redirect:/security/login";
+    }
 }

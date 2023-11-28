@@ -11354,3 +11354,43 @@ body {
 .warningRed {
 	color: red;
 }
+
+.logoutBtn {
+    width: 14rem;
+    height: 2.5rem;
+    margin: auto;
+    display: inline-block;
+}
+
+.profileBtn {
+    width: 14rem;
+    height: 2.5rem;
+    margin: auto;
+    display: inline-block;
+}
+
+.memberBtn {
+    text-align: center;
+    word-spacing: 3rem;
+}
+
+.findloginBtn {
+    width: 13rem;
+    height: 2.5rem;
+    margin: auto;
+    display: inline-block;
+}
+
+.findBtn {
+    width: 13rem;
+    height: 2.5rem;
+    margin: auto;
+    display: inline-block;
+}
+
+.submitBtn {
+    width: 14rem;
+    height: 2.5rem;
+    margin: auto;
+    display: block;
+}

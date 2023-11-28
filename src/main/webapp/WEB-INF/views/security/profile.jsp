@@ -52,13 +52,16 @@
 		<br>
 		
 		<div class="memberBtn">
-				<a href="/security/updateform" class="btn btn-primary updateBtn">
-					<i class="fa-regular fa-pen-to-square"></i> 정보수정
-				</a>
-	
-				<a href="/security/deleteform" class="btn btn-primary deleteBtn">
-					<i class="fa-solid fa-user-slash"></i> 회원탈퇴
-				</a>				
+			<a href="/security/updateform" class="btn btn-primary updateBtn">
+            	정보수정
+            </a>
+            
+            <br>
+            <br>
+        
+	        <a href="/security/deleteform" class="deleteBtn">
+	            <i class="fa-solid fa-user-slash"></i> 회원탈퇴
+	        </a>                			
 		</div>
 		
 </div>

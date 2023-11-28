@@ -29,7 +29,12 @@ public class BoardVO {
 	private Date registerDate;
 	private Date updateDate;
 	
+	// 좋아요 기능
 	private int hit;
 	private Integer likes;
 	private Boolean myLike;
+	
+	// 단어 추가 기능
+	private String leftword;
+	private String rightword;
 }

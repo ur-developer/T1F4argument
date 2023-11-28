@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.galapagos.mapper.MemberMapper">
+
+	<!-- property=VO객체 멤버 -->
+	<resultMap id="authorizationMap" type="org.galapagos.domain.AuthorizationVO">
+		<result property="username" column="username"/>
+		<result property="authorization" column="authorization"/>
+	</resultMap>
+	
+	<resultMap id="memberMap" type="org.galapagos.domain.MemberVO">
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="nickname" column="nickname"/>
+		<result property="email" column="email"/>
+		<result property="registerDate" column="register_date"/>
+		<!-- authList가 List이기 때문에 collection 처리 -->
+		<collection property="authorizationList" resultMap="authorizationMap"/>
+	</resultMap>
+
+	<select id="readMember" resultMap="memberMap">
+		select m.username, password, nickname, email, register_date, authorization
+		from argument_member m left outer join argument_member_authorization a
+		on m.username = a.username
+		where m.username = #{username}
+	</select>
+	
+	<select id="readNickname" resultType="boolean">
+		select count(*)
+		from argument_member
+		where nickname = #{nickname}
+	</select>	
+	
+	<insert id="insertMember">
+		insert into argument_member(username, password, nickname, email)
+		values (#{username}, #{password}, #{nickname}, #{email})
+	</insert>
+	
+	<insert id="insertAuthorization">
+		insert into argument_member_authorization(username, authorization)
+		values (#{username}, #{authorization})
+	</insert>
+	
+	<update id="updateMember" parameterType="org.galapagos.domain.UpdateMemberVO">
+		update argument_member
+		set password = #{newPassword},
+			nickname = #{newNickname},
+			email = #{newEmail}
+		where username = #{username}
+	</update>
+	
+</mapper>

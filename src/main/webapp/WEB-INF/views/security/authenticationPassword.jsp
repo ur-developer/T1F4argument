@@ -5,6 +5,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<link href="${pageContext.request.contextPath}/resources/css/security.css" rel="stylesheet" />
+
 <%@ include file="../layouts/header.jsp" %>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>

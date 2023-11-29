@@ -55,7 +55,8 @@ public class SecurityController {
 	}
 
 	@PostMapping("/signup")
-	public String signUp(@Valid @ModelAttribute("member") MemberVO member, Errors errors) {
+	public String signUp(@Valid @ModelAttribute("member") MemberVO member, Errors errors,
+			Model model) {
 
 		// 비밀번호, 비밀번호 확인 일치 여부
 		if (!member.getPassword().equals(member.getCheckPassword())) {
@@ -94,8 +95,11 @@ public class SecurityController {
 
 		// DB 저장
 		service.registerMember(member);
+		
+		model.addAttribute("message", "회원가입이 완료되었습니다.");
+		model.addAttribute("url", "/security/login");
 
-		return "redirect:/security/login";
+		return "/layouts/alert";
 
 	}
 
@@ -177,7 +181,7 @@ public class SecurityController {
 	
 	@PostMapping("/updateform")
 	public String updateForm(@Valid @ModelAttribute("updateMember") UpdateMemberVO updateMember,
-			Errors errors) {
+			Errors errors, Model model) {
 		
 		// 비밀번호, 비밀번호 확인 일치 여부
 		if (!updateMember.getNewPassword().equals(updateMember.getCheckNewPassword())) {
@@ -216,7 +220,10 @@ public class SecurityController {
 	    
 	    SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(currentAuth, userID));
 		
-		return "redirect:/security/profile";
+	    model.addAttribute("message", "회원정보가 수정되었습니다.");
+		model.addAttribute("url", "/security/profile");
+
+		return "/layouts/alert";
 
 	}
 	
@@ -240,7 +247,7 @@ public class SecurityController {
 	
 	@PostMapping("/deleteform")
 	public String deleteForm(@Valid @ModelAttribute("deleteMember") DeleteMemberVO deleteMember,
-			Errors errors) {
+			Errors errors, Model model) {
 		
 		// 비밀번호 틀려서 false 반환 시
 		if(!service.deleteMember(deleteMember)) {
@@ -252,7 +259,10 @@ public class SecurityController {
 		
 		SecurityContextHolder.clearContext();
 		
-		return "redirect:/";
+		model.addAttribute("message", "탈퇴가 완료되었습니다.");
+		model.addAttribute("url", "/");
+		
+		return "/layouts/alert";
 	}
 	
 	@GetMapping({"/authentication", "/findIDResult", "/authenticationPassword"})
@@ -284,7 +294,7 @@ public class SecurityController {
     
     @PostMapping("/resetPassword")
     public String resetPassword(@ModelAttribute("resetPassword") ResetPasswordVO resetPassword,
-            Errors errors) {
+            Errors errors, Model model) {
         
     	log.info("newPassword : " + resetPassword.getNewPassword());
     	log.info("checkPassword : "+ resetPassword.getCheckNewPassword());
@@ -303,8 +313,9 @@ public class SecurityController {
         
         service.resetPassword(resetPassword);
         
-        log.info("update :" + resetPassword);
-        
-        return "redirect:/security/login";
+        model.addAttribute("message", "비밀번호가 변경되었습니다.");
+		model.addAttribute("url", "/security/login");
+		
+		return "/layouts/alert";
     }
 }

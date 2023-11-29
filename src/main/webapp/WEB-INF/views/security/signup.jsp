@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
+<link href="${pageContext.request.contextPath}/resources/css/security.css" rel="stylesheet" />
+
 <%@ include file="../layouts/header.jsp" %>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -31,21 +33,35 @@
 			}
 
 			if(!userMail == ""){
-				
 				$.ajax({
-					type:'GET',
-					url:'sendMail?email=' + userMail,
+					type: 'GET',
+					url: 'checkMail?email=' + userMail,
 					data: {userMail: userMail},
-					success:function(data){
-						console.log(data);
-						alert('인증번호가 발송되었습니다.');
-						checkBox.attr('disabled', false); // 인증 번호 입력 칸 속성 변경
-						boxWrap.attr('id', 'mailCheckInputBoxTrue'); // 인증 입력란 색상 변경을 위한 속성 변경
-						code = data; // controller에서 받은 인증 번호 값 저장
+					success: function(data){
+						
+						if(data == true){
+							alert('중복된 이메일이 있습니다.');
+						}
+						
+						else {
+							$.ajax({
+								type:'GET',
+								url:'sendMail?email=' + userMail,
+								data: {userMail: userMail},
+								success:function(data){
+									console.log(data);
+									alert('인증번호가 발송되었습니다.');
+									checkBox.attr('disabled', false); // 인증 번호 입력 칸 속성 변경
+									boxWrap.attr('id', 'mailCheckInputBoxTrue'); // 인증 입력란 색상 변경을 위한 속성 변경
+									code = data; // controller에서 받은 인증 번호 값 저장
+								}
+							});
+						}
 					}
+					
 				});
 			}
-					
+			
 		});
 		
 		/* 인증 번호 비교 */
@@ -79,7 +95,7 @@
 
 <div style="width: 500px" class="mx-auto">
 	
-	<h4 class="mt-5"><i class="fa-solid fa-user-plus"></i> 회원가입</h4>
+	<h4 class="mt-5">회원가입</h4>
 
 	<hr>
 	<br>
@@ -89,35 +105,43 @@
 	<form:form modelAttribute="member" action="/security/signup?_csrf=${_csrf.token}">
 
 			<div class="form-group">
-				<form:label path="username"><i class="fa-solid fa-at"></i>  아이디</form:label>
+				<form:label path="username">아이디</form:label>
 				<form:input path="username" class="input" placeholder="아이디를 입력하세요."
 					cssClass="form-control"/>
 				<form:errors path="username" cssClass="error"/>
 			</div>
+			
+			<br>
 	
 			<div class="form-group">
-				<form:label path="password"><i class="fa-solid fa-lock"></i> 비밀번호</form:label>
+				<form:label path="password">비밀번호</form:label>
 				<form:password path="password" class="input" placeholder="비밀번호를 입력하세요."
 					cssClass="form-control"/>
 				<form:errors path="password" cssClass="error"/>
 			</div>
+	
+			<br>
 		
 			<div class="form-group">
-				<form:label path="checkPassword"><i class="fa-solid fa-lock"></i> 비밀번호 확인</form:label>
+				<form:label path="checkPassword">비밀번호 확인</form:label>
 				<form:password path="checkPassword" class="input" placeholder="다시 한 번 비밀번호를 입력하세요."
 					cssClass="form-control"/>
 				<form:errors path="checkPassword" cssClass="error"/>
 			</div>
 			
+			<br>
+			
 			<div class="form-group">
-				<form:label path="nickname"><i class="fa-solid fa-file-signature"></i> 닉네임</form:label>
+				<form:label path="nickname">닉네임</form:label>
 				<form:input path="nickname" class="input" placeholder="닉네임을 입력하세요."
 					cssClass="form-control"/>
 				<form:errors path="nickname" cssClass="error"/>
 			</div>
+			
+			<br>
 		
 			<div class="form-group">
-				<label for="email" class="mailAddress"><i class="fa-solid fa-at"></i> 이메일</label>
+				<label for="email" class="mailAddress">이메일</label>
 				<span class="mailCheckWarn"></span>
 				
 				<div class="mailInputBox">
@@ -148,8 +172,10 @@
 				</div>
 			</div>
 			
+			<br>
+			
 			<button type="submit" class="btn btn-primary btn-block">
-                <i class="fa-solid fa-right-to-bracket"></i> 회원가입
+                회원가입
         	</button>
 
 		</form:form>

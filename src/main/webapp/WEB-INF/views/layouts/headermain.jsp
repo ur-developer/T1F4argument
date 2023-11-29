@@ -67,13 +67,13 @@
 							data-bs-toggle="dropdown" aria-expanded="false">갑론을박</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/board/list">1</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=1">1</a></li>
 								<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/board/list">2</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=2">2</a></li>
 								<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/board/list">3</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=3">3</a></li>
 								<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/board/list">4</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=4">4</a></li>
 							</ul>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>

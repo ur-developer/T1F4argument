@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
+<link href="${pageContext.request.contextPath}/resources/css/security.css" rel="stylesheet" />
+
 <%@ include file="../layouts/header.jsp" %>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -44,9 +46,9 @@
 			
 		<div class="form-group">
 			<label for="registryDate"><i class="fa-regular fa-calendar"></i> 가입일</label>
-			<input type="text" class="form-control" id="registryDate" 
+			<input type="text" class="form-control" id="registerDate" 
 				value="<fmt:formatDate value="${member.registerDate}" pattern="yyyy-MM-dd HH:mm"/>"
-				name="registryDate" readonly="readonly">
+				name="registerDate" readonly="readonly">
 		</div>
 			
 		<br>
@@ -56,6 +58,7 @@
             	정보수정
             </a>
             
+            <br>
             <br>
         
 	        <a href="/security/deleteform" class="deleteBtn">

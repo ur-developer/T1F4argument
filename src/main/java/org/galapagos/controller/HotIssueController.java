@@ -2,16 +2,16 @@ package org.galapagos.controller;
 
 import java.security.Principal;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.galapagos.domain.BoardVO;
 import org.galapagos.domain.Criteria;
 import org.galapagos.domain.PageDTO;
 import org.galapagos.service.HotIssueService;
-import org.galapagos.service.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,7 +56,7 @@ public class HotIssueController {
 
 	@GetMapping("/get")
 	public String getIssue(
-			@RequestParam("bno") Long bno,
+			@RequestParam(name = "bno", required = false) Long bno,
 			@ModelAttribute("cri") Criteria cri,
 			Principal principal,
 			Model model,
@@ -64,9 +64,15 @@ public class HotIssueController {
 			HttpServletRequest request) throws Exception {
 		
 			log.info("/get");
+			if(bno != null) {	// 직접 글 선택한 경우 
+				
+				model.addAttribute("board", service.getHotissue(bno, principal));
+			} else  {	// 메뉴를 통해서 온경우 
+				List<BoardVO> list = service.getHotissueList(cri, principal);
+				BoardVO board = list.get(cri.getCategory() - 1);
+				model.addAttribute("board", board);
+			}
 
-			model.addAttribute("board", service.getHotissue(bno, principal));
-			
-		return "/hotissue/get";
+		return "hotissue/get";
 	}
 }

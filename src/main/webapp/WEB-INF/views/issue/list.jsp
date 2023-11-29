@@ -55,7 +55,7 @@
 		글쓰기
 	</a>
 </div>
-</div>
+
 <%@include file="../common/pagination.jsp"%>
 
 <%@include file="../layouts/footer.jsp"%>

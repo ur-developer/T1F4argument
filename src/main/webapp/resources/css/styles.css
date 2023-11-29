@@ -21,6 +21,25 @@ div{
   border:black;
  }
 
+.user-wrap{
+	width:100%;
+	position:relative;
+}
+.user-wrap img{
+	width:100%;
+	vertical-align:middle;
+}
+.user-text {
+	position:absolute;
+	top:40%;
+	left:50%;
+	width:100%;
+	transform:translate(-50%,-30%);
+	font-size: 50px;
+	text-align:center;
+	font-color: white;
+}
+
 #content{position : absolute; top:50%; height:100px; margin-top:-50px;}
 
 img{

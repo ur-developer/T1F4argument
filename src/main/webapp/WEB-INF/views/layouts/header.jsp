@@ -118,11 +118,11 @@ $(document).ready(function() {
 	});
 });
 </script>
+		<div class="content">
 		
 <a href="${pageContext.request.contextPath}/"> <img
 	src="${pageContext.request.contextPath}/resources/images/header.jpg"
 	width="100%"></a>
-<section style="background-color: aliceblue;">
-<br>
-	<div style="margin: 50px; text-align: center;">
+
+
 			<!-- Header-->

@@ -38,6 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		join argument_category ac on vp. category_id = ac.category_id	
 		where vp.category_id = 1
 		order by vp.likes desc
+		limit 4
 	</select>
 
 	<select id="getHotissueListWithPaging" resultType="BoardVO">

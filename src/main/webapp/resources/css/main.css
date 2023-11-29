@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+	font-family: 'Noto Sans KR'
+}
+
+.jumbotron {
+	background-image: url('/resources/images/mainex.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	color: white;	
+}
+
+a.page-link {
+  border-width: 0px;
+}
+
+.error {
+	color: red;
+	font-size: 0.9rem;
+}
+
+.mailCheckWrap {
+	overflow: hidden;
+}
+
+.mailCheckButton {
+	border: none;
+	width: 6.5rem;
+	height: 2.5rem;
+	float: right;
+	align-items: center;
+}
+
+.mailInput {
+	width: 31rem;
+	height: 2.5rem;
+}
+
+.mailWarnMessage {
+	color: red;
+}
+
+.mailCheckInput {
+	width: 23rem;
+	height: 2.5rem;
+	float: left;
+}
+
+#mailCheckInputBoxFalse {
+	background-color: #ebebe4;
+}
+
+#mailCheckInputBoxTrue {
+	background-color: white;
+}
+
+.correct {
+	color: green;
+}
+
+.incorrect {
+	color: red;
+}
+
+.input {
+	width: 25rem;
+	height: 2.5rem;
+}
+
+.nicknameCheckTrue {
+	color: green;
+	display: none;
+}
+
+.nickCheckFalse {
+	color: red;
+	display: none;
+}
+
+.modifyBtn {
+	width: 25rem;
+	height: 2.5rem;
+	margin: auto;
+	display: block;
+}
+
+.loginBtn {
+	width: 14rem;
+	height: 2.5rem;
+	float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* * {
+	font-family: 'Nunito';
+}
+
+.jumbotron {
+	background-image: url('/resources/images/back.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	color: white;
+}
+
+*/

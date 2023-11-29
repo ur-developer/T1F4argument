@@ -5,6 +5,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
+<link href="${pageContext.request.contextPath}/resources/css/security.css" rel="stylesheet" />
+
 <%@ include file="../layouts/header.jsp"%>
 
 <div style="width: 500px" class="mx-auto">
@@ -52,6 +54,7 @@
                   로그인
                 </button>
                 
+                <br>
                 <br>
                 
                 <div class="memberBtn">

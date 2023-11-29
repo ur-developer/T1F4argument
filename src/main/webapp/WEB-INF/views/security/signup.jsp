@@ -33,21 +33,35 @@
 			}
 
 			if(!userMail == ""){
-				
 				$.ajax({
-					type:'GET',
-					url:'sendMail?email=' + userMail,
+					type: 'GET',
+					url: 'checkMail?email=' + userMail,
 					data: {userMail: userMail},
-					success:function(data){
-						console.log(data);
-						alert('인증번호가 발송되었습니다.');
-						checkBox.attr('disabled', false); // 인증 번호 입력 칸 속성 변경
-						boxWrap.attr('id', 'mailCheckInputBoxTrue'); // 인증 입력란 색상 변경을 위한 속성 변경
-						code = data; // controller에서 받은 인증 번호 값 저장
+					success: function(data){
+						
+						if(data == true){
+							alert('중복된 이메일이 있습니다.');
+						}
+						
+						else {
+							$.ajax({
+								type:'GET',
+								url:'sendMail?email=' + userMail,
+								data: {userMail: userMail},
+								success:function(data){
+									console.log(data);
+									alert('인증번호가 발송되었습니다.');
+									checkBox.attr('disabled', false); // 인증 번호 입력 칸 속성 변경
+									boxWrap.attr('id', 'mailCheckInputBoxTrue'); // 인증 입력란 색상 변경을 위한 속성 변경
+									code = data; // controller에서 받은 인증 번호 값 저장
+								}
+							});
+						}
 					}
+					
 				});
 			}
-					
+			
 		});
 		
 		/* 인증 번호 비교 */

@@ -72,6 +72,9 @@ public class HotIssueController {
 				BoardVO board = list.get(cri.getCategory() - 1);
 				model.addAttribute("board", board);
 			}
+			
+			
+			
 
 		return "hotissue/get";
 	}

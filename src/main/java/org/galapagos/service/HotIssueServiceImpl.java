@@ -35,7 +35,12 @@ public class HotIssueServiceImpl implements HotIssueService {
 		if(principal != null) {
 			List<Long> likes = mapper.getLikesList(principal.getName());
 			for(BoardVO board: list) {
-			board.setMyLike(likes.contains(board.getBno()));
+				board.setMyLike(likes.contains(board.getBno()));
+				List<Long> comment = mapper.getCommentList(principal.getName());
+				board.setMyComment(comment.contains(board.getBno()));
+				List<Long> comment2 = mapper.getComment2List(principal.getName());
+				board.setMyComment2(comment2.contains(board.getBno()));
+				
 			}
 		}
 		return list;
@@ -48,6 +53,10 @@ public class HotIssueServiceImpl implements HotIssueService {
 		if(principal != null) {
 			List<Long> likes = mapper.getLikesList(principal.getName());
 			board.setMyLike(likes.contains(board.getBno()));
+			List<Long> comment = mapper.getCommentList(principal.getName());
+			board.setMyComment(comment.contains(board.getBno()));
+			List<Long> comment2 = mapper.getComment2List(principal.getName());
+			board.setMyComment2(comment2.contains(board.getBno()));
 		}
 		return board;
 	}

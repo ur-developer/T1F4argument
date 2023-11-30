@@ -16,5 +16,9 @@ public interface HotIssueMapper {
 	public BoardVO readHotissue(Long bno);
 	
 	public List<Long> getLikesList(String name);
-
+	
+	public List<Long> getCommentList(String username);
+	
+	public List<Long> getComment2List(String username);
+	
 }

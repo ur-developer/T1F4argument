@@ -209,6 +209,8 @@ async function deleteComment2(e) {
 		
 	// api 호출	
 	comment2.remove();
+	
+	location.reload(true);
 
 }
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.log4j.Log4j;
 
 @RestController
-@RequestMapping("/api/board/commentlike")
+@RequestMapping("/api/hotissue/commentlike")
 @Log4j
 public class CommentLikeController {
 

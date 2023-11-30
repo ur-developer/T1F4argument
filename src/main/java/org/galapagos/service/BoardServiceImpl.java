@@ -83,12 +83,11 @@ public class BoardServiceImpl implements BoardService {
 		
 		Long bno = board.getBno();
 		
-		for(MultipartFile part: files) {
-			if(part.isEmpty()) continue;
-			BoardAttachmentVO attach = new BoardAttachmentVO(bno, part);
-			mapper.insertAttachment(attach);
-		}
-		
+		/*
+		 * for(MultipartFile part: files) { if(part.isEmpty()) continue;
+		 * BoardAttachmentVO attach = new BoardAttachmentVO(bno, part);
+		 * mapper.insertAttachment(attach); }
+		 */		
 		return reuslt == 1;
 
 	}

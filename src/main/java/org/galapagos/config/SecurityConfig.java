@@ -62,7 +62,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/security/profile", 
 					"/security/updateform",
 					"/security/deleteform",
-					"/security/findIDResult").authenticated();
+					"/security/findIDResult",
+					"/issue/register",
+					"/board/register").authenticated();
+		
+			
 
 		// 로그인 설정
 		http.formLogin()

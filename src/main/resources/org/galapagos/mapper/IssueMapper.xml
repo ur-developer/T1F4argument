@@ -105,4 +105,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where bno = #{bno} and username = #{username} 
 	</delete>
 
+	<select id="mainIssue" resultType="BoardVO">
+		select * from argument_post ap where category_id = 1
+		order by bno desc 
+		limit 4
+	</select>
+
 </mapper>

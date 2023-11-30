@@ -94,4 +94,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		hit = hit + 1
 		where bno = #{bno}
 	</update>
+	
+	<select id="mainNotice" resultType="BoardVO">
+		select * from argument_post ap where category_id = 4
+		order by bno desc 
+		limit 4
+	</select>
 </mapper>

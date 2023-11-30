@@ -103,5 +103,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from argument_post_likes
 		where bno = #{bno} and username = #{username} 
 	</delete>
+	
+	<select id="mainFame" resultType="BoardVO">
+		select * from argument_post ap where category_id = 2
+		order by bno desc 
+		limit 4
+	</select>
 
 </mapper>

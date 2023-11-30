@@ -46,9 +46,7 @@ function createReplyEditTemplate(reply) {
 				
 			<div>${reply.no ? '' : ' 답글 작성'}</div>
 				
-				<textarea class="form-control mb-1 reply-editor">
-					${reply.content || '' }
-				</textarea>
+				<textarea class="form-control mb-1 reply-editor">${reply.content || '' }</textarea>
 				
 				<div class="text-end">
 					<button onClick="window.location.reload()" class="btn btn-light btn-sm py-1 

@@ -1,5 +1,5 @@
 async function addComment2Like(nickname, btn) { // 닉넴이 아니라 유저의 고유값을 받아야한다~ 왜냐? 
-	const COMMENT2_LIKE_URL = '/api/board/comment2like';	 
+	const COMMENT2_LIKE_URL = '/api/hotissue/comment2like';	 
 	let cno = parseInt(btn.data("no"));
     let comment2Like = { cno, username: nickname };
     
@@ -22,7 +22,7 @@ async function addComment2Like(nickname, btn) { // 닉넴이 아니라 유저의
 
 
 async function deleteComment2Like(nickname, btn) {
-	const COMMENT2_LIKE_URL = '/api/board/comment2like';	
+	const COMMENT2_LIKE_URL = '/api/hotissue/comment2like';	
     let cno = parseInt(btn.data("no"));
 	
 	let comment2Like = { cno, username: nickname };

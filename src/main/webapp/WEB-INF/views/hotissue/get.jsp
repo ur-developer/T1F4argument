@@ -67,6 +67,20 @@ $(document).ready(async function() {
 	
 	loadComments(bno, nickname); // 댓글 목록 불러오기
 	
+	<c:if test="${not empty username}">
+		
+		$('.comment-list').on('click', '.fa-thumbs-up.fa-regular', function(e) {
+			addCommentLike(nickname, $(this));
+		});
+		 
+		
+		$('.comment-list').on('click', '.fa-thumbs-up.fa-solid', function(e) {
+			deleteCommentLike(nickname, $(this));
+		});
+	
+	</c:if>
+	
+	
 	//댓글 추가 버튼 처리
 	$('.comment-add-btn').click(function(e) {
 		createComment(bno, nickname);
@@ -124,14 +138,7 @@ $(document).ready(async function() {
 		$('.comment-list').on('click', '.reply-delete-btn', deleteReply);
 		
 		
-		$('.comment-list').on('click', '.fa-thumbs-up.fa-regular', function(e) {
-			addCommentLike(nickname, $(this));
-		});
-		 
 		
-		$('.comment-list').on('click', '.fa-thumbs-up.fa-solid', function(e) {
-			deleteCommentLike(nickname, $(this));
-		});
 });
 
 
@@ -144,6 +151,20 @@ $(document).ready(async function() {
 	let bno = ${board.bno}; // 글번호 
 	let nickname = '${username}'; // 작성자(로그인유저) 
 	loadComments2 (bno, nickname); // 댓글 목록 불러오기 
+	
+	
+	<c:if test="${not empty username}">
+		
+		$('.comment2-list').on('click', '.fa-thumbs-up.fa-regular', function(e) {
+			addComment2Like(nickname, $(this)); }); 
+		
+		$('.comment2-list').on('click',	'.fa-thumbs-up.fa-solid', function(e) { 
+			deleteComment2Like(nickname, $(this));
+		});
+		
+	
+	</c:if>
+	
 	
 	//댓글 추가 버튼 처리
 	$('.comment2-add-btn').click(function(e) { 
@@ -190,12 +211,7 @@ $(document).ready(async function() {
 	// 답글 삭제 
 	$('.comment2-list').on('click', '.reply2-delete-btn', deleteReply2);
 		
-	$('.comment2-list').on('click', '.fa-thumbs-up.fa-regular', function(e) {
-		addComment2Like(nickname, $(this)); }); 
-	
-	$('.comment2-list').on('click',	'.fa-thumbs-up.fa-solid', function(e) { 
-		deleteComment2Like(nickname, $(this));
-	}); });
+	 });
 </script>
 
 

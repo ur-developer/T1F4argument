@@ -13,9 +13,7 @@ const commentUpdatable = `
 	<button class="btn btn-light btn-sm comment-delete-btn">
 		<i class="fa-solid fa-times"></i> 삭제
 	</button>
-	<button class="btn btn-light btn-sm reply-add-show-btn">
-		<i class="fa-solid fa-pen-to-square"></i> 답글
-	</button>
+
 	
 `;
 
@@ -44,8 +42,8 @@ function createCommentTemplate(comment, nickname) {
 			<div class="comment-content">${comment.content}</div>
 		</div>
 		<span class="like">
-				<i class="${ comment.myLike ? 'fa-solid' : 'fa-regular' } fa-thumbs-up text-danger"
-		data-no="${comment.no}"></i>
+				<i class="${ comment.myLike ? 'fa-solid' : 'fa-regular' } fa-thumbs-up text-primary"
+		data-no="${comment.no}" data-nickname="${comment.nickname}"></i>
 				<span class="like-count">${comment.likeCount}</span>
 			</span>
 		<div class="reply-list ml-5">

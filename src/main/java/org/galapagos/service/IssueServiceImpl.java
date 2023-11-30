@@ -80,4 +80,10 @@ public class IssueServiceImpl implements IssueService {
 	public boolean plusHit(long bno) {
 		return mapper.plusHit(bno);
 	}
+
+	@Override
+	public List<BoardVO> mainIssue() {
+		return mapper.mainIssue();
+	}
+	
 }

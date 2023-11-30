@@ -83,4 +83,9 @@ public class SuggestServiceImpl implements SuggestService {
 	public boolean plusHit(long bno) {
 		return mapper.plusHit(bno);
 	}
+
+	@Override
+	public List<BoardVO> mainSuggest() {
+		return mapper.mainSuggest();
+	}
 }

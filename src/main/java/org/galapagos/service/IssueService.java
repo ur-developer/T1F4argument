@@ -24,4 +24,6 @@ public interface IssueService {
 
 	// 조회수 +1
 	public boolean plusHit(long bno);
+	
+	public List<BoardVO> mainIssue();
 }

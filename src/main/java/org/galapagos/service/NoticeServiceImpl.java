@@ -71,4 +71,11 @@ public class NoticeServiceImpl implements NoticeService {
 	public boolean plusHit(long bno) {
 		return mapper.plusHit(bno);
 	}
+
+	@Override
+	public List<BoardVO> mainNotice() {
+		return mapper.mainNotice();
+	}
+	
+	
 }

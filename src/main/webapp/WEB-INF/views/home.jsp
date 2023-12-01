@@ -38,8 +38,8 @@
 					<div class="slide_item item1" style="height: 120px;">
 						<div class="overflow-hidden ">
 							<p>
-							<h2 style="text-align: center;">
-								<a href="/hotissue/get?bno=${board.bno}">${board.title}</a>
+							<h2 style="text-align: center;" >
+								<a href="/hotissue/get?bno=${board.bno}" style="color:white;">${board.title}</a>
 							</h2>
 							</p>
 							<img src="" alt="">
@@ -47,8 +47,8 @@
 					</div>  
 				</c:forEach>
 					
-				<div class="slide_prev_button slide_button">◀</div>
-				<div class="slide_next_button slide_button">▶</div>
+				<div class="slide_prev_button slide_button"><h4 style="color : white">◀</h4></div>
+				<div class="slide_next_button slide_button"><h4 style="color : white">▶</h4></div>
 				<ul class="slide_pagination"></ul>
 				
 				</div>
@@ -58,8 +58,7 @@
 		
 		
 		</div>
-	<br> <br> <br> <br> <br> <br> <br> <br>
-	<br> <br>
+	</div>
 </section>
 <div id="floatMenu">광고 / api</div>
 <section class="py-5">

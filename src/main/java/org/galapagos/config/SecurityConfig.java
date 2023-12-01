@@ -64,12 +64,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					"/security/deleteform",
 					"/security/findIDResult",
 					"/issue/register",
-					"/board/register").authenticated()
-			
-			.antMatchers(
-				"/notice/register",
-				"/notice/modify",
-				"/notice/remove").access("hasRole('ROLE_MANAGER')");
+					"/board/register").authenticated();
+		
 			
 
 		// 로그인 설정

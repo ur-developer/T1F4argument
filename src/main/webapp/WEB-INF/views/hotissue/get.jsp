@@ -34,8 +34,8 @@
         data.addColumn('string', '댓글창');
         data.addColumn('number', '댓글수');
         data.addRows([
-              ['${board.leftword}', ${board.comment1Count}],
-          ['${board.rightword}', ${board.comment2Count}],
+              ['후보1', ${board.comment1Count}],
+          ['후보2', ${board.comment2Count}],
         ]);
 
         // Set chart options
@@ -331,7 +331,7 @@ $(document).ready(function() {
 	style="width: 1200px height: auto; text-align: center; margin:50px;">
 	<div class="container">
 		<div class="my-5">
-			<i class="fa-regular fa-comments"></i> ${board.leftword}
+			<i class="fa-regular fa-comments"></i> 후보1
 			<hr>
 			<div class="comment-list"></div>
 		<div class="bg-light p-2 rounded my-5">
@@ -393,7 +393,7 @@ $(document).ready(function() {
 	<div class="vr"></div>
 	<div class="container">
 		<div class="my-5">
-			<i class="fa-regular fa-comments"></i> ${board.rightword}
+			<i class="fa-regular fa-comments"></i> 후보2
 			<hr>
 			<div class="comment2-list"></div>
 		</div>

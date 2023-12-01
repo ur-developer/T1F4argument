@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@ include file="../layouts/header.jsp"%>
+<%@ include file="../layouts/headerboard.jsp"%>
 
 <link rel="stylesheet" href="/resources/css/summernote/summernote-lite.min.css">
 <script src="/resources/js/summernote/summernote-lite.min.js"></script>

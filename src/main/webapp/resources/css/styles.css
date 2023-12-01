@@ -16,10 +16,37 @@
  body {
 font-family: 'Do Hyeon', sans-serif;  }
 
-  
+#floatMenu {
+	position: absolute;
+	width: 100px;
+	height: 300px;
+	left: 50px;
+	top: 250px;
+	background-color: #606060;
+	color: #fff;
+}
 div{
   border:black;
  }
+
+.user-wrap{
+	width:100%;
+	position:relative;
+}
+.user-wrap img{
+	width:100%;
+	vertical-align:middle;
+}
+.user-text {
+	position:absolute;
+	top:40%;
+	left:50%;
+	width:100%;
+	transform:translate(-50%,-30%);
+	font-size: 50px;
+	text-align:center;
+	font-color: white;
+}
 
 #content{position : absolute; top:50%; height:100px; margin-top:-50px;}
 
@@ -285,7 +312,7 @@ body {
  hr {
   margin-bottom: 0%;
  height: 3px;
-  background-color:#002a4d;
+  background-color:black;
   border:none;
   padding-bottom: 0;
 }
@@ -306,6 +333,15 @@ body {
   margin-top: 0%;
   height: 3px;
   margin-bottom: 0%; 
+}
+hr.layouts{
+	  width: 100%;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0%;
+  height: 3px;
+  margin-bottom: 0%;
 }
  :root {
   --bs-blue: #0d6efd;

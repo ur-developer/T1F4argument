@@ -5,25 +5,29 @@
 
 <%@ include file="layouts/headermain.jsp"%>
 <!-- Header-->
-<a href="${pageContext.request.contextPath}/"> <img
-	src="${pageContext.request.contextPath}/resources/images/mainex2.jpg"
-	width="100%" height=330px;></a>
-
+<div class="user-wrap">
+	<div class="user-image">
+		<img
+			src="${pageContext.request.contextPath}/resources/images/mainexex.jpg"
+			width=100%; height=100%;></a>
+	</div>
+	<div class="user-text">
+		<p style="color: white">갑론을박</p>
+		<h4 style="color: white">논쟁가들의 콜로세움</h4>
+	</div>
+</div>
 
 <!-- Features section-->
 <!-- 자동 슬라이드-->
 <!-- 가운데 정렬 해야합니다.-->
-<div class="sideBanner">
-	<span class="txt-label"> Banner Data... </span>
-</div>
-<script src="./side.js"></script>
-<section class="py-5 pb-5" id="features"
-	style="background-color: #f1f0ea; height: 320px;">
-	<div style="width: 650px; margin: auto;">
+
+<section class="py-3 pb-3" id="features"
+	style="background-color: black; height: auto;">
+	<div style="width: 50%; margin: auto;">
 
 		<div class="container-sm px-5 my-3">
 			<div class="row gx-5 sh">
-				<h2 style="text-align: center;">금일의 갑론을박 주제</h2>
+				<h2 style="text-align: center; color : white;">금일의 갑론을박 주제</h2>
 			</div>
 		
 			<div class="mx-5"
@@ -57,6 +61,7 @@
 	<br> <br> <br> <br> <br> <br> <br> <br>
 	<br> <br>
 </section>
+<div id="floatMenu">광고 / api</div>
 <section class="py-5">
 	<div class="container px-5" style="width: 900px;">
 		<div class="row gx-10">
@@ -158,10 +163,37 @@
 
 
 	<div class="container px-5">
+		<div class="container px-5">
 		<div class="row gx-10">
 
+			<div class="row mb-4">
 
-			<div class="col-md-5" style="float: none; margin: 0 auto;">
+				<div class="col-md-4" style="float: none; margin: 0 auto;">
+					<h2 style="text-align: center;">
+						자유게시판
+						</h1>
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							
+							<div class="col p-1 d-flex flex-column position-static">
+								<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
+								<h2 class="mb-0" style="float: none; margin: 0 auto;">
+									제목
+									</h3>
+
+									<div class="mb-1 text-body-secondary"
+										style="float: none; margin: 0 auto;">날짜</div>
+									<br> <br>
+									<p class="card-text mb-auto"
+										style="float: none; margin: 0 auto;">내용</p>
+									<br> <a
+										href="${pageContext.request.contextPath}/notice/list"
+										class="icon-link gap-1 icon-link-hover stretched-link">게시판 가기 </a>
+							</div>
+
+						</div>
+				</div>
+			<div class="col-md-4" style="float: none; margin: 0 auto;">
 				<h2 style="text-align: center;">
 					요청게시판
 					</h1>
@@ -213,7 +245,7 @@
 
 					</div>
 			</div>
-			<div class="col-md-5" style="float: none; margin: 0 auto;">
+			<div class="col-md-4" style="float: none; margin: 0 auto;">
 				<h2 style="text-align: center;">
 					공지사항
 					</h1>
@@ -249,27 +281,7 @@
 
 <!-- Testimonial section-->
 <div class="py-5" style="background-color: bisque;">
-	<div class="container px-5 my-5">
-		<div class="row gx-5 justify-content-center">
-			<div class="col-lg-10 col-xl-7">
-				<div class="text-center">
-					<div class="fs-4 mb-4 fst-italic">채팅방</div>
-					<div class="container"
-						style="border-style: solid; width: 720px; height: 720px;"></div>
-					<br>
-					<div class="d-flex align-items-center justify-content-center">
-
-
-						<img class="rounded-circle me-3"
-							src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
-						<div class="fw-bold">
-							닉네임<span class="fw-bold text-primary mx-1">/</span> 아이디
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 </div>
 
 <%@ include file="layouts/footermain.jsp"%>

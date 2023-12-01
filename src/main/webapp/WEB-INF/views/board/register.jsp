@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 
-<%@ include file="../layouts/header.jsp"%>
+<%@ include file="../layouts/headerboard.jsp"%>
 
 <link rel="stylesheet"
 	href="/resources/css/summernote/summernote-lite.min.css">

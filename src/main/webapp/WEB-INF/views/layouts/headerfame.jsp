@@ -57,7 +57,7 @@
 							href="${pageContext.request.contextPath}/">메인</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/issue/list">이슈 고르기</a></li>
-						<li><a class="nav-link" href="/fame/list">이슈 명예 전당</a></li>
+						<li class="nav-item active"><a class="nav-link" href="/fame/list">이슈 명예 전당</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							data-bs-toggle="dropdown" aria-expanded="false">갑론을박</a>
@@ -126,5 +126,5 @@ $(document).ready(function() {
 	width="100%"></a>
 <section style="background-color: aliceblue;">
 <br>
-	<div style="margin: 50px;">
+	<div style="margin: 50px; ">
 			<!-- Header-->

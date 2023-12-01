@@ -126,5 +126,5 @@ $(document).ready(function() {
 	width="100%"></a>
 <section style="background-color: aliceblue;">
 <br>
-	<div style="margin: 50px; ">
+	<div style="margin: 140px; margin-top:20px">
 			<!-- Header-->

@@ -5,7 +5,7 @@
 
 <%@include file="../layouts/headerissue.jsp"%>
 <h1 class="page-header">
-	<i class="fas fa-list"></i> Pick이슈
+	<i class="fas fa-list"></i>이슈고르기
 </h1>
 
 <hr>
@@ -15,6 +15,7 @@
 		인기순
 	</a>
 </div>
+<div id="floatMenu">광고 / api</div>
 
 
 <p></p>
@@ -46,15 +47,17 @@
 
 <hr>
 
-<%@ include file="../common/search_bar.jsp" %>
-
-<hr>
-
-<div class="text-right">
+<div class="text-right" style="float:right">
 	<a href="register" class="btn btn-primary"> <i class="far fa-edit"></i>
 		글쓰기
 	</a>
 </div>
+<%@ include file="../common/search_bar.jsp" %>
+
+
+<hr>
+
+
 
 <%@include file="../common/pagination.jsp"%>
 

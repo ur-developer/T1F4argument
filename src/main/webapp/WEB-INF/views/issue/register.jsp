@@ -36,6 +36,22 @@ $(document).ready(function() {
 
 </script>
 
+<script>
+	function confirmValid(){
+		
+		leftword = $('#leftword').val();
+		rightword = $('#rightword').val();
+		if(leftword == "" || rightword == "" || leftword == " " || rightword == " ") {
+			alert('이슈단어를 입력해주세요.');
+			return false;
+		} else {
+			return true;
+		}
+		
+	}
+</script>
+
+
 <h1 class="page-header">
 	<i class="far fa-edit"></i> 글쓰기
 </h1>
@@ -43,7 +59,7 @@ $(document).ready(function() {
 <div class="panel panel-default">
 
 	<div class="panel-body">
-		<form:form modelAttribute="board" action="?_csrf=${_csrf.token}" role="form" enctype="multipart/form-data">	
+		<form:form modelAttribute="board" action="?_csrf=${_csrf.token}" onsubmit="return confirmValid()" role="form" enctype="multipart/form-data">	
 			<form:hidden path="nickname" value="${username}" />
 		    <form:hidden path="categoryId" value="1" />
 			
@@ -61,14 +77,14 @@ $(document).ready(function() {
 			
 			<div class="form-group">
 				<form:label path="leftword">이슈단어1</form:label>
-				<form:textarea path="leftword" class="form-control"></form:textarea>
+				<form:textarea path="leftword" class="form-control" id="leftword"></form:textarea>
 				<form:errors path="leftword" cssClass="error"/>
 			</div>
 			
 			
 			<div class="form-group">
 				<form:label path="rightword">이슈단어2</form:label>
-				<form:textarea path="rightword" class="form-control"></form:textarea>
+				<form:textarea path="rightword" class="form-control" id="rightword"></form:textarea>
 				<form:errors path="rightword" cssClass="error"/>
 			</div>
 

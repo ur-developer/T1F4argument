@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.galapagos.mapper.IssueMapper">
 	<sql id="criteria">
-		<trim prefixOverrides="OR">
+		<trim prefixOverrides="OR" prefix="and (" suffix=")">
 			<foreach item="type" collection="typeArr">
 				<trim prefix="OR">
 					<choose>
@@ -28,7 +28,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<where>
 			<include refid="criteria"></include>
 		</where>
-		where category_id = 1
 	</select>
 
 	<select id="getIssueList" resultType="BoardVO">
@@ -36,6 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from view_post vp
 		join argument_category ac on vp. category_id = ac.category_id	
 		where vp.category_id = 1
+			<include refid="criteria"></include>
 		order by vp.bno desc
 	</select>
 
@@ -49,7 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="readIssue" resultType="BoardVO">
-		select * from argument_post 
+		select * from view_post
 		where bno = #{bno}
 	</select>
 
@@ -79,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			content = #{content},
 			nickname = #{nickname},
 			leftword = #{leftword},
-			rightwrod = #{rightword},
+			rightword = #{rightword},
 			update_date = now()
 		where bno = #{bno}
 	</update>

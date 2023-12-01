@@ -11,18 +11,24 @@
 
 <style>
 	.word-section {
-    text-align: center;
+		display: flex; /* Flexbox 사용 */
+		justify-content: center; /* 가운데 정렬 */
 	}
 
 	.word-container {
-    display: inline-block;
-    margin-right: 200px;
- 	}
+		text-align: center; /* 텍스트를 중앙 정렬 */
+		margin-right: 200px; /* 이미지와 텍스트 사이의 간격 조절 */
+	}
+
+	.word-container img {
+		display: block; /* 이미지를 블록 요소로 설정 */
+		margin: 0 auto; /* 가운데 정렬 */
+	}
   
    .word-image {
-    width: 150px; /* 그림의 가로 크기를 조절 */
-    height: 150px; /* 그림의 세로 크기를 조절 */
-    margin-bottom: 5px; /* 그림과 단어 사이의 간격을 조절 */
+		width: 150px; /* 그림의 가로 크기를 조절 */
+    	height: 150px; /* 그림의 세로 크기를 조절 */
+   	 	margin-bottom: 5px; /* 그림과 단어 사이의 간격을 조절 */
     }
     
    .page-header {
@@ -128,14 +134,14 @@ $(document).ready(function() {
 <hr>
 
 <div class="word-section">
-  <div class="word-container">
-    <img src="/resources/images/dora.jpg" alt="Leftword Image" class="word-image">
-    <div>${board.leftword}</div>
-  </div>
-  <div class="word-container">
-    <img src="/resources/images/dora.jpg" alt="Rightword Image" class="word-image">
-    <div>${board.rightword}</div>
-  </div>
+	<div class="word-container">
+		<img src="/resources/images/dora.jpg" alt="Leftword Image" class="word-image">
+			<p>${board.leftword}</p> 
+	</div>
+	<div class="word-container">
+		<img src="/resources/images/dora.jpg" alt="Rightword Image" class="word-image">
+			<p>${board.rightword}</p> 
+	</div>
 </div>
 	
 <span class="like">
@@ -143,7 +149,6 @@ $(document).ready(function() {
 		data-bno="${board.bno}"></i>
 	<span class="like-count">${board.likes}</span>
 </span>
-
 
 <hr>
 

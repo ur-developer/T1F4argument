@@ -315,6 +315,10 @@ $(document).ready(function() {
 	
 <hr>
 	
+<div>${board.content}</div>
+
+<hr>
+
 <span class="like">
 	<i class="${ board.myLike ? 'fa-solid' : 'fa-regular' } fa-regular fa-thumbs-up text-primary"
 		data-bno="${board.bno}"></i>

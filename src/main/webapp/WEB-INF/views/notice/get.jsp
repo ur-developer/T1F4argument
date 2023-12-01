@@ -35,7 +35,6 @@ $(document).ready(function() {
 	<div><i class="fas fa-user"></i> ${board.nickname}</div>
 	<tr>
 		<td> 조회 수 ${board.hit} </td>
-		<td> 추천 수 ${board.likes} </td>
 	</tr>
 </div>
 	

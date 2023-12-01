@@ -53,7 +53,7 @@ public class NoticeController {
 		}	
 
 		@GetMapping("/list")
-		public void listIssue(@ModelAttribute("cri") Criteria cri, Principal principal, Model model) {
+		public void listNotice(@ModelAttribute("cri") Criteria cri, Principal principal, Model model) {
 		
 			log.info("list" + cri);
 			int total = service.getNoticeTotal(cri);
@@ -63,12 +63,12 @@ public class NoticeController {
 		}
 		
 		@GetMapping("/register")
-		public void registerIssue(@ModelAttribute("board") BoardVO board) {	
+		public void registerNotice(@ModelAttribute("board") BoardVO board) {	
 			log.info("register");	
 		}
 
 		@PostMapping("/register")
-		public String registerIssue(
+		public String registerNotice(
 				@Valid @ModelAttribute("board") BoardVO board,
 				Errors errors,
 				List<MultipartFile> files,
@@ -88,7 +88,7 @@ public class NoticeController {
 		}
 		
 		@GetMapping("/get")
-		public String getIssue(
+		public String getNotice(
 				@RequestParam("bno") Long bno,
 				@ModelAttribute("cri") Criteria cri,
 				Principal principal,
@@ -134,7 +134,7 @@ public class NoticeController {
 		}
 		
 		@GetMapping("/modify")
-		public String modifyIssue(
+		public String modifyNotice(
 				@RequestParam("bno") Long bno,
 				@ModelAttribute("cri") Criteria cri,
 				Principal principal,
@@ -180,7 +180,7 @@ public class NoticeController {
 		}
 		
 		@PostMapping("/modify")
-		public String modifyIssue(
+		public String modifyNotice(
 				BoardVO board,
 				@ModelAttribute("cri")
 				Criteria cri,
@@ -196,7 +196,7 @@ public class NoticeController {
 		}	
 		
 		@PostMapping("/remove")
-		public String removeIssue(
+		public String removeNotice(
 				@RequestParam("bno") Long bno, 
 				@ModelAttribute("cri") Criteria cri,
 				RedirectAttributes rttr) {

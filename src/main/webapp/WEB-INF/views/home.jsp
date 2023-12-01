@@ -38,7 +38,7 @@
 					<div class="slide_item item1" style="height: 120px;">
 						<div class="overflow-hidden ">
 							<p>
-							<h2 style="text-align: center;" >
+							<h2 style="text-align: center;">
 								<a href="/hotissue/get?bno=${board.bno}">${board.title}</a>
 							</h2>
 							</p>
@@ -58,7 +58,7 @@
 		
 		
 		</div>
-		<br> <br> <br> <br> <br> <br> <br> <br>
+	<br> <br> <br> <br> <br> <br> <br> <br>
 	<br> <br>
 </section>
 <div id="floatMenu">광고 / api</div>

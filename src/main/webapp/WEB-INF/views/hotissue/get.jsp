@@ -34,14 +34,15 @@
         data.addColumn('string', '댓글창');
         data.addColumn('number', '댓글수');
         data.addRows([
-          ['후보1', ${board.comment1Count}],
-          ['후보2', ${board.comment2Count}],
+              ['${board.leftword}', ${board.comment1Count}],
+          ['${board.rightword}', ${board.comment2Count}],
         ]);
 
         // Set chart options
         var options = {'title':'갑론을박',
                        'width':400,
-                       'height':300};
+                       'height':300,
+                       'backgroundColor': 'aliceblue'};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
@@ -282,8 +283,9 @@ $(document).ready(function() {
 
 </script>
 </c:if>
+<div id="floatMenu">광고 / api</div>
 
-<h2> 이슈고르기 </h2>
+<h2> 갑론을박 </h2>
 
 <div class="page-header d-flex justify-content-between">
     <div style="font-size: 2.2em;">${board.title}</div>
@@ -292,41 +294,27 @@ $(document).ready(function() {
         <fmt:formatDate pattern="yyyy-MM-dd" value="${board.registerDate}"/>
     </div>
 </div>
+<div class="container"
+		style="border-style: solid; width: 35%;  margin-top:50px; margin-bottom: 50px;text-align:center;">
 
-
-<div class="d-flex justify-content-between">
-	<div><i class="fas fa-user"></i> ${board.nickname}</div>
+		<div style="height: 50px;">
+			<h4>${board.content}</h4>
+		</div>
+		<br>
+		<div><i class="fas fa-user"></i> ${board.nickname}</div>
 	<tr>
 		<td> 조회 수 ${board.hit} </td>
 		<td> 추천 수 ${board.likes} </td>
 	</tr>
 </div>
+		<!--  차트  -->
+	</div>
+
+<hr style="width:30%;margin: 0px auto;margin-bottom:30px;">
 	
-<div class="text-right">
-	<c:forEach var="file" items="${board.attaches}">
-		<div class="attach-file-item">
-			<a href="/board/download/${file.no}" class="file-link">
-				<i class="fa-solid fa-floppy-disk"></i> 
-					${file.filename} (${file.formatSize})<br>
-			</a>
-		</div>
-	</c:forEach>
-</div>
-	
-<hr>
-	
-<div>${board.content}</div>
+<h3 style="text-align:center">차트(네이밍 개선사항)</h3>
 
-<hr>
-
-<span class="like">
-	<i class="${ board.myLike ? 'fa-solid' : 'fa-regular' } fa-regular fa-thumbs-up text-primary"
-		data-bno="${board.bno}"></i>
-	<span class="like-count">${board.likes}</span>
-</span>
-
-
-	<div class="container" style="width: 400px; height: 550px;">
+	<div class="container" style="width: 400px;">
 	<div id="chart_div"></div>
 	</div>
 
@@ -335,13 +323,13 @@ $(document).ready(function() {
 	style="width: 1200px height: auto; text-align: center; margin:50px;">
 	<div class="container">
 		<div class="my-5">
-			<i class="fa-regular fa-comments"></i> 후보1
+			<i class="fa-regular fa-comments"></i> ${board.leftword}
 			<hr>
 			<div class="comment-list"></div>
 		<div class="bg-light p-2 rounded my-5">
 	<c:choose>
 		<c:when test="${username == null}">
-			<div>댓글을 작성하려면 먼저 로그인하세요</div>
+			<div>로그인이 필요합니다.</div>
 			<div>
 				<textarea class="form-control new-comment-content" rows="3" disabled></textarea>
 				<div class="text-right">
@@ -352,7 +340,7 @@ $(document).ready(function() {
 			</div>
 		</c:when>
 		<c:when test="${board.myComment}">
-			<div>댓글을 중복해서 작성할 수 없습니다</div>
+			<div>의견을 중복해서 작성할 수 없습니다</div>
 			<div>
 				<textarea class="form-control new-comment-content" rows="3" disabled></textarea>
 				<div class="text-right">
@@ -363,7 +351,7 @@ $(document).ready(function() {
 			</div>
 		</c:when>
 		<c:when test="${board.myComment2}">
-			<div>댓글을 중복해서 작성할 수 없습니다</div>
+			<div>의견을 중복해서 작성할 수 없습니다</div>
 			<div>
 				<textarea class="form-control new-comment-content" rows="3" disabled></textarea>
 				<div class="text-right">
@@ -374,7 +362,7 @@ $(document).ready(function() {
 			</div>
 		</c:when>
 		<c:otherwise>
-			<div>댓글 작성</div>
+			<div>논쟁 참여하기</div>
 			<div>
 				<textarea class="form-control new-comment-content" rows="3"></textarea>
 				<div class="text-right">
@@ -397,14 +385,14 @@ $(document).ready(function() {
 	<div class="vr"></div>
 	<div class="container">
 		<div class="my-5">
-			<i class="fa-regular fa-comments"></i> 후보2
+			<i class="fa-regular fa-comments"></i> ${board.rightword}
 			<hr>
 			<div class="comment2-list"></div>
 		</div>
 		<div class="bg-light p-2 rounded my-5">
 			<c:choose>
 				<c:when test="${username == null}">
-					<div>댓글을 작성하려면 먼저 로그인하세요</div>
+					<div>로그인이 필요합니다.</div>
 					<div>
 						<textarea class="form-control new-comment2-content" rows="3"
 							disabled></textarea>
@@ -417,7 +405,7 @@ $(document).ready(function() {
 					</div>
 				</c:when>
 				<c:when test="${board.myComment}">
-					<div>댓글을 중복해서 작성할 수 없습니다</div>
+					<div>의견을 중복해서 작성할 수 없습니다</div>
 					<div>
 						<textarea class="form-control new-comment2-content" rows="3"
 							disabled></textarea>
@@ -430,7 +418,7 @@ $(document).ready(function() {
 					</div>
 				</c:when>
 				<c:when test="${board.myComment2}">
-					<div>댓글을 중복해서 작성할 수 없습니다</div>
+					<div>의견을 중복해서 작성할 수 없습니다</div>
 					<div>
 						<textarea class="form-control new-comment2-content" rows="3"
 							disabled></textarea>
@@ -443,7 +431,7 @@ $(document).ready(function() {
 					</div>
 				</c:when>
 				<c:otherwise>
-					<div>댓글 작성</div>
+					<div>논쟁 참여하기</div>
 					<div>
 						<textarea class="form-control new-comment2-content" rows="3"></textarea>
 						<div class="text-right">
@@ -471,12 +459,6 @@ $(document).ready(function() {
 	<a href="${cri.getLink('list')}" class="btn btn-primary list">
 		<i class="fas fa-list"></i> 목록</a>
 	
-	<c:if test="${username == board.nickname }">
-		<a href="${cri.getLinkWithBno('modify', board.bno) }" class="btn btn-primary modify">
-			<i class="far fa-edit"></i> 수정</a>
-		<a href="#" class="btn btn-danger remove">
-			<i class="fas fa-trash-alt"></i> 삭제</a>
-	</c:if>
 </div>
 
 <form action="remove" method="post" name="removeForm">

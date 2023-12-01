@@ -18,11 +18,12 @@
 <hr> 
 
 <h1 class="page-header" style="margin-left: 20px;">
-    <i class="fa-solid fa-fire fa-lg"></i> 인기순
+    <i class="fa-solid fa-fire fa-lg"></i> HOT 이슈
 </h1>
+<div id="floatMenu">광고 / api</div>
 
 <p></p>
-<div class="row">
+<div class="row" style="width:90%;margin:0 auto;">
     <c:forEach var="board" items="${list}">
         <div class="col-12 mb-3">
             <div class="card" style="width:100%">
@@ -36,7 +37,7 @@
 					</div>
                     <!-- 중간에 제목과 내용 -->
                     <div class="col-md-6">
-                        <div class="card-body">
+                        <div class="card-body" style="text-align:center;">
                             <h4 class="card-title" style="font-size: 24px;">
                                 <a href="${cri.getLink('get')}&bno=${board.bno}">
                                     ${board.title}

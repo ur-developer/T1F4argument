@@ -31,6 +31,8 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/resources/js/main.js"></script>
+<script src="/resources/js/scripts.js"></script>
+
 </head>
 
 
@@ -126,5 +128,5 @@ $(document).ready(function() {
 	width="100%"></a>
 <section style="background-color: aliceblue;">
 <br>
-	<div style="margin: 50px; ">
+	<div style="margin: 140px; margin-top:20px">
 			<!-- Header-->

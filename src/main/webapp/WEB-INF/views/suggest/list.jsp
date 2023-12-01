@@ -6,6 +6,7 @@
 <%@include file="../layouts/headersuggest.jsp"%>
 
 
+<div id="floatMenu">광고 / api</div>
 
 <h1 class="page-header">
 	<i class="fas fa-list"></i> 건의게시판
@@ -41,7 +42,7 @@
 
 <hr>
 
-<div class="text-right">
+<div class="text-right" style="float:right">\
 	<a href="register" class="btn btn-primary"> <i class="far fa-edit"></i>
 		글쓰기
 	</a>

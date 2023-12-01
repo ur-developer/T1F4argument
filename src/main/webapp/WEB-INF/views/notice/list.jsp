@@ -40,11 +40,14 @@
 
 <hr>
 
-<div class="text-right">
+<div class="text-right" style="float:right">
 	<a href="register" class="btn btn-primary"> <i class="far fa-edit"></i>
 		글쓰기
 	</a>
 </div>
+
+
+<div id="floatMenu">광고 / api</div>
 
 
 

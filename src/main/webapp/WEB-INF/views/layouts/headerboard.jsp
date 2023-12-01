@@ -71,7 +71,7 @@
 								<li><a class="dropdown-item"
 									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=4">네번째 이슈</a></li>
 							</ul>
-							<li><a class="nav-link"
+							<li class="nav-item active"><a class="nav-link"
 							href="${pageContext.request.contextPath}/board/list">자유토론장</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
@@ -126,5 +126,5 @@ $(document).ready(function() {
 	width="100%"></a>
 <section style="background-color: aliceblue;">
 <br>
-	<div style="margin: 50px;">
-			<!-- Header-->
+	<div style="margin: 140px; margin-top:20px">
+				<!-- Header-->

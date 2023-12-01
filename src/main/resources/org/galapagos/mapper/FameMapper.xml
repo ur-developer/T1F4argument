@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.galapagos.mapper.FameMapper">
 	<sql id="criteria">
-		<trim prefixOverrides="OR">
+		<trim prefixOverrides="OR" prefix="and (" suffix=")">
 			<foreach item="type" collection="typeArr">
 				<trim prefix="OR">
 					<choose>

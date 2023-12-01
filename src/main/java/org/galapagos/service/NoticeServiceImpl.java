@@ -76,6 +76,4 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<BoardVO> mainNotice() {
 		return mapper.mainNotice();
 	}
-	
-	
 }

@@ -34,7 +34,7 @@
 </h1>
 <div class="panel panel-default">
 	<div class="panel-body">
-		<form role="form" method="post">
+		<form role="form" method="post" action="?_csrf=${_csrf.token}">
 			<input type="hidden" name="pageNum" value="${cri.pageNum}"/>
 			<input type="hidden" name="amount" value="${cri.amount}"/>
 			<input type="hidden" name="bno" value=${board.bno }>
@@ -48,10 +48,19 @@
 			</div>
 			<div class="form-group">
 				<label>내용</label>
-			<textarea id="content" name="con">
-				${board.title }
-				</textarea>
+			<textarea id="content" name="content">${board.content}</textarea>
 			</div>
+			
+			<div class="form-group">
+				<label>이슈단어1</label>
+				<textarea id="leftword" name="leftword">${board.leftword}</textarea>
+			</div>
+			
+			<div class="form-group">
+				<label>이슈단어2</label>
+				<textarea id="rightword" name="rightword">${board.rightword}</textarea>
+			</div>
+			
 			
 			<button type="submit" class="btn btn-primary">
 				<i class="fas fa-check"></i> 확인

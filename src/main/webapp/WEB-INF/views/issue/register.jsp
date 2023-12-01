@@ -60,7 +60,7 @@ $(document).ready(function() {
 			</div>
 			
 			<div class="form-group">
-				<form:label path="leftword">이슈 단어</form:label>
+				<form:label path="leftword">이슈단어1</form:label>
 				<form:textarea path="leftword" class="form-control"></form:textarea>
 				<form:errors path="leftword" cssClass="error"/>
 			</div>

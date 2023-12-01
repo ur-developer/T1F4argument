@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.galapagos.mapper.NoticeMapper">
 	<sql id="criteria">
-		<trim prefixOverrides="OR">
+		<trim prefixOverrides="OR" prefix="and (" suffix=")">
 			<foreach item="type" collection="typeArr">
 				<trim prefix="OR">
 					<choose>
@@ -28,16 +28,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<where>
 			<include refid="criteria"></include>
 		</where>
-		where category_id = 4
-		order by bno desc
 	</select>
 
 	<select id="getNoticeList" resultType="BoardVO">
-		SELECT VP.*, AC.category_id
-		FROM view_post VP
-		JOIN argument_category AC ON VP.category_id = AC.category_id
-		WHERE VP.category_id = 4
-		ORDER BY VP.bno DESC;
+		select vp.*, ac.category_id
+		from view_post vp
+		join argument_category ac on vp. category_id = ac.category_id	
+		where vp.category_id = 4
+			<include refid="criteria"></include>
+		order by vp.bno desc
 	</select>
 
 	<select id="getNoticeListWithPaging" resultType="BoardVO">

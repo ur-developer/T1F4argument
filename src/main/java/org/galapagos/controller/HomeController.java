@@ -11,6 +11,7 @@ import org.galapagos.domain.Criteria;
 import org.galapagos.domain.PageDTO;
 import org.galapagos.mapper.BoardMapper;
 import org.galapagos.mapper.HotIssueMapper;
+import org.galapagos.service.BoardService;
 import org.galapagos.service.FameService;
 import org.galapagos.service.HotIssueService;
 import org.galapagos.service.IssueService;
@@ -48,7 +49,11 @@ public class HomeController {
 	FameService fameService;
 	
 	@Autowired
-	SuggestService suggestServvice;
+	SuggestService suggestService;
+
+	@Autowired
+	BoardService boardService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -67,8 +72,9 @@ public class HomeController {
 		model.addAttribute("mainNotice", noticeService.mainNotice());
 		model.addAttribute("mainIssue", issueService.mainIssue());
 		model.addAttribute("mainFame", fameService.mainFame());
-		model.addAttribute("mainSuggest", suggestServvice.mainSuggest());
+		model.addAttribute("mainSuggest", suggestService.mainSuggest());
 		model.addAttribute("getHotissueList", hotIssueService.getHotissueList(cri, principal));
+		model.addAttribute("mainBoard", boardService.mainBoard());
 		return "home";
 	}
 	

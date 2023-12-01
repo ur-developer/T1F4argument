@@ -111,4 +111,9 @@ public class BoardServiceImpl implements BoardService {
 	public boolean plusHit(long bno) {
 		return mapper.plusHit(bno);
 	}
+
+	@Override
+	public List<BoardVO> mainBoard() {
+		return mapper.mainBoard();
+	}
 }

@@ -46,5 +46,7 @@ public interface BoardMapper {
 	public List<Long> getCommentList(String username);
 	
 	public List<Long> getComment2List(String username);
+	
+	public List<BoardVO> mainBoard();
 
 }

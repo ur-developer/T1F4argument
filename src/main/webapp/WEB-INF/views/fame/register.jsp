@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<%@include file="../layouts/header.jsp"%>
+<%@include file="../layouts/headerfame.jsp"%>
 
 <link rel="stylesheet" href="/resources/css/summernote/summernote-lite.min.css">
 <script src="/resources/js/summernote/summernote-lite.min.js"></script> 

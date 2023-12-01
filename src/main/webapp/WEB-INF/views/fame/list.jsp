@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@include file="../layouts/header.jsp"%>
+<%@include file="../layouts/headerfame.jsp"%>
 
 
 <h1 class="page-header">
@@ -11,46 +11,42 @@
 </h1>
 <hr>
 
-<div style="background-color: #d7ecff; border-radius: 30px;">
-	<div class="col-md-5" style="float: none; margin: auto;">
-		<h2 style="text-align: center;">
-			.1.
-			</h1>
-			<div class="container px-5">
-				<div class="row gx-10">
-					<div
-						class="col g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-						<div class="col-lg-auto d-none d-lg-block">
-							<img
-								src="${pageContext.request.contextPath}/resources/images/1st.jpg"
-								style="width: 100%;">
-						</div>
-						<div class="col p-1 d-flex flex-column position-static">
-							<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
-							<h2 class="mb-0" style="float: none; margin: 0 auto;">
-								제목
-								</h3>
+<section class="pt-5">
+<div class="col-md-5" style="float: none; margin: auto;">
+					<h2 style="text-align: center;">
+						
+						</h1>
+						<div
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							<div class="col-lg-auto d-none d-lg-block">
+								<img
+									src="${pageContext.request.contextPath}/resources/images/hotissue.png">
+							</div>
+							<div class="col p-1 d-flex flex-column position-static">
+								<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
+								<h2 class="mb-0" style="float: none; margin: 0 auto;">
+									제목
+									</h3>
 
-								<div class="mb-1 text-body-secondary"
-									style="float: none; margin: 0 auto;">날짜</div>
-								<br> <br>
-								<p class="card-text mb-auto"
-									style="float: none; margin: 0 auto;">내용</p>
-								<br> <a
-									href="${pageContext.request.contextPath}/hotissue/list"
-									class="icon-link gap-1 icon-link-hover stretched-link"> 핫
-									이슈 보러가기 </a>
-						</div>
+									<div class="mb-1 text-body-secondary"
+										style="float: none; margin: 0 auto;">날짜</div>
+									<br> <br>
+									<p class="card-text mb-auto"
+										style="float: none; margin: 0 auto;">내용</p>
+									<br> <a href="${pageContext.request.contextPath}/hotissue/list"
+										class="icon-link gap-1 icon-link-hover stretched-link">
+										핫 이슈 보러가기 </a>
+							</div>
 
-					</div>
+						</div>
 				</div>
-			</div>
-	</div>
-	<br> <br>
-
-	<hr class="hr-layout">
-	<Br> <br>
-	<div class="container px-5">
+<br>
+<br>
+</section> 
+<hr class="hr-layout">
+<Br>
+<br>
+<div class="container px-5">
 		<div class="row gx-10">
 
 			<div class="row mb-4">
@@ -63,8 +59,7 @@
 							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 							<div class="col-lg-auto d-none d-lg-block">
 								<img
-									src="${pageContext.request.contextPath}/resources/images/2nd.jpg"
-									style="width: 100%;">
+									src="${pageContext.request.contextPath}/resources/images/hotissue.png">
 							</div>
 							<div class="col p-1 d-flex flex-column position-static">
 								<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
@@ -77,10 +72,9 @@
 									<br> <br>
 									<p class="card-text mb-auto"
 										style="float: none; margin: 0 auto;">내용</p>
-									<br> <a
-										href="${pageContext.request.contextPath}/hotissue/list"
-										class="icon-link gap-1 icon-link-hover stretched-link"> 핫
-										이슈 보러가기 </a>
+									<br> <a href="${pageContext.request.contextPath}/hotissue/list"
+										class="icon-link gap-1 icon-link-hover stretched-link">
+										핫 이슈 보러가기 </a>
 							</div>
 
 						</div>
@@ -93,8 +87,7 @@
 							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 							<div class="col-lg-auto d-none d-lg-block">
 								<img
-									src="${pageContext.request.contextPath}/resources/images/3rd.jpg"
-									style="width: 100%;">
+									src="${pageContext.request.contextPath}/resources/images/hotissue.png">
 							</div>
 							<div class="col p-1 d-flex flex-column position-static">
 								<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
@@ -107,24 +100,19 @@
 									<br> <br>
 									<p class="card-text mb-auto"
 										style="float: none; margin: 0 auto;">내용</p>
-									<br> <a
-										href="{pageContext.request.contextPath}/hotissue/list"
-										class="icon-link gap-1 icon-link-hover stretched-link"> 핫
-										이슈 보러가기 </a>
+									<br> <a href="{pageContext.request.contextPath}/hotissue/list"
+										class="icon-link gap-1 icon-link-hover stretched-link">
+										핫 이슈 보러가기  </a>
 							</div>
 
 						</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<br>
-
-
 </div>
 </div>
+
+
 
 <%@include file="../common/pagination.jsp"%>
-</div>
 
 <%@include file="../layouts/footer.jsp"%>

@@ -34,5 +34,7 @@ public interface IssueMapper {
 	public void addLike(LikeVO like);
 	
 	public void deleteLike(LikeVO like);
+	
+	public List<BoardVO> mainIssue();
 
 }

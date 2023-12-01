@@ -75,7 +75,7 @@
 							href="${pageContext.request.contextPath}/board/list">자유토론장</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
-						<li><a class="nav-link" href="/suggest/list">요청 게시판</a></li>
+						<li class="nav-item active"><a class="nav-link" href="/suggest/list">요청 게시판</a></li>
 
 					</ul>
 
@@ -126,5 +126,5 @@ $(document).ready(function() {
 	width="100%"></a>
 <section style="background-color: aliceblue;">
 <br>
-	<div style="margin: 50px;">
+	<div style="margin: 50px; ">
 			<!-- Header-->

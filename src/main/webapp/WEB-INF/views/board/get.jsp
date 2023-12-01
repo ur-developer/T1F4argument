@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@include file="../layouts/header.jsp"%>
+<%@include file="../layouts/headerboard.jsp"%>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 <script
@@ -49,7 +49,7 @@
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
-    </script>
+ </script>
 <script>
 //댓글, 답글 기본 URL 상수 - 전역 상수
 const COMMENT_URL = '/api/board/${param.bno}/comment/';

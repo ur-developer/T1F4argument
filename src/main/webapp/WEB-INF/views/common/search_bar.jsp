@@ -6,10 +6,6 @@
 
 <div class="d-flex justify-content-between align-items-center my-4">
 	<div>
-		총 ${pageMaker.total} 건 
-		( ${pageMaker.cri.pageNum} .. ${pageMaker.totalPage })
-	</div>
-	<div>
 	    <form:form id="searchForm" modelAttribute="cri"  method="get" class="d-flex" >
 		    <form:hidden path="pageNum"/>
 	    	<form:hidden path="amount" />

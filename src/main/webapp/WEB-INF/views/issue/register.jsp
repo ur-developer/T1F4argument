@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<%@include file="../layouts/header.jsp"%>
+<%@include file="../layouts/headerissue.jsp"%>
 
 <link rel="stylesheet" href="/resources/css/summernote/summernote-lite.min.css">
 <script src="/resources/js/summernote/summernote-lite.min.js"></script> 
@@ -60,7 +60,7 @@ $(document).ready(function() {
 			</div>
 			
 			<div class="form-group">
-				<form:label path="leftword">이슈 단어</form:label>
+				<form:label path="leftword">이슈단어1</form:label>
 				<form:textarea path="leftword" class="form-control"></form:textarea>
 				<form:errors path="leftword" cssClass="error"/>
 			</div>

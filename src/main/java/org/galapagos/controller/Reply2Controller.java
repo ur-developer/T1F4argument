@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/board/{bno}/reply2")
+@RequestMapping("/api/hotissue/{bno}/reply2")
 public class Reply2Controller {
 	@Autowired
 	private Reply2Mapper mapper;

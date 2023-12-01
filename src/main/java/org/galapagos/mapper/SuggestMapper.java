@@ -33,4 +33,6 @@ public interface SuggestMapper {
 	public void addLike(LikeVO like);
 	
 	public void deleteLike(LikeVO like);
+	
+	public List<BoardVO> mainSuggest();
 }

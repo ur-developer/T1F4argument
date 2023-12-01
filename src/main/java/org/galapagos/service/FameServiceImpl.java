@@ -80,4 +80,9 @@ public class FameServiceImpl implements  FameService {
 	public boolean plusHit(long bno) {
 		return mapper.plusHit(bno);
 	}
+
+	@Override
+	public List<BoardVO> mainFame() {
+		return mapper.mainFame();
+	}
 }

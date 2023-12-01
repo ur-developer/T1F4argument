@@ -49,9 +49,7 @@ function createReply2EditTemplate(reply2) {
 				
 			<div>${reply2.no ? '' : ' 답글 작성'}</div>
 				
-				<textarea class="form-control mb-1 reply2-editor">
-					${reply2.content || '' }
-				</textarea>
+				<textarea class="form-control mb-1 reply2-editor">${reply2.content || '' }</textarea>
 				
 				<div class="text-end">
 					<button onClick="window.location.reload()" class="btn btn-light btn-sm py-1 

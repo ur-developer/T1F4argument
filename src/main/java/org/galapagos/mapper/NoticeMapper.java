@@ -1,5 +1,6 @@
 package org.galapagos.mapper;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.galapagos.domain.BoardVO;
@@ -24,4 +25,6 @@ public interface NoticeMapper {
 	
 	// 조회수 +1
 	public boolean plusHit(long bno);
+	
+	public List<BoardVO> mainNotice();
 }

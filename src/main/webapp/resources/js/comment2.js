@@ -12,9 +12,7 @@ const comment2Updatable = `
 	<button class="btn btn-light btn-sm comment2-delete-btn">
 		<i class="fa-solid fa-times"></i> 삭제
 	</button>
-	<button class="btn btn-light btn-sm reply2-add-show-btn">
-		<i class="fa-solid fa-pen-to-square"></i> 답글
-	</button>
+	
 	
 `;
 
@@ -45,7 +43,7 @@ function createComment2Template(comment2, nickname) {
 		</div>
 		<span class="like">
 				<i class="${ comment2.myLike ? 'fa-solid' : 'fa-regular' } fa-thumbs-up text-danger"
-		data-no="${comment2.no}"></i>
+		data-no="${comment2.no}" data-nickname="${comment2.nickname}"></i>
 				<span class="like-count">${comment2.likeCount}</span>
 			</span>
 		<div class="reply2-list ml-5">
@@ -209,6 +207,8 @@ async function deleteComment2(e) {
 		
 	// api 호출	
 	comment2.remove();
+	
+	location.reload(true);
 
 }
 

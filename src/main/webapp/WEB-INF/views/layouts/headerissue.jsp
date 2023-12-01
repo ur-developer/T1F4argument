@@ -55,14 +55,14 @@
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/">메인</a></li>
-						<li><a class="nav-link"
+						<li class="nav-item active"><a class="nav-link"
 							href="${pageContext.request.contextPath}/issue/list">이슈 고르기</a></li>
 						<li><a class="nav-link" href="/fame/list">이슈 명예 전당</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							data-bs-toggle="dropdown" aria-expanded="false">갑론을박</a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item"
+							<li><a class="dropdown-item"
 									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=1">첫번째 이슈</a></li>
 								<li><a class="dropdown-item"
 									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=2">두번째 이슈</a></li>
@@ -126,5 +126,5 @@ $(document).ready(function() {
 	width="100%"></a>
 <section style="background-color: aliceblue;">
 <br>
-	<div style="margin: 50px;">
+	<div style="margin: 50px; ">
 			<!-- Header-->

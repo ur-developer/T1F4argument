@@ -53,7 +53,7 @@
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li><a class="nav-link"
+						<li ><a class="nav-link"
 							href="${pageContext.request.contextPath}/">메인</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/issue/list">이슈 고르기</a></li>
@@ -73,7 +73,7 @@
 							</ul>
 							<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/board/list">자유토론장</a></li>
-						<li><a class="nav-link"
+						<li class="nav-item active"><a class="nav-link"
 							href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
 						<li><a class="nav-link" href="/suggest/list">요청 게시판</a></li>
 
@@ -126,5 +126,5 @@ $(document).ready(function() {
 	width="100%"></a>
 <section style="background-color: aliceblue;">
 <br>
-	<div style="margin: 50px;">
+	<div style="margin: 50px; ">
 			<!-- Header-->

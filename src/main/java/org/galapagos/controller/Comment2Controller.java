@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.log4j.Log4j;
 
 @RestController
-@RequestMapping("/api/board/{bno}/comment2") // ("")로 할 경우 공통 url로 들어갈 부분
+@RequestMapping("/api/hotissue/{bno}/comment2") // ("")로 할 경우 공통 url로 들어갈 부분
 @Log4j
 public class Comment2Controller {
 	@Autowired

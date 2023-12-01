@@ -67,14 +67,16 @@
 							data-bs-toggle="dropdown" aria-expanded="false">갑론을박</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item"
-									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=1">1</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=1">첫번째 이슈</a></li>
 								<li><a class="dropdown-item"
-									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=2">2</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=2">두번째 이슈</a></li>
 								<li><a class="dropdown-item"
-									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=3">3</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=3">세번째 이슈</a></li>
 								<li><a class="dropdown-item"
-									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=4">4</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=4">네번째 이슈</a></li>
 							</ul>
+							<li><a class="nav-link"
+							href="${pageContext.request.contextPath}/board/list">자유토론장</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
 						<li><a class="nav-link" href="/suggest/list">요청 게시판</a></li>

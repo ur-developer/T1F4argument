@@ -34,7 +34,7 @@
         data.addColumn('string', '댓글창');
         data.addColumn('number', '댓글수');
         data.addRows([
-            ['후보1', ${board.comment1Count}],
+        ['후보1', ${board.comment1Count}],
           ['후보2', ${board.comment2Count}],
         ]);
 

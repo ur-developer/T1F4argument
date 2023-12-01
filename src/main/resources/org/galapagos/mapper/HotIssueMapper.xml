@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select vp.*, ac.category_id
 		from view_post vp
 		join argument_category ac on vp. category_id = ac.category_id	
-		where vp.category_id = 1
+		where vp.category_id = 1 and date_format(vp.register_date, '%Y-%m-%d') = date_format(curdate(), '%Y-%m-%d')
 		order by vp.likes desc
 		limit 4
 	</select>

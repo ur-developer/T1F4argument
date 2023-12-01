@@ -28,13 +28,27 @@
 	
 	
 </script>
+
+<script>
+	function confirmValid() {
+		leftword = $('#leftword').val();
+		rightword = $('#rightword').val();
+		if(leftword == "" || rightword == "" || leftword == " " || rightword == " ") {
+			alert('이슈단어를 입력해주세요.');
+			return false;
+		} else {
+			return true;
+		}
+	}
+</script>
+
 <%-- 개별 페이지 --%>
 <h1 class="page-header">
 	<i class="fas fa-edit"></i> 수정하기
 </h1>
 <div class="panel panel-default">
 	<div class="panel-body">
-		<form role="form" method="post" action="?_csrf=${_csrf.token}">
+		<form role="form" method="post" action="?_csrf=${_csrf.token}" onsubmit="return confirmValid()">
 			<input type="hidden" name="pageNum" value="${cri.pageNum}"/>
 			<input type="hidden" name="amount" value="${cri.amount}"/>
 			<input type="hidden" name="bno" value=${board.bno }>

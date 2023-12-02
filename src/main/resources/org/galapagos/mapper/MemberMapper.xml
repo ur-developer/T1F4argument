@@ -69,4 +69,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where username = #{username}
 	</delete>
 	
+	<select id="getMemberLikes" resultType="MemberVO">
+		select * from view_member_likes  
+		order by total_likes desc
+	</select>
+	
 </mapper>

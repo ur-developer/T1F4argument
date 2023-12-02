@@ -1,0 +1,51 @@
+*{padding:0;margin:0;}
+*{text-decoration:none;}
+
+ /* 메인화면*/ 
+ .title{
+ margin-top:130px;
+ margin-bottom:60px;
+ margin-left: 200px;
+ margin-right: 200px;
+ display: flex;
+ font-size: 6.5em;
+ font-weight: bold;
+ font-family: 'Montserrat', sans-serif
+ }
+
+
+/* top버튼 */
+#backtotop{
+  background-color: #333;
+  font-size: 1em;  color:#fff;
+  /* 가운데정렬을위한 lineheight */
+  line-height: 50px;
+  text-align: center;
+  width:50px;
+  height:50px;
+  /* 원만들기 */
+  border-radius: 40px;
+  position: fixed;
+  bottom: 60px;
+  right:60px;
+  transition-property: background-color, opacity, visibility;
+  transition-duration: 0.3s, 0.5s, 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
+ }
+ 
+ /* top icon 스크롤 옵션 */ 
+ #backtotop:after{
+   line-height: 40px;
+   }
+ 
+ #backtotop.show{
+   opacity:1;
+   visibility:visible;
+ }
+ 
+ #backtotop.show:hover{
+   cursor:pointer;
+   background-color: blue;
+ }

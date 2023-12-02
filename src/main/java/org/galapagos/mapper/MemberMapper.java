@@ -1,5 +1,7 @@
 package org.galapagos.mapper;
 
+import java.util.List;
+
 import org.galapagos.domain.AuthorizationVO;
 import org.galapagos.domain.MemberVO;
 import org.galapagos.domain.ResetPasswordVO;
@@ -22,4 +24,6 @@ public MemberVO readMember(String username);
 	public void deleteMember(MemberVO member);
 	
 	public void resetPassword(ResetPasswordVO resetPassword);
+	
+	public List<Long> getMemberLikes();
 }

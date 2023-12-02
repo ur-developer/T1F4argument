@@ -28,5 +28,11 @@ public class CommonExceptionAdvice {
 		log.error("404---------");
 		return "custom404";
 	}
+	
+	@ExceptionHandler(IndexOutOfBoundsException.class)
+	public String handleIndex(IndexOutOfBoundsException index) {
+		log.error("index---------");
+		return "custom_index";
+	}
 
 }

@@ -1,5 +1,7 @@
 package org.galapagos.service;
 
+import java.util.List;
+
 import org.galapagos.domain.DeleteMemberVO;
 import org.galapagos.domain.MemberVO;
 import org.galapagos.domain.ResetPasswordVO;
@@ -20,5 +22,7 @@ public MemberVO getMember(String username);
 	public boolean updateMember(UpdateMemberVO updateMember);
 	
 	public boolean deleteMember(DeleteMemberVO deleteMember);
+	
+	public List<Long> getMemberLikes();
 	
 }

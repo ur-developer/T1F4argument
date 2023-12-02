@@ -32,7 +32,7 @@ public class MemberVO {
 	private String nickname;
 	private Date registerDate;
 	private Date updateDate;
-	
+	private Integer totalLikes;
 	private List<AuthorizationVO> authorizationList;
 	
 	public Collection<SimpleGrantedAuthority> getAuthorities() {

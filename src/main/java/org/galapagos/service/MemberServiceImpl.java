@@ -1,5 +1,7 @@
 package org.galapagos.service;
 
+import java.util.List;
+
 import org.galapagos.domain.AuthorizationVO;
 import org.galapagos.domain.DeleteMemberVO;
 import org.galapagos.domain.MemberVO;
@@ -104,4 +106,10 @@ public class MemberServiceImpl implements MemberService {
 		
 		return false;
 	}
+
+	@Override
+	public List<Long> getMemberLikes() {
+		return mapper.getMemberLikes();
+	}
+
 }

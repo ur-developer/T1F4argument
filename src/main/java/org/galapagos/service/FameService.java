@@ -24,4 +24,10 @@ public interface FameService {
 	public boolean plusHit(long bno);
 	
 	public List<BoardVO> mainFame();
-}
+	
+	public List<BoardVO> getFirstFameList();
+	
+	public List<BoardVO> getSecondFameList();
+	
+	public List<BoardVO> getThirdFameList();
+	}

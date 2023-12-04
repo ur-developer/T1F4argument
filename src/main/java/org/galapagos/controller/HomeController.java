@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import org.galapagos.domain.BoardVO;
 import org.galapagos.domain.Criteria;
+import org.galapagos.domain.MemberVO;
 import org.galapagos.domain.PageDTO;
 import org.galapagos.mapper.BoardMapper;
 import org.galapagos.mapper.HotIssueMapper;
@@ -15,6 +16,7 @@ import org.galapagos.service.BoardService;
 import org.galapagos.service.FameService;
 import org.galapagos.service.HotIssueService;
 import org.galapagos.service.IssueService;
+import org.galapagos.service.MemberService;
 import org.galapagos.service.NoticeService;
 import org.galapagos.service.SuggestService;
 import org.slf4j.Logger;
@@ -54,6 +56,11 @@ public class HomeController {
 	@Autowired
 	BoardService boardService;
 	
+	@Autowired
+	MemberService memberService;
+	
+	
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -71,10 +78,11 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("mainNotice", noticeService.mainNotice());
 		model.addAttribute("mainIssue", issueService.mainIssue());
-		model.addAttribute("mainFame", fameService.mainFame());
+		model.addAttribute("getFameList", fameService.getFameList(cri, principal));
 		model.addAttribute("mainSuggest", suggestService.mainSuggest());
 		model.addAttribute("getHotissueList", hotIssueService.getHotissueList(cri, principal));
 		model.addAttribute("mainBoard", boardService.mainBoard());
+		model.addAttribute("getMemberLikes", memberService.getMemberLikes());
 		return "home";
 	}
 	

@@ -60,6 +60,9 @@ public class FameController {
 		int total = service.getFameTotal(cri);
 		model.addAttribute("list", service.getFameList(cri, principal));
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		model.addAttribute("getFirstFameList", service.getFirstFameList());
+		model.addAttribute("getSecondFameList", service.getSecondFameList());
+		model.addAttribute("getThirdFameList", service.getThirdFameList());
 
 	}
 	

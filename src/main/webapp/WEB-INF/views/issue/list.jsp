@@ -4,55 +4,138 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@include file="../layouts/headerissue.jsp"%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<script src="/resources/js/rest.js"></script>
+<style>
+.likes-container {
+	display: flex;
+	align-items: center;
+}
+
+.likes-icon {
+	margin-right: 50px; /* 아이콘과 텍스트 사이 간격 조절 */
+}
+</style>
+<script>
+$(document).ready(function() {
+	
+    let username = '${username}';
+    const BASE_URL = '/api/issue/like';
+
+    // 좋아요 추가
+    $('span.like').on('click', '.fa-thumbs-up.fa-regular', async function(e){
+        let bno = parseInt($(this).data("bno"));
+        let like = { bno, username };
+        
+        await rest_create(BASE_URL + "/add", like);
+        
+        let likes = $(this).parent().find(".like-count");
+        console.log(likes);
+        let count = parseInt(likes.text());
+        likes.text(count+1);
+        
+        $(this)
+            .removeClass('fa-regular')
+            .addClass('fa-solid');
+    });
+
+    // 좋아요 제거
+    $('span.like').on('click', '.fa-thumbs-up.fa-solid', async function(e){
+        let bno = parseInt($(this).data("bno"));
+        
+        await rest_delete(
+       		 `\${BASE_URL}/delete?bno=\${bno}&username=\${username}`);
+
+
+        let likes = $(this).parent().find(".like-count");
+        console.log(likes);
+        let count = parseInt(likes.text());
+        likes.text(count-1);
+
+        $(this)
+            .removeClass('fa-solid')
+            .addClass('fa-regular');
+    });
+});
+
+</script>
+
 <h1 class="page-header">
-	<i class="fas fa-list"></i>이슈고르기
+	<i class="fas fa-list"></i> 이슈고르기
 </h1>
 
 <hr>
 
 <div class="text-left">
-	<a href="/hotissue/list" class="btn btn-primary">
-		인기순
-	</a>
+	<a href="/hotissue/list" class="btn btn-primary"> 지금의 hot issue </a>
 </div>
-<div id="floatMenu">광고 / api</div>
+<hr style="width:40px">
 
+<c:if test="${not empty username}">
+</c:if>
 
-<p></p>
+<div class="row" style="width: 90%; margin: 0 auto;">
+	<c:forEach var="board" items="${list}">
+		<div class="col-12 mb-3">
+			<div class="card" style="width: 100%">
+				<div class="row no-gutters">
+					<!-- 왼쪽에 사진 -->
+					<div
+						class="col-md-3 d-flex align-items-center justify-content-center">
+						<a href="${cri.getLink('get')}&bno=${board.bno}"> <img
+							class="card-img-top" src="/resources/images/issue.png"
+							alt="${board.title}" style="width: 100%;">
+						</a>
+					</div>
 
-<table class="table table-striped table-hover">
-	<thead>
-		<tr>
-			<th style = "text-align: center">탭</th>
-			<th style = "text-align: center">제목</th>
-			<th style = "text-align: center">작성자</th>
-			<th style = "text-align: center">등록일</th>
-			<th style = "text-align: center">조회</th>
-			<th style = "text-align: center">추천</th>
-		</tr>
-	</thead>
-	<tbody>
-		<c:forEach var="board" items="${list}">
-			<tr>
-				<td style="width: 60px; text-align: center;">이슈</td>
-       	 		<td><a href="get?bno=${board.bno}">${board.title}</a></td>
-      			<td style="width: 100px; text-align: center;">${board.nickname}</td>
-        		<td style="width: 130px; text-align: center;"><fmt:formatDate pattern="yyyy-MM-dd" value="${board.registerDate}" /></td>
-        		<td style="width: 80px; text-align: center;">${board.hit}</td>
-        		<td style="width: 80px; text-align: center;">${board.likes}</td>
-      		</tr>
-		</c:forEach>
-	</tbody>
-</table>
+					<!-- 중간에 제목과 내용 -->
+					<div class="col-md-6">
+						<div class="card-body" style="text-align: center;">
+							<h4 class="card-title" style="font-size: 24px;">
+								<a href="${cri.getLink('get')}&bno=${board.bno}" style="color:black">
+									${board.title} </a>
+							</h4>
+							<p class="card-text" style="font-size: 16px;">
+								<i>${board.content}</i></p>
+							<div style="display: grid; grid-template-columns: 1fr 1fr;">
+								<div style="margin: 0 auto;min-width:50px;width:auto;height:25px; background-color:#d1495b">
+									<p style="color:white">&nbsp;${board.leftword}&nbsp;</p>
+								</div>
+								<div style="margin: 0 auto ;min-width:50px; width:auto;height:25px; background-color:#00798c">
+									<p style="color:white" >&nbsp;${board.rightword}&nbsp;</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 오른쪽에 좋아요 표시와 닉네임 -->
+					<div
+						class="col-md-3 d-flex justify-content-center align-items-center"
+						style="border-left:dotted">
+						<div class="likes-text" style="text-align: center;">
+						
 
+						</div>
+						<div style="margin: 0 20px;">
+							<span class="like" style="cursor:pointer"> <i
+								class="${ board.myLike ? 'fa-solid' : 'fa-large' } fa-regular fa-thumbs-up fa-2xl"
+								style="color:#edae49;" "data-bno="${board.bno}"></i> <span class="like-count">${board.likes}</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</c:forEach>
+</div>
 <hr>
 
-<div class="text-right" style="float:right">
+<div class="text-right" style="float: right">
 	<a href="register" class="btn btn-primary"> <i class="far fa-edit"></i>
 		글쓰기
 	</a>
 </div>
-<%@ include file="../common/search_bar.jsp" %>
+<%@ include file="../common/search_bar.jsp"%>
 
 
 <hr>

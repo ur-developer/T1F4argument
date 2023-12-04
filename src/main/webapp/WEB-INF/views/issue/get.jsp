@@ -116,23 +116,11 @@ $(document).ready(function() {
 	</tr>
 </div>
 	
-<div class="text-right">
-	<c:forEach var="file" items="${board.attaches}">
-		<div class="attach-file-item">
-			<a href="/board/download/${file.no}" class="file-link">
-				<i class="fa-solid fa-floppy-disk"></i> 
-					${file.filename} (${file.formatSize})<br>
-			</a>
-		</div>
-	</c:forEach>
-</div>
-	
+
 <hr>
 
-<div>${board.content}</div>
+<div><h4>${board.content}</h4></div>
 	
-<hr>
-
 <div class="word-section">
 	<div class="word-container">
 		<img src="/resources/images/dora.jpg" alt="Leftword Image" class="word-image">
@@ -144,11 +132,10 @@ $(document).ready(function() {
 	</div>
 </div>
 	
-<span class="like">
-	<i class="${ board.myLike ? 'fa-solid' : 'fa-regular' } fa-regular fa-thumbs-up text-primary"
-		data-bno="${board.bno}"></i>
-	<span class="like-count">${board.likes}</span>
-</span>
+<span class="like" style="cursor:pointer"> <i
+								class="${ board.myLike ? 'fa-solid' : 'fa-large' } fa-regular fa-thumbs-up fa-2xl"
+								style="color:#518df5;" "data-bno="${board.bno}"></i> <span class="like-count">${board.likes}</span>
+							</span>
 
 <hr>
 
@@ -172,5 +159,6 @@ $(document).ready(function() {
 	<input type="hidden" name="type" value="${cri.type}"/>
 	<input type="hidden" name="keyword" value="${cri.keyword}"/>
 </form>
+
 
 <%@include file="../layouts/footer.jsp"%>

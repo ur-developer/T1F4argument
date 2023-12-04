@@ -4,16 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@include file="../layouts/headersuggest.jsp"%>
-
-
-<div id="floatMenu">광고 / api</div>
-
 <h1 class="page-header">
-	<i class="fas fa-list"></i> 건의게시판
+	<i class="fas fa-list"></i> 신고/요청
 </h1>
 <hr>
 
-<p></p>
 
 <table class="table table-striped table-hover">
 	<thead>
@@ -42,8 +37,7 @@
 
 <hr>
 
-<div class="text-right" style="float:right">\
-	<a href="register" class="btn btn-primary"> <i class="far fa-edit"></i>
+<div class="text-right" style="float:right">	<a href="register" class="btn btn-primary"> <i class="far fa-edit"></i>
 		글쓰기
 	</a>
 </div>

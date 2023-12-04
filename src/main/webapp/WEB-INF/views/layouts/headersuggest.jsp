@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,8 +32,13 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/resources/js/main.js"></script>
-</head>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-2.1.4.js"></script>
 
+</head>
+<a href="${pageContext.request.contextPath}/howtouse">
+	<div class="sideBanner"></div>
+</a>
 
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
@@ -54,28 +60,33 @@
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
 						<li><a class="nav-link"
-							href="${pageContext.request.contextPath}/">메인</a></li>
+							href="/fame/list">명예의 전당</a></li>
+
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/issue/list">이슈 고르기</a></li>
-						<li><a class="nav-link" href="/fame/list">이슈 명예 전당</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							data-bs-toggle="dropdown" aria-expanded="false">갑론을박</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item"
-									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=1">첫번째 이슈</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=1">첫번째
+										이슈</a></li>
 								<li><a class="dropdown-item"
-									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=2">두번째 이슈</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=2">두번째
+										이슈</a></li>
 								<li><a class="dropdown-item"
-									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=3">세번째 이슈</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=3">세번째
+										이슈</a></li>
 								<li><a class="dropdown-item"
-									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=4">네번째 이슈</a></li>
+									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=4">네번째
+										이슈</a></li>
 							</ul>
-							<li><a class="nav-link"
+						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/board/list">자유토론장</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
-						<li class="nav-item active"><a class="nav-link" href="/suggest/list">요청 게시판</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							href="/suggest/list">신고/요청</a></li>
 
 					</ul>
 
@@ -107,24 +118,23 @@
 				</div>
 			</div>
 		</nav>
-		
-<form id="logoutForm" action="/security/logout" method="post" >
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-</form>
 
-<script>
-$(document).ready(function() {
-	$('.logout-link').click(function(e) {
-		e.preventDefault();
-		$('#logoutForm').submit();		
-	});
-});
-</script>
+		<form id="logoutForm" action="/security/logout" method="post">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+		</form>
+
+		<script>
+			$(document).ready(function() {
+				$('.logout-link').click(function(e) {
+					e.preventDefault();
+					$('#logoutForm').submit();
+				});
+			});
+		</script>
+
 		
-<a href="${pageContext.request.contextPath}/"> <img
-	src="${pageContext.request.contextPath}/resources/images/header.jpg"
-	width="100%"></a>
-<section style="background-color: aliceblue;">
-<br>
-		<div style="margin: 140px; margin-top:20px">
-			<!-- Header-->
+			<section class="bg-light">
+			<br>
+			<div class="my-5" style="margin: 20%;">
+				<!-- Header-->

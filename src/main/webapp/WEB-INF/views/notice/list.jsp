@@ -47,9 +47,6 @@
 </div>
 
 
-<div id="floatMenu">광고 / api</div>
-
-
 
 <%@ include file="../common/search_bar.jsp" %>
 

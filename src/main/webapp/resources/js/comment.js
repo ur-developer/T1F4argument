@@ -46,7 +46,8 @@ function createCommentTemplate(comment, nickname) {
 		data-no="${comment.no}" data-nickname="${comment.nickname}"></i>
 				<span class="like-count">${comment.likeCount}</span>
 			</span>
-		<div class="reply-list ml-5">
+			<div style = "padding: 0px 0px 0px 50px;" class="reply2-list ml-5">
+		
 		<!-- 답글 목록 출력 영역 -->
 		</div>
 	</div>

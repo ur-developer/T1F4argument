@@ -74,4 +74,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by total_likes desc
 	</select>
 	
+	<select id="getFirstMember" resultType="BoardVO">
+		select * from view_member_likes  
+		order by total_likes desc
+		limit 1
+	</select>
+	
+	<select id="getSecondMember" resultType="BoardVO">
+		select * from view_member_likes  
+		order by total_likes desc
+		limit 1 offset 1
+	</select>
+	
+	<select id="getThirdMember" resultType="BoardVO">
+		select * from view_member_likes  
+		order by total_likes desc
+		limit 1 offset 2
+	</select>
+	
 </mapper>

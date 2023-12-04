@@ -104,9 +104,9 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="board" items="${mainFame}">
+							<c:forEach var="board" items="${getFameList}">
 								<tr>
-									<td><a href="fame/get?bno=${board.bno}">${board.title}</a></td>
+									<td><a href="issue/get?bno=${board.bno}">${board.title}</a></td>
 									<td style="width: 130px; text-align: center;">${board.nickname}</td>
 								</tr>
 							</c:forEach>

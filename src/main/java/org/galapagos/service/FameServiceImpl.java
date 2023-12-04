@@ -85,4 +85,22 @@ public class FameServiceImpl implements  FameService {
 	public List<BoardVO> mainFame() {
 		return mapper.mainFame();
 	}
+
+	@Override
+	public List<BoardVO> getFirstFameList() {
+		return mapper.getFirstFameList();
+	}
+
+	@Override
+	public List<BoardVO> getSecondFameList() {
+		return mapper.getSecondFameList();
+	}
+
+	@Override
+	public List<BoardVO> getThirdFameList() {
+		return mapper.getThirdFameList();
+	}
+
+
+
 }

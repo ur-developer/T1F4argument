@@ -15,6 +15,7 @@ import org.galapagos.domain.Criteria;
 import org.galapagos.domain.PageDTO;
 import org.galapagos.service.FameService;
 import org.galapagos.service.IssueService;
+import org.galapagos.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +39,9 @@ public class FameController {
 
 	@Autowired
 	private FameService service;
+	
+	@Autowired
+	MemberService memberService;
 
 	@ModelAttribute("searchTypes")
 	public Map<String, String> searchTypes() {
@@ -60,6 +64,12 @@ public class FameController {
 		int total = service.getFameTotal(cri);
 		model.addAttribute("list", service.getFameList(cri, principal));
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		model.addAttribute("getFirstFameList", service.getFirstFameList());
+		model.addAttribute("getSecondFameList", service.getSecondFameList());
+		model.addAttribute("getThirdFameList", service.getThirdFameList());
+		model.addAttribute("getFirstMember", memberService.getFirstMember());
+		model.addAttribute("getSecondMember", memberService.getSecondMember());
+		model.addAttribute("getThirdMember", memberService.getThirdMember());
 
 	}
 	

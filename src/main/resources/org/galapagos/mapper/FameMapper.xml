@@ -31,14 +31,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where category_id = 2
 		order by bno desc
 	</select>
-
+	
 	<select id="getFameList" resultType="BoardVO">
 		select vp.*, ac.category_id
 		from view_post vp
 		join argument_category ac on vp. category_id = ac.category_id	
-		where vp.category_id = 2
-		order by vp.bno desc
+		where vp.category_id = 1
+		order by vp.likes desc, vp.bno asc
+		limit 3
 	</select>
+	
+	<select id="getFirstFameList" resultType="BoardVO">
+		select vp.*, ac.category_id
+		from view_post vp
+		join argument_category ac on vp. category_id = ac.category_id	
+		where vp.category_id = 1
+		order by vp.likes desc, vp.bno asc
+		limit 1
+	</select>
+	
+	<select id="getSecondFameList" resultType="BoardVO">
+		select vp.*, ac.category_id
+		from view_post vp
+		join argument_category ac on vp. category_id = ac.category_id	
+		where vp.category_id = 1
+		order by vp.likes desc, vp.bno asc
+		limit 1 offset 1
+	</select>
+	
+	<select id="getThirdFameList" resultType="BoardVO">
+		select vp.*, ac.category_id
+		from view_post vp
+		join argument_category ac on vp. category_id = ac.category_id	
+		where vp.category_id = 1
+		order by vp.likes desc, vp.bno asc
+		limit 1 offset 2
+	</select>
+	
 
 	<select id="getFameListWithPaging" resultType="BoardVO">
 		select * from view_post
@@ -105,9 +134,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="mainFame" resultType="BoardVO">
-		select * from argument_post ap where category_id = 2
+		select * from argument_post ap where category_id = 1
 		order by bno desc 
-		limit 4
+		limit 3
 	</select>
 
 </mapper>

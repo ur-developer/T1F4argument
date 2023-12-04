@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 </script>
 
-<h2> 공지사항 </h2>
+<h1> 신고/요청 </h1>
 
 <div class="page-header d-flex justify-content-between">
     <div style="font-size: 2.2em;">${board.title}</div>

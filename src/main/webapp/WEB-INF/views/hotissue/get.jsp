@@ -39,10 +39,9 @@
         ]);
 
         // Set chart options
-        var options = {'title':'갑론을박',
-                       'width':400,
-                       'height':300,
-                       'backgroundColor': 'aliceblue'};
+        var options = {'width':500,
+                       'height':400,
+                       'backgroundColor': '#f8f9fa'};
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
@@ -225,6 +224,7 @@ $(document).ready(async function() {
         padding-bottom: 5px;
         margin-bottom: 10px;
     }
+    
 </style>
 
 <c:if test="${not empty username}">
@@ -283,9 +283,9 @@ $(document).ready(function() {
 
 </script>
 </c:if>
-<div id="floatMenu">광고 / api</div>
+<div id="floatMenu"></div>
 
-<h2> 갑론을박 </h2>
+<h1><i class="fa-solid fa-fire" style="color: #000000;"></i> 갑론을박 </h1>
 
 <div class="page-header d-flex justify-content-between">
     <div style="font-size: 2.2em;">${board.title}</div>
@@ -295,7 +295,7 @@ $(document).ready(function() {
     </div>
 </div>
 <div class="container"
-		style="border-style: solid; width: 35%;  margin-top:50px; margin-bottom: 50px;text-align:center;">
+		style="border-radius: 30px;width: 35%;  margin-top:50px; margin-bottom: 50px;text-align:center; background-color:#edae49;">
 
 		<div style="height: 50px;">
 			<h4>${board.content}</h4>
@@ -303,7 +303,7 @@ $(document).ready(function() {
 		<br>
 		<div><i class="fas fa-user"></i> ${board.nickname}</div>
 	<tr>
-		<td> 조회 수 ${board.hit} </td>
+		<td > 조회 수 ${board.hit} </td>
 		<td> 추천 수 ${board.likes} </td>
 	</tr>
 </div>
@@ -311,8 +311,7 @@ $(document).ready(function() {
 	</div>
 
 <hr style="width:30%;margin: 0px auto;margin-bottom:30px;">
-	
-<h3 style="text-align:center">차트(네이밍 개선사항)</h3>
+
 
 	<div class="container" style="width: 400px;">
 	<div id="chart_div"></div>
@@ -320,10 +319,10 @@ $(document).ready(function() {
 
 
 <div class="d-flex justify-contents-between"
-	style="width: 1200px height: auto; text-align: center; margin:50px;">
+	style="width: 1000px; height: auto; text-align: center; margin:0 auto">
 	<div class="container">
-		<div class="my-5">
-			<i class="fa-regular fa-comments"></i> ${board.leftword}
+		<div ">
+			<i class="fa-regular fa-comments"style="color:blue"></i> ${board.leftword}
 			<hr>
 			<div class="comment-list"></div>
 		<div class="bg-light p-2 rounded my-5">
@@ -384,8 +383,8 @@ $(document).ready(function() {
 	</div>
 	<div class="vr"></div>
 	<div class="container">
-		<div class="my-5">
-			<i class="fa-regular fa-comments"></i> ${board.rightword}
+		<div ">
+			<i class="fa-regular fa-comments" style="color:red"></i> ${board.rightword}
 			<hr>
 			<div class="comment2-list"></div>
 		</div>

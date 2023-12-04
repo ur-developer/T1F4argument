@@ -56,11 +56,10 @@
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li class="nav-item active"><a class="nav-link"
-							href="${pageContext.request.contextPath}/">메인</a></li>
+											<li ><a class="nav-link" href="/fame/list">명예의 전당</a></li>
+					
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/issue/list">이슈 고르기</a></li>
-						<li><a class="nav-link" href="/fame/list">이슈 명예 전당</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							data-bs-toggle="dropdown" aria-expanded="false">갑론을박</a>
@@ -78,7 +77,7 @@
 							href="${pageContext.request.contextPath}/board/list">자유토론장</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
-						<li><a class="nav-link" href="/suggest/list">요청 게시판</a></li>
+						<li><a class="nav-link" href="/suggest/list">신고/요청</a></li>
 
 					</ul>
 

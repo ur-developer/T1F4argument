@@ -5,6 +5,41 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+// 기본 위치(top)값
+var floatPosition = parseInt($(".sideBanner").css('top'))
+
+// scroll 인식
+$(window).scroll(function() {
+  
+    // 현재 스크롤 위치
+    var currentTop = $(window).scrollTop();
+    var bannerTop = currentTop + floatPosition + "px";
+
+    //이동 애니메이션
+    $(".sideBanner").stop().animate({
+      "top" : bannerTop
+    }, 500);
+
+}).scroll();
+
+// 기본 위치(top)값
+var floatPosition = parseInt($(".sideBannerR").css('top'))
+
+// scroll 인식
+$(window).scroll(function() {
+  
+    // 현재 스크롤 위치
+    var currentTop = $(window).scrollTop();
+    var bannerTop = currentTop + floatPosition + "px";
+
+    //이동 애니메이션
+    $(".sideBannerR").stop().animate({
+      "top" : bannerTop
+    }, 500);
+
+}).scroll();
+
 // 슬라이크 전체 크기(width 구하기)
 const slide = document.querySelector(".slide");
 let slideWidth = slide.clientWidth;
@@ -212,39 +247,3 @@ slide.addEventListener("mouseout", () => {
   }, 3000);
 });
 
-
-//플로팅 배너 만들기
-$(document).ready(function() {
-
-	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
-	var floatPosition = parseInt($("#floatMenu").css('top'));
-	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
-
-	$(window).scroll(function() {
-		// 현재 스크롤 위치를 가져온다.
-		var scrollTop = $(window).scrollTop();
-		var newPosition = scrollTop + floatPosition + "px";
-
-		/* 애니메이션 없이 바로 따라감
-		 $("#floatMenu").css('top', newPosition);
-		 */
-
-		$("#floatMenu").stop().animate({
-			"top" : newPosition
-		}, 500);
-
-	}).scroll();
-
-});
-
-$("#floatMenu").stop().animate({
-	"top" : newPosition
-}, {
-	'duration' : 500,
-	'easing' : 'easeInOutCubic',
-	'complete' : function() {
-		console.log('이동 완료하였습니다.');
-	}
-});
-
-$(window).scrollTop(500);

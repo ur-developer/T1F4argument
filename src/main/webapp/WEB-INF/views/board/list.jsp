@@ -12,8 +12,6 @@
 </h1>
 <hr>
 
-<div id="floatMenu">광고 / api</div>
-
 <table class="table table-striped table-hover">
 	<thead>
 		<tr>
@@ -49,12 +47,12 @@
 
 
 
+
 <%@ include file="../common/search_bar.jsp"%>
 <hr>
 
 
 <%@include file="../common/pagination.jsp"%>
-
 
 
 <%@ include file="../layouts/footer.jsp"%>

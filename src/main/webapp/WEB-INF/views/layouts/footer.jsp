@@ -5,6 +5,7 @@
 <br>
 <br>
 <br>
+</main>
 </section>
  <!-- Footer-->
         <footer class="bg-dark py-4 mt-auto mb-0">

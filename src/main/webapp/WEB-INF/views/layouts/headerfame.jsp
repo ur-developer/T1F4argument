@@ -31,8 +31,16 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/resources/js/main.js"></script>
-</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.js"></script> 
+<style>
 
+section{color:white;}
+</style>
+</head>
+<a href="${pageContext.request.contextPath}/howtouse	">
+<div class="sideBanner">
+  </div>
+  </a>
 
 <body class="d-flex flex-column h-100">
 	<main class="flex-shrink-0">
@@ -53,11 +61,9 @@
 
 				<div class="collapse navbar-collapse" id="navbarsFurni">
 					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-						<li><a class="nav-link"
-							href="${pageContext.request.contextPath}/">메인</a></li>
+						<li class="nav-item active"><a class="nav-link" href="/fame/list">명예의 전당</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/issue/list">이슈 고르기</a></li>
-						<li class="nav-item active"><a class="nav-link" href="/fame/list">이슈 명예 전당</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							data-bs-toggle="dropdown" aria-expanded="false">갑론을박</a>
@@ -75,7 +81,7 @@
 							href="${pageContext.request.contextPath}/board/list">자유토론장</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>
-						<li><a class="nav-link" href="/suggest/list">요청 게시판</a></li>
+						<li><a class="nav-link" href="/suggest/list">신고/요청</a></li>
 
 					</ul>
 
@@ -87,19 +93,18 @@
 							<li class="nav-item"><a class="nav-link"
 								href="/security/profile"> ${username} </a></li>
 							<li class="nav-item"><a class="nav-link logout-link"
-								href="#"> <i class="fa-solid fa-right-from-bracket"></i>
+								href="#"> 
 									로그아웃
 							</a></li>
 						</sec:authorize>
 						<sec:authorize access="isAnonymous()">
 							<%-- 로그아웃 된 상태 --%>
 							<li class="nav-item"><a class="nav-link"
-								href="/security/login"> <i
-									class="fa-solid fa-right-to-bracket"></i> <img
+								href="/security/login"> <img
 									src="${pageContext.request.contextPath}/resources/images/user.svg">
 							</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/security/signup"> <i class="fa-solid fa-user-plus"></i>
+								href="/security/signup">
 									회원가입
 							</a></li>
 						</sec:authorize>
@@ -122,9 +127,21 @@ $(document).ready(function() {
 </script>
 		
 <a href="${pageContext.request.contextPath}/"> <img
-	src="${pageContext.request.contextPath}/resources/images/header.jpg"
-	width="100%"></a>
-<section style="background-color: aliceblue;">
+	src="${pageContext.request.contextPath}/resources/images/fame.jpg"
+	width="100%" ></a>
+	<section class="py-3 pb-3" id="features"
+	style="background-color: black; height: auto;">
+	<div style="width: 50%; margin: auto;">
+		<div class="container-sm px-5 my-3">
+			<div class="row gx-5 sh">
+				<h2 style="text-align: center; color: white;">명예 전당</h2>
+			</div>
+
+
+		</div>
+	</div>
+</section>
+<section style="background-color:black;">
 <br>
-	<div style="margin: 140px; margin-top:20px">
+	<div class="my-5" style="margin: 20%;margin-top:0px;">
 			<!-- Header-->

@@ -135,7 +135,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="mainFame" resultType="BoardVO">
 		select * from argument_post ap where category_id = 1
-		order by likes desc, bno asc
+		order by bno desc 
 		limit 3
 	</select>
 

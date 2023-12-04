@@ -26,4 +26,11 @@ public MemberVO readMember(String username);
 	public void resetPassword(ResetPasswordVO resetPassword);
 	
 	public List<Long> getMemberLikes();
+	
+	public List<Long> getFirstMember();
+	
+	public List<Long> getSecondMember();
+	
+	public List<Long> getThirdMember();
+	
 }

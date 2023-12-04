@@ -140,6 +140,110 @@
 		</div>
 	</div>
 </div>
+
+<section class="pt-5">
+	<div class="col-md-5" style="float: none; margin: auto;">
+		<h2 style="text-align: center;">.1.</h2>
+		<div
+			class="col g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+			<div class="col-lg-auto d-none d-lg-block">
+				<img
+					src="${pageContext.request.contextPath}/resources/images/1st.jpg"
+					style="width: 100%">
+			</div>
+			<div class="col p-1 d-flex flex-column position-static">
+				<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
+				<c:forEach var="board" items="${getFirstMember}">
+					<h2 class="mb-0" style="float: none; margin: 0 auto;">
+						${board.nickname}</h2>
+
+					<br>
+					<br>
+					<h3 class="card-text mb-auto" style="float: none; margin: 0 auto;">
+						${board.totalLikes}</h3>
+
+
+				</c:forEach>
+
+				<br> <a href="${pageContext.request.contextPath}/hotissue/list"
+					class="icon-link gap-1 icon-link-hover stretched-link"> 핫 이슈
+					보러가기 </a>
+			</div>
+
+		</div>
+	</div>
+	<br> <br>
+</section>
+<hr class="hr-layout">
+<Br>
+<br>
+<div class="container px-5">
+	<div class="row gx-10">
+
+		<div class="row mb-4">
+
+			<div class="col-md-5" style="float: none; margin: 0 auto;">
+				<h2 style="text-align: center;">.2.</h2>
+				<div
+					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col-lg-auto d-none d-lg-block">
+						<img
+							src="${pageContext.request.contextPath}/resources/images/2nd.jpg"
+							style="width: 100%">
+					</div>
+					<div class="col p-1 d-flex flex-column position-static">
+						<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
+						<c:forEach var="board" items="${getSecondMember}">
+							<h2 class="mb-0" style="float: none; margin: 0 auto;">
+								${board.nickname}</h2>
+
+
+							<br>
+							<br>
+							<h3 class="card-text mb-auto" style="float: none; margin: 0 auto;">
+								${board.totalLikes}</h3>
+
+						</c:forEach>
+						<br> <a
+							href="${pageContext.request.contextPath}/hotissue/list"
+							class="icon-link gap-1 icon-link-hover stretched-link"> 핫 이슈
+							보러가기 </a>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-5" style="float: none; margin: 0 auto;">
+				<h2 style="text-align: center;">.3.</h2>
+				<div
+					class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col-lg-auto d-none d-lg-block">
+						<img
+							src="${pageContext.request.contextPath}/resources/images/3rd.jpg"
+							style="width: 100%">
+					</div>
+					<div class="col p-1 d-flex flex-column position-static">
+						<strong class="d-inline-block mb-2 text-primary-emphasis"></strong>
+						<c:forEach var="board" items="${getThirdMember}">
+							<h2 class="mb-0" style="float: none; margin: 0 auto;">
+								${board.nickname}</h2>
+
+
+							<br>
+							<br>
+							<h3 class="card-text mb-auto" style="float: none; margin: 0 auto;">
+								${board.totalLikes}</h3>
+						</c:forEach>
+						<br> <a
+							href="{pageContext.request.contextPath}/hotissue/list"
+							class="icon-link gap-1 icon-link-hover stretched-link"> 핫 이슈
+							보러가기 </a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <br>
 
 <hr class="hr-layout">

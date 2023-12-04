@@ -112,4 +112,19 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.getMemberLikes();
 	}
 
+	@Override
+	public List<Long> getFirstMember() {
+		return mapper.getFirstMember();
+	}
+
+	@Override
+	public List<Long> getSecondMember() {
+		return mapper.getSecondMember();
+	}
+
+	@Override
+	public List<Long> getThirdMember() {
+		return mapper.getThirdMember();
+	}
+
 }

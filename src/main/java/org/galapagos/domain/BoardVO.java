@@ -41,4 +41,6 @@ public class BoardVO {
 	// 단어 추가 기능
 	private String leftword;
 	private String rightword;
+	
+	private Integer totalLikes;
 }

@@ -25,4 +25,11 @@ public MemberVO getMember(String username);
 	
 	public List<Long> getMemberLikes();
 	
+	public List<Long> getFirstMember();
+	
+	public List<Long> getSecondMember();
+	
+	public List<Long> getThirdMember();
+	
+	
 }

@@ -65,8 +65,7 @@
 <a href="${pageContext.request.contextPath}/howtouse">
 <div class="sideBanner">
   </div>
-  <div class="sideBannerR">
-  </div>
+  
   </a>
 <!-- 메인 섹션 1 -->
 <section class="py-5" style="text-align:center; background-color:aliceblue;">

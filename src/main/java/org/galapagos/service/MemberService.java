@@ -21,6 +21,8 @@ public MemberVO getMember(String username);
 	
 	public boolean updateMember(UpdateMemberVO updateMember);
 	
+	public void updateAuthentication(UpdateMemberVO updateMember);
+	
 	public boolean deleteMember(DeleteMemberVO deleteMember);
 	
 	public List<Long> getMemberLikes();

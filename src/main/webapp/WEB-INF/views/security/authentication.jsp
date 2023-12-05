@@ -73,12 +73,10 @@
 			if(inputCode == code) {
 				checkCode.html('인증번호가 일치합니다.');
 				checkCode.attr('class', 'correct');
-				emailCheck = true;
 			}
 			else {
 				checkCode.html('인증번호가 일치하지 않습니다.');
 				checkCode.attr('class', 'incorrect');
-				emailCheck = false;
 			}
 		});
 		
@@ -109,8 +107,9 @@
 	
 	<div>
 	
-		<form action="/security/authentication" method="post" >
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<form:form modelAttribute="member" action="/security/authentication?_csrf=${_csrf.token}">
+		<%-- <form id="authenticationForm" action="/security/authentication" method="post" >
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 		
 			<div class="form-group">
 				<label for="email" class="mailAddress">이메일</label>
@@ -127,7 +126,7 @@
 			
 				<div class="mailCheckWrap">
 					<div class="mailCheckInputBox" id="mailCheckInputBoxFalse">
-						<input class="mailCheckInput" disabled="disabled" placeholder="인증번호 입력">
+						<input class="mailCheckInput" name="checkEmail" disabled="disabled" placeholder="인증번호 입력">
 					</div>
 				
 					<button type="button" class="mailCheckButton">인증요청</button>
@@ -137,6 +136,8 @@
 				
 					<!-- 인증 번호 일치 여부 알림 -->
 					<span id="mailCheckInputBoxWarn"></span>
+					<br>
+					<form:errors path="checkEmail" cssClass="error"/>
 				</div>
 			</div>
 			
@@ -144,7 +145,7 @@
 			
 			<button type="submit" class="btn btn-primary submitBtn">확인</button>
 		
-		</form>
+		</form:form>
 	
 	</div>
 	

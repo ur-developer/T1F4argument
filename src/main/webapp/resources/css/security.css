@@ -78,7 +78,8 @@
 .signupBtn {
 	width: 14rem;
 	height: 2.5rem;
-	display :inline-block;
+	margin: auto;
+	display: block;
 }
 
 .loginBtn {

@@ -20,10 +20,11 @@ function createReply2Template(reply2, nickname) {
 			<div class="reply2-title my-2 d-flex justify-content-between">
 				<div class="reply2-head">
 					<strong class="reply2-nickname">
+						<i class="fa-regular fa-comment-dots"></i>
 						${reply2.nickname}
 					</strong>
 					<span class="text-muted ml-3 reply2-date">
-						${moment(reply2.registerDate).format('YYYY-MM-DD hh:mm')}
+						${moment(reply2.registerDate).format('hh:mm')}
 					</span>
 				</div>
 				

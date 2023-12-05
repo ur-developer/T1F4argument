@@ -17,10 +17,11 @@ function createReplyTemplate(reply, nickname) {
 			<div class="reply-title my-2 d-flex justify-content-between">
 				<div class="reply-head">
 					<strong class="reply-nickname">
+						<i class="fa-regular fa-comment-dots"></i>
 						${reply.nickname}
 					</strong>
 					<span class="text-muted ml-3 reply-date">
-						${moment(reply.registerDate).format('YYYY-MM-DD hh:mm')}
+						${moment(reply.registerDate).format('hh:mm')}
 					</span>
 				</div>
 				

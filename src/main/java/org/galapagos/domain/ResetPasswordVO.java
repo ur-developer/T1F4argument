@@ -9,6 +9,8 @@ public class ResetPasswordVO {
 	
 	private String username;
 	
+	private String checkEmail;
+	
 	@NotBlank(message = "새로운 비밀번호를 입력하세요.")
 	private String newPassword;
 	

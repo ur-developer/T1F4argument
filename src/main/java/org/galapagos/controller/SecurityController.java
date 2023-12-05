@@ -28,9 +28,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import lombok.extern.log4j.Log4j;
-
-@Log4j
 @RequestMapping("/security")
 @Controller
 public class SecurityController {
@@ -40,9 +37,6 @@ public class SecurityController {
 
 	@Autowired
 	private JavaMailSender mailSender;
-	
-	@Autowired
-	private UserDetailsService customUser;
 
 	@GetMapping("/login")
 	public void login() {
@@ -215,26 +209,13 @@ public class SecurityController {
 			return "/security/updateform";
 		}
 		
-		Authentication currentAuth = SecurityContextHolder.getContext().getAuthentication();
-	    String userID = updateMember.getUsername();
-	    
-	    SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(currentAuth, userID));
+		service.updateAuthentication(updateMember);
 		
 	    model.addAttribute("message", "회원정보가 수정되었습니다.");
 		model.addAttribute("url", "/security/profile");
 
 		return "/layouts/alert";
 
-	}
-	
-	protected Authentication createNewAuthentication(Authentication currentAuth, String username) {
-		
-	    UserDetails newPrincipal = customUser.loadUserByUsername(username);
-	    UsernamePasswordAuthenticationToken newAuth = new UsernamePasswordAuthenticationToken
-	    		(newPrincipal, currentAuth.getCredentials(), newPrincipal.getAuthorities());
-	    newAuth.setDetails(currentAuth.getDetails());
-	    
-	    return newAuth;
 	}
 	
 	@GetMapping("/deleteform")
@@ -266,13 +247,19 @@ public class SecurityController {
 	}
 	
 	@GetMapping({"/authentication", "/findIDResult", "/authenticationPassword"})
-	public void authentication() {
+	public void authentication(@ModelAttribute("member") MemberVO member) {
 		
 	}
 	
 	@PostMapping("/authentication")
-	public String authentication(@ModelAttribute("member") MemberVO member, UpdateMemberVO updateMember,
-			Model model) {
+	public String authentication(@Valid @ModelAttribute("member") MemberVO member, Errors errors, Model model) {
+
+		if(member.getCheckEmail() == null) {
+			
+			errors.rejectValue("checkEmail", "이메일 인증 에러", "");
+			
+			return "/security/authentication";
+		}
 		
 		member = service.getEmail(member.getEmail());
 		model.addAttribute("member", member);
@@ -281,11 +268,20 @@ public class SecurityController {
 	}
 	
     @PostMapping("/authenticationPassword")
-    public String authenticationPassword(String username, ResetPasswordVO resetPassword, Model model) {
+    public String authenticationPassword(@Valid @ModelAttribute("resetPassword") ResetPasswordVO resetPassword, 
+    		Errors errors, Model model) {
         
-        MemberVO member = service.getMember(username);
-        
-        resetPassword.setUsername(member.getUsername());
+        if(service.getMember(resetPassword.getUsername()) == null) {
+    		
+    		errors.rejectValue("username", "사용자 에러", "아이디와 일치하는 사용자가 없습니다.");
+    		
+    		 if(resetPassword.getCheckEmail() == null) {
+    				
+    				errors.rejectValue("checkEmail", "이메일 인증 에러", "이메일을 인증하세요.");
+    		}
+    		
+    		return "/security/authenticationPassword";
+    	}
 
         model.addAttribute("resetPassword", resetPassword);
         
@@ -295,9 +291,6 @@ public class SecurityController {
     @PostMapping("/resetPassword")
     public String resetPassword(@ModelAttribute("resetPassword") ResetPasswordVO resetPassword,
             Errors errors, Model model) {
-        
-    	log.info("newPassword : " + resetPassword.getNewPassword());
-    	log.info("checkPassword : "+ resetPassword.getCheckNewPassword());
     	
         // 비밀번호, 비밀번호 확인 일치 여부
         if (!resetPassword.getNewPassword().equals(resetPassword.getCheckNewPassword())) {

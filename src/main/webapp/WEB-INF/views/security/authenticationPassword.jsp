@@ -111,13 +111,13 @@
 	
 	<div>
 	
-		<form action="/security/authenticationPassword" method="post" >
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<form:form modelAttribute="resetPassword" action="/security/authenticationPassword?_csrf=${_csrf.token}">
 			
 			<div class="form-group">
 				<label for="username" class="usernameInput">아이디</label>
 				<br>
 				<input type="text" name="username" placeholder="아이디를 입력하세요." class="form-control"/>
+				<form:errors path="username" cssClass="error"/>
 			</div>
 			
 			<br>
@@ -127,7 +127,7 @@
 				<span class="mailCheckWarn"></span>
 				
 				<div class="mailInputBox">
-					<input type="text" name="email" class="mailInput form-control" 
+					<input type="text" class="mailInput form-control" 
 					autocomplete="off" placeholder="인증 코드를 받을 이메일을 입력하세요."/>
 					<span class="emailCheck"></span>
 					<span id="mailInputBoxWarn"></span>
@@ -137,7 +137,7 @@
 			
 				<div class="mailCheckWrap">
 					<div class="mailCheckInputBox" id="mailCheckInputBoxFalse">
-						<input class="mailCheckInput" disabled="disabled" placeholder="인증번호 입력">
+						<input class="mailCheckInput" name="checkEmail" disabled="disabled" placeholder="인증번호 입력">
 					</div>
 				
 					<button type="button" class="mailCheckButton">인증요청</button>
@@ -147,6 +147,8 @@
 				
 					<!-- 인증 번호 일치 여부 알림 -->
 					<span id="mailCheckInputBoxWarn"></span>
+					<br>
+					<form:errors path="checkEmail" cssClass="error"/>
 				</div>
 			</div>
 			
@@ -154,7 +156,7 @@
 			
 			<button type="submit" class="btn btn-primary submitBtn">확인</button>
 		
-		</form>
+		</form:form>
 	
 	</div>
 	

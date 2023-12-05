@@ -9,6 +9,11 @@ import org.galapagos.domain.ResetPasswordVO;
 import org.galapagos.domain.UpdateMemberVO;
 import org.galapagos.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +21,10 @@ import org.springframework.stereotype.Service;
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
-	MemberMapper mapper;
+	private MemberMapper mapper;
+	
+	@Autowired
+	private UserDetailsService customUser;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -91,6 +99,26 @@ public class MemberServiceImpl implements MemberService {
 		return false;
 	}
 	
+	@Override
+	public void updateAuthentication(UpdateMemberVO updateMember) {
+		
+		Authentication currentAuthentication = SecurityContextHolder.getContext().getAuthentication();
+	    String userID = updateMember.getUsername();
+	    
+	    SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(currentAuthentication, userID));
+		
+	}
+	
+	protected Authentication createNewAuthentication(Authentication currentAuth, String username) {
+		
+	    UserDetails newPrincipal = customUser.loadUserByUsername(username);
+	    UsernamePasswordAuthenticationToken newAuth = new UsernamePasswordAuthenticationToken
+	    		(newPrincipal, currentAuth.getCredentials(), newPrincipal.getAuthorities());
+	    newAuth.setDetails(currentAuth.getDetails());
+	    
+	    return newAuth;
+	}
+
 	@Override
 	public boolean deleteMember(DeleteMemberVO deleteMember) {
 		

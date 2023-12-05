@@ -155,15 +155,14 @@
 			
 				<div class="mailCheckWrap">
 					<div class="mailCheckInputBox" id="mailCheckInputBoxFalse">
-						<input class="mailCheckInput" disabled="disabled" placeholder="인증번호 입력">
+						<input class="mailCheckInput" name="checkEmail" disabled="disabled" placeholder="인증번호 입력">
 					</div>
 				
 					<button type="button" class="mailCheckButton">인증요청</button>
 					
 					<br>
 					<br>
-					
-					<form:errors path="email" cssClass="error"/>
+					<form:errors path="checkEmail" cssClass="error"/>
 					
 					<br>
 				
@@ -174,7 +173,7 @@
 			
 			<br>
 			
-			<button type="submit" class="btn btn-primary btn-block">
+			<button type="submit" class="btn btn-primary btn-block signupBtn">
                 회원가입
         	</button>
 

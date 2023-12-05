@@ -29,8 +29,13 @@ function createComment2Template(comment2, nickname) {
 					${comment2.nickname}
          		</strong>
 				<span class="text-muted ms-3 comment2-date">
-					${moment(comment2.registerDate).format('YYYY-MM-DD hh:mm')}
+					${moment(comment2.registerDate).format('hh:mm')}
 				</span>
+				<span class="like">
+				<i class="${ comment2.myLike ? 'fa-solid' : 'fa-regular' } fa-thumbs-up text-danger"
+		data-no="${comment2.no}" data-nickname="${comment2.nickname}"></i>
+				<span class="like-count">${comment2.likeCount}</span>
+			</span>
 			</div>
 			
 			<div  class="btn-group">
@@ -41,11 +46,7 @@ function createComment2Template(comment2, nickname) {
 		<div class="comment2-body">
 			<div class="comment2-content">${comment2.content}</div>
 		</div>
-		<span class="like">
-				<i class="${ comment2.myLike ? 'fa-solid' : 'fa-regular' } fa-thumbs-up text-danger"
-		data-no="${comment2.no}" data-nickname="${comment2.nickname}"></i>
-				<span class="like-count">${comment2.likeCount}</span>
-			</span>
+		
 		<div style = "padding: 0px 0px 0px 50px;" class="reply2-list ml-5">
 		<!-- 답글 목록 출력 영역 -->
 		</div>
@@ -132,7 +133,7 @@ function createComment2EditTemplate(comment2) {
 				<button onClick="window.location.reload()" class="btn btn-light btn-sm py-1 comment2-update-btn">
 					<i class="fa-solid fa-check"></i> 확인</button>
 				<button class="btn btn-light btn-sm  py-1 comment2-update-cancel-btn">
-					<i class="fa-solid fa-undo"></i> 최소</button>
+					<i class="fa-solid fa-undo"></i> 취소</button>
 			</div>
 		</div>
 	`;

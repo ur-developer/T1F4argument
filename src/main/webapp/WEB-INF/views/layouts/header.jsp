@@ -31,7 +31,6 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/resources/js/main.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.js"></script> 
 
 </head>
 

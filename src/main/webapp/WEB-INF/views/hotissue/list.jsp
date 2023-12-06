@@ -129,6 +129,11 @@ $(document).ready(function() {
 	</c:forEach>
 </div>
 <hr>
-
+<!-- top버튼 클릭시 화면상단으로 이동 -->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/topbutton.css">
+<a id="backtotop">Top</a>
+<!-- javascript -->
+<script src="resources/js/topbutton.js"></script>
 
 <%@include file="../layouts/footer.jsp"%>

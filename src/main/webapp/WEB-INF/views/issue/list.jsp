@@ -116,12 +116,12 @@ $(document).ready(function() {
 						
 
 						</div>
-						<div style="margin: 0 20px;">
-							<span class="like" style="cursor:pointer"> <i
-								class="${ board.myLike ? 'fa-solid' : 'fa-large' } fa-regular fa-thumbs-up fa-2xl"
-								style="color:#edae49;" "data-bno="${board.bno}"></i> <span class="like-count">${board.likes}</span>
-							</span>
-						</div>
+						
+						<span class="like">
+	<i class="${ board.myLike ? 'fa-solid' : 'fa-regular' } fa-regular fa-thumbs-up fa-2xl"
+		data-bno="${board.bno}" style="color:#edae49"></i>
+	<span class="like-count">${board.likes}</span>
+</span>
 					</div>
 				</div>
 			</div>
@@ -143,5 +143,9 @@ $(document).ready(function() {
 
 
 <%@include file="../common/pagination.jsp"%>
-
+<link rel="stylesheet" type="text/css"
+	href="resources/css/topbutton.css">
+<a id="backtotop">Top</a>
+<!-- javascript -->
+<script src="resources/js/topbutton.js"></script>
 <%@include file="../layouts/footer.jsp"%>

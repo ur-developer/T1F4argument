@@ -97,7 +97,7 @@ $(document).ready(function() {
 </script>
 </c:if>
 
-<h2> Pick이슈 </h2>
+<h2> 이슈고르기 </h2>
 
 <div class="page-header d-flex justify-content-between">
     <div style="font-size: 2.2em;">${board.title}</div>
@@ -134,7 +134,7 @@ $(document).ready(function() {
 	
 <span class="like" style="cursor:pointer"> <i
 								class="${ board.myLike ? 'fa-solid' : 'fa-large' } fa-regular fa-thumbs-up fa-2xl"
-								style="color:#518df5;" "data-bno="${board.bno}"></i> <span class="like-count">${board.likes}</span>
+								style="color:#518df5;" data-bno="${board.bno}"></i> <span class="like-count">${board.likes}</span>
 							</span>
 
 <hr>
@@ -159,6 +159,10 @@ $(document).ready(function() {
 	<input type="hidden" name="type" value="${cri.type}"/>
 	<input type="hidden" name="keyword" value="${cri.keyword}"/>
 </form>
-
+<link rel="stylesheet" type="text/css"
+	href="resources/css/topbutton.css">
+<a id="backtotop">Top</a>
+<!-- javascript -->
+<script src="resources/js/topbutton.js"></script>
 
 <%@include file="../layouts/footer.jsp"%>

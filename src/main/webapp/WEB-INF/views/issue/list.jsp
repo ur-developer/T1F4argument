@@ -99,10 +99,10 @@ $(document).ready(function() {
 							<p class="card-text" style="font-size: 16px;">
 								<i>${board.content}</i></p>
 							<div style="display: grid; grid-template-columns: 1fr 1fr;">
-								<div style="margin: 0 auto;min-width:50px;width:auto;height:25px; background-color:#d1495b">
+								<div style="margin: 0 auto;min-width:50px;width:auto;height:25px; background-color:#00798c">
 									<p style="color:white">&nbsp;${board.leftword}&nbsp;</p>
 								</div>
-								<div style="margin: 0 auto ;min-width:50px; width:auto;height:25px; background-color:#00798c">
+								<div style="margin: 0 auto ;min-width:50px; width:auto;height:25px; background-color:#d1495b">
 									<p style="color:white" >&nbsp;${board.rightword}&nbsp;</p>
 								</div>
 							</div>
@@ -113,15 +113,13 @@ $(document).ready(function() {
 						class="col-md-3 d-flex justify-content-center align-items-center"
 						style="border-left:dotted">
 						<div class="likes-text" style="text-align: center;">
-						
-
-						</div>
-						
+					</div>	
 						<span class="like">
-	<i class="${ board.myLike ? 'fa-solid' : 'fa-regular' } fa-regular fa-thumbs-up fa-2xl"
-		data-bno="${board.bno}" style="color:#edae49"></i>
-	<span class="like-count">${board.likes}</span>
-</span>
+							<i class="${ board.myLike ? 'fa-solid' : 'fa-regular' }
+								fa-regular fa-thumbs-up fa-2xl"
+								data-bno="${board.bno}" style="color:#edae49"></i>
+						<span class="like-count">${board.likes}</span>
+						</span>
 					</div>
 				</div>
 			</div>

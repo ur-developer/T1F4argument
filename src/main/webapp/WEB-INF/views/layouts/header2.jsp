@@ -34,7 +34,9 @@
 
 </head>
 
+<a href="${pageContext.request.contextPath}/howtouse">
 
+  </a>
 <body class="d-flex flex-column h-100">
 
 	<main class="flex-shrink-0">
@@ -58,7 +60,7 @@
 						<li><a class="nav-link" href="/fame/list">명예의 전당</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/issue/list">이슈 고르기</a></li>
-						<li class="nav-item dropdown active"><a
+						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							data-bs-toggle="dropdown" aria-expanded="false">갑론을박</a>
 							<ul class="dropdown-menu">
@@ -71,7 +73,7 @@
 								<li><a class="dropdown-item"
 									href="/hotissue/get?pageNum=1&amount=10&type&keyword&category=4">네번째 이슈</a></li>
 							</ul>
-							<li><a class="nav-link"
+							<li class="nav-item active"><a class="nav-link"
 							href="${pageContext.request.contextPath}/board/list">자유토론장</a></li>
 						<li><a class="nav-link"
 							href="${pageContext.request.contextPath}/notice/list">공지사항</a></li>

@@ -10,27 +10,18 @@
 <script src="/resources/js/reply.js"></script>
 
 <style>
-	.word-section {
-		display: flex; /* Flexbox 사용 */
-		justify-content: center; /* 가운데 정렬 */
-	}
-
-	.word-container {
-		text-align: center; /* 텍스트를 중앙 정렬 */
-		margin-right: 200px; /* 이미지와 텍스트 사이의 간격 조절 */
-	}
-
-	.word-container img {
-		display: block; /* 이미지를 블록 요소로 설정 */
-		margin: 0 auto; /* 가운데 정렬 */
-	}
-  
-   .word-image {
-		width: 150px; /* 그림의 가로 크기를 조절 */
-    	height: 150px; /* 그림의 세로 크기를 조절 */
-   	 	margin-bottom: 5px; /* 그림과 단어 사이의 간격을 조절 */
+    .word-section {
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+        margin-bottom: 50px;
     }
-    
+
+    .word-container {
+        text-align: center;
+        margin-right: 200px; /* 이미지와 텍스트 사이의 간격 조절 */
+    }
+
    .page-header {
         border-top: 1px solid lightgray;
         border-bottom: 1px solid lightgray; /* 여기서 색상을 조절할 수 있어요 */
@@ -122,20 +113,21 @@ $(document).ready(function() {
 <div><h4>${board.content}</h4></div>
 	
 <div class="word-section">
-	<div class="word-container">
-		<img src="/resources/images/dora.jpg" alt="Leftword Image" class="word-image">
-			<p>${board.leftword}</p> 
-	</div>
-	<div class="word-container">
-		<img src="/resources/images/dora.jpg" alt="Rightword Image" class="word-image">
-			<p>${board.rightword}</p> 
-	</div>
+     <div class="word-container" style="margin-left: 200px;">
+        <i class="fa-solid fa-comments fa-2xl" style="color: blue;"></i>
+        <p>${board.leftword}</p>
+    </div>
+    <div class="word-container">
+        <i class="fa-solid fa-comments fa-2xl" style="color: red;"></i>
+        <p>${board.rightword}</p>
+    </div>
 </div>
 	
-<span class="like" style="cursor:pointer"> <i
-								class="${ board.myLike ? 'fa-solid' : 'fa-large' } fa-regular fa-thumbs-up fa-2xl"
-								style="color:#518df5;" data-bno="${board.bno}"></i> <span class="like-count">${board.likes}</span>
-							</span>
+<span class="like" style="cursor:pointer"> 
+	<i class="${ board.myLike ? 'fa-solid' : 'fa-large' } fa-regular fa-thumbs-up fa-2xl"
+		style="color:#518df5;" data-bno="${board.bno}"></i> 
+	<span class="like-count">${board.likes}</span>
+</span>
 
 <hr>
 

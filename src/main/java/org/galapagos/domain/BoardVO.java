@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class BoardVO {
 	private String username;
 	
 	@NotBlank(message = "제목은 필수항목입니다.")
+	@Size(max = 20, message = "제목은 20자 이내로 작성해야 합니다.")
 	private String title;
 	
 	@NotBlank(message = "내용은 필수항목입니다.")

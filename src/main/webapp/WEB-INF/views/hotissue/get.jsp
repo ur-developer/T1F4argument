@@ -297,8 +297,8 @@ $(document).ready(function() {
 <div class="container"
 		style="border-radius: 30px;width: 35%;  margin-top:50px; margin-bottom: 50px;text-align:center; background-color:#edae49;">
 
-		<div style="height: 50px;">
-			<h4>${board.content}</h4>
+		<div style="height: 100% ;padding-top:10px;">
+			<h4 >${board.content}</h4>
 		</div>
 		<br>
 		<div><i class="fas fa-user"></i> ${board.nickname}</div>

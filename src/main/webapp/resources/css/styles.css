@@ -18,6 +18,11 @@ font-family: 'Do Hyeon', sans-serif;  }
 
 body { height: 2000px; }
 
+.error {
+	color: red;
+	font-size: 1.0rem;
+}
+
 .sideBanner {
   position: absolute;
   width: 130px;

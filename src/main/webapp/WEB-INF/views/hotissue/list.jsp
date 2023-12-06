@@ -99,10 +99,10 @@ $(document).ready(function() {
 							<p class="card-text" style="font-size: 16px;">
 								<i>${board.content}</i></p>
 							<div style="display: grid; grid-template-columns: 1fr 1fr;">
-								<div style="margin: 0 auto;min-width:50px;width:auto;height:25px; background-color:#d1495b">
+								<div style="margin: 0 auto;min-width:50px;width:auto;height:25px; background-color:#00798c">
 									<p style="color:white">&nbsp;${board.leftword}&nbsp;</p>
 								</div>
-								<div style="margin: 0 auto ;min-width:50px; width:auto;height:25px; background-color:#00798c">
+								<div style="margin: 0 auto ;min-width:50px; width:auto;height:25px; background-color:#d1495b">
 									<p style="color:white" >&nbsp;${board.rightword}&nbsp;</p>
 								</div>
 							</div>
@@ -113,13 +113,11 @@ $(document).ready(function() {
 						class="col-md-3 d-flex justify-content-center align-items-center"
 						style="border-left:dotted">
 						<div class="likes-text" style="text-align: center;">
-						
-
-						</div>
+					</div>
 						<div style="margin: 0 20px;">
 							<span class="like" style="cursor:pointer"> <i
 								class="${ board.myLike ? 'fa-solid' : 'fa-large' } fa-regular fa-thumbs-up fa-2xl"
-								style="color:#518df5;" "data-bno="${board.bno}"></i> <span class="like-count">${board.likes}</span>
+								style="color:#edae49;" data-bno="${board.bno}"></i> <span class="like-count">${board.likes}</span>
 							</span>
 						</div>
 					</div>
@@ -131,9 +129,9 @@ $(document).ready(function() {
 <hr>
 <!-- top버튼 클릭시 화면상단으로 이동 -->
 <link rel="stylesheet" type="text/css"
-	href="resources/css/topbutton.css">
+	href="../resources/css/topbutton.css">
 <a id="backtotop">Top</a>
 <!-- javascript -->
-<script src="resources/js/topbutton.js"></script>
+<script src="../resources/js/topbutton.js"></script>
 
 <%@include file="../layouts/footer.jsp"%>

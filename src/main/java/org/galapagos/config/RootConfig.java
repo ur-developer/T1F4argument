@@ -32,10 +32,10 @@ public class RootConfig {
 		HikariConfig config = new HikariConfig();
 	
 		config.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-		config.setJdbcUrl("jdbc:log4jdbc:mysql://localhost:3306/argument_db");
-		config.setUsername("root");
-		config.setPassword("1234");
-
+		config.setJdbcUrl("jdbc:log4jdbc:mysql://49.50.160.231:3306/argument");
+		config.setUsername("black"); 
+		config.setPassword("Nothing@t@1l!m!");
+		
 		HikariDataSource dataSource = new HikariDataSource(config);
 		return dataSource;
 	}

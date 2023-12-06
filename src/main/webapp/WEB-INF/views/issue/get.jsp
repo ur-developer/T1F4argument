@@ -160,9 +160,9 @@ $(document).ready(function() {
 	<input type="hidden" name="keyword" value="${cri.keyword}"/>
 </form>
 <link rel="stylesheet" type="text/css"
-	href="resources/css/topbutton.css">
+	href="../resources/css/topbutton.css">
 <a id="backtotop">Top</a>
 <!-- javascript -->
-<script src="resources/js/topbutton.js"></script>
+<script src="../resources/js/topbutton.js"></script>
 
 <%@include file="../layouts/footer.jsp"%>

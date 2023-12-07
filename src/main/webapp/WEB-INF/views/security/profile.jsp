@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<%@ include file="../layouts/header.jsp" %>
+<%@ include file="../layouts/headersecurity.jsp" %>
 
 <link href="${pageContext.request.contextPath}/resources/css/security.css" rel="stylesheet" />
 

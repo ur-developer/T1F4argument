@@ -123,7 +123,7 @@ $(document).ready(function() {
 	<a href="${cri.getLink('list')}" class="btn btn-primary list">
 		<i class="fas fa-list"></i> 목록</a>
 	
-	<c:if test="${username == board.nickname }">
+	<c:if test="${username == board.nickname || username == 'admin'}">
 		<a href="${cri.getLinkWithBno('modify', board.bno) }" class="btn btn-primary modify">
 			<i class="far fa-edit"></i> 수정</a>
 		<a href="#" class="btn btn-danger remove">

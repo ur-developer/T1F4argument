@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<%@ include file="../layouts/header.jsp"%>
+<%@ include file="../layouts/headersecurity.jsp" %>
 
 <link href="${pageContext.request.contextPath}/resources/css/security.css" rel="stylesheet" />
 

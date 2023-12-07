@@ -15,11 +15,8 @@
 	<h2 class="mb-5">핫 이슈</h2>
 </div>
 <div class="col-md-5" style="float: none; margin: auto; margin-top: 0px">
-	<h2 style="text-align: center;">
-
-		</h1>
 		<div
-			class="col g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+			class="col g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"style="min-height:300px;">
 			<div class="col-lg-auto d-none d-lg-block">
 				<img
 					src="${pageContext.request.contextPath}/resources/images/1st.jpg"
@@ -27,7 +24,7 @@
 			</div>
 			<div class="col p-1 d-flex flex-column position-static">
 				<c:forEach var="board" items="${getFirstFameList}">
-					<h2 class="mb-0" style="float: none; margin: 0 auto;">
+					<h2 class="mb-0" style="text-align:center;">
 						${board.title}</h2>
 
 					<div class="mb-1 text-body-secondary"
@@ -59,8 +56,8 @@
 				<h2 style="text-align: center;">
 					</h1>
 					<div
-						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-						<div class="col-lg-auto d-none d-lg-block">
+						class="row g-0 border rounded overflow-hidden flex-md-row shadow-sm h-md-250 position-relative" style="min-height:300px;">
+						<div class="col-lg-auto d-none d-lg-block" ">
 							<img
 								src="${pageContext.request.contextPath}/resources/images/2nd.jpg"
 								style="width: 100%">
@@ -88,7 +85,7 @@
 
 					</h1>
 					<div
-						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+						class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"style="min-height:300px;">
 						<div class="col-lg-auto d-none d-lg-block">
 							<img
 								src="${pageContext.request.contextPath}/resources/images/3rd.jpg"
@@ -158,10 +155,5 @@
 
 
 <%@include file="../common/pagination.jsp"%>
-<!-- top버튼 클릭시 화면상단으로 이동 -->
-<link rel="stylesheet" type="text/css"
-	href="../resources/css/topbutton.css">
-<a id="backtotop">Top</a>
-<!-- javascript -->
-<script src="../resources/js/topbutton.js"></script>
+
 <%@include file="../layouts/footer.jsp"%>

@@ -39,8 +39,7 @@ function createComment2Template(comment2, nickname) {
 			</div>
 			
 			<div  class="btn-group">
-			${nickname && (nickname == comment2.nickname) ? comment2Updatable : ''}
-			${nickname && (nickname == 'admin') ? comment2Updatable : ''}
+			${(nickname && (nickname == comment2.nickname)) || (nickname && (nickname == 'admin')) ? comment2Updatable : ''}
 			${nickname && (nickname != comment2.nickname) ? reply2Addable : ''}      		
 			</div>
 		</div> 

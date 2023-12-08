@@ -29,8 +29,7 @@ function createReply2Template(reply2, nickname) {
 				</div>
 				
 				<div class="btn-group">
-					${nickname && (nickname == reply2.nickname) ? reply2Updatable : ''}
-					${nickname && (nickname == 'admin') ? reply2Updatable : ''}
+					${(nickname && (nickname == reply2.nickname)) || (nickname && (nickname == 'admin')) ? reply2Updatable : ''}
 				</div>
 			</div>
 			<div class="reply2-body">

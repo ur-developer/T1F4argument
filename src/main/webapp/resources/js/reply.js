@@ -26,8 +26,7 @@ function createReplyTemplate(reply, nickname) {
 				</div>
 				
 				<div class="btn-group">
-					${nickname && (nickname == reply.nickname) ? replyUpdatable : ''}
-					${nickname && (nickname == 'admin') ? replyUpdatable : ''}
+					${(nickname && (nickname == reply.nickname)) || (nickname && (nickname == 'admin')) ? replyUpdatable : ''}
 				</div>
 			</div>
 			<div class="reply-body">

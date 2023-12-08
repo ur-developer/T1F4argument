@@ -39,9 +39,8 @@ function createCommentTemplate(comment, nickname) {
 			</div>
 			
 			<div  class="btn-group">
-			${nickname && (nickname == comment.nickname) ? commentUpdatable : ''}
-			${nickname && (nickname == 'admin') ? commentUpdatable : ''} 
-			${nickname && (nickname != comment.nickname) ? replyAddable : ''}      		
+			${(nickname && (nickname == comment.nickname)) || (nickname && (nickname == 'admin')) ? commentUpdatable : ''}
+			${nickname && (nickname != comment.nickname) ? replyAddable : ''}		
 			</div>
 		</div> 
 		<div class="comment-body">
